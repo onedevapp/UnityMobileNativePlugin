@@ -1,0 +1,3 @@
+include ':Demo'
+include ':NativePlugin'
+rootProject.name = "NativePlugin_Android"
