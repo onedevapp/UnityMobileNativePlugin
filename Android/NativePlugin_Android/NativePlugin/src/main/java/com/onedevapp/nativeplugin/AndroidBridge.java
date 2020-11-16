@@ -1,5 +1,7 @@
 package com.onedevapp.nativeplugin;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -8,13 +10,29 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.onedevapp.nativeplugin.rt_permissions.PermissionUtils;
 
 import java.lang.ref.WeakReference;
@@ -27,6 +45,8 @@ public class AndroidBridge {
     // region Declarations
     private static ProgressDialog mProgressDialog;  //Progress dialog reference to dismiss later
     private static WeakReference<Activity> mActivityWeakReference; //Activity references
+
+    private static GoogleApiClient googleApiClient;
     //endregion
 
     /**
@@ -307,15 +327,117 @@ public class AndroidBridge {
             @Override
             public void run() {
 
-                Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
-
-                Intent intent = new Intent();
-                intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                intent.setData(uri);
-
-                activity.startActivity(intent);
+                // Go to your app's Settings page to let user turn on the necessary permissions.
+                try{
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+                    intent.setData(uri);
+                    activity.startActivity(intent);
+                }catch (NullPointerException e){
+                    Constants.WriteLog("Exception (resume) : "+ e.toString());
+                }
             }
         });
+    }
+
+    /**
+     * Opens application settings page
+     * Passes Constants.REQUEST_CODE_OPEN_SETTINGS as Result Code
+     *
+     * @param activity current context
+     */
+    public static void OpenSettingsForResult(final Activity activity)
+    {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                // Go to your app's Settings page to let user turn on the necessary permissions.
+                try{
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+                    intent.setData(uri);
+                    activity.startActivityForResult(intent, Constants.REQUEST_CODE_OPEN_SETTINGS);
+                }catch (NullPointerException e){
+                    Constants.WriteLog("Exception (resume) : "+ e.toString());
+                }
+            }
+        });
+    }
+
+    /**
+     * Enable location service
+     * @param activity current context
+     */
+    public static void EnableLocation(final Activity activity) {
+        googleApiClient = null;
+
+        if (checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            googleApiClient = new GoogleApiClient.Builder(activity)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                        @Override
+                        public void onConnected(Bundle bundle) {
+
+                        }
+
+                        @Override
+                        public void onConnectionSuspended(int i) {
+                            googleApiClient.connect();
+                        }
+                    })
+                    .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                        @Override
+                        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+                            Constants.WriteLog("Location error " + connectionResult.getErrorCode());
+                        }
+                    }).build();
+
+            googleApiClient.connect();
+
+            LocationRequest locationRequest = LocationRequest.create();
+            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            locationRequest.setInterval(30 * 1000);
+            locationRequest.setFastestInterval(5 * 1000);
+            LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                    .addLocationRequest(locationRequest);
+
+            builder.setAlwaysShow(true);
+
+            SettingsClient client = LocationServices.getSettingsClient(activity);
+            Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
+
+            task.addOnSuccessListener(activity, new OnSuccessListener<LocationSettingsResponse>() {
+                @Override
+                public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                    // All location settings are satisfied. The client can initialize
+                    // location requests here.
+                    // ...
+                }
+            });
+
+            task.addOnFailureListener(activity, new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                    if (e instanceof ResolvableApiException) {
+                        // Location settings are not satisfied, but this can be fixed
+                        // by showing the user a dialog.
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            ResolvableApiException resolvable = (ResolvableApiException) e;
+                            resolvable.startResolutionForResult(activity, Constants.REQUEST_LOCATION_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException sendEx) {
+                            // Ignore the error.
+                        }
+                    }
+                }
+            });
+        }else{
+            Constants.WriteLog("ACCESS_FINE_LOCATION permission not granted");
+        }
     }
 
     /**
@@ -333,6 +455,7 @@ public class AndroidBridge {
      * @param activity current context
      * @return boolean true if any network available else false
      */
+    @SuppressLint("MissingPermission")
     public static boolean isNetworkAvailable(final Activity activity) {
 
         ConnectivityManager connMgr = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);

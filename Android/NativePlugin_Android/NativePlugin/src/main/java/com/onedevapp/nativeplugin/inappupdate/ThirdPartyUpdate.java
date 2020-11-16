@@ -22,12 +22,9 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
 
     // region Declarations
     private final String FILE_NAME = "app_release.apk";
-    private final String FILE_BASE_PATH = "file://";
     private final String MIME_TYPE = "application/vnd.android.package-archive";
-    private final String PROVIDER_PATH = ".apk_install-file-provider";
     private final String APP_INSTALL_PATH = "\"application/vnd.android.package-archive\"";
     private Uri apk_file_uri;
-    //private File apk_file_path;
     //endregion
 
     //region Constructor
@@ -76,9 +73,6 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
             final Context context = mUpdateManager.getActivity();
             final String appName = context.getApplicationInfo().loadLabel(context.getPackageManager()).toString();
 
-            //apk_file_path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FILE_NAME);
-            //if (apk_file_path.exists()) apk_file_path.delete();
-
             Constants.WriteLog("Downloading request on url :"+mUpdateLink);
 
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(mUpdateLink));
@@ -90,10 +84,6 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
             request.setDescription("Downloading..");
             request.setTitle(appName);
-
-            //set destination
-            //final Uri uri = Uri.parse(FILE_BASE_PATH + apk_file_path);
-            //request.setDestinationUri(uri);
 
             // get download service and enqueue file
             final DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -119,9 +109,6 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
                                 if (mOnUpdateListener != null)
                                     mUpdateManager.reportUpdateError(InstallStatus.FAILED, "Download failed, Try again later.");
                             }
-                            /*else if (status == DownloadManager.STATUS_PENDING || status == DownloadManager.STATUS_PAUSED) {
-                                // do something pending or paused
-                            }*/
                             else if (status == DownloadManager.STATUS_SUCCESSFUL) {
                                 apk_file_uri = manager.getUriForDownloadedFile(downloadId);
                                 if (mOnUpdateListener != null)
@@ -167,10 +154,6 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
 
         Context context = mUpdateManager.getActivity();
 
-        //if (apk_file_path == null) {
-        //    apk_file_path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FILE_NAME);
-        //}
-
         if (apk_file_uri != null && mOnUpdateListener != null){
             mOnUpdateListener.onUpdateInstallState(InstallStatus.DOWNLOADED);
 
@@ -191,7 +174,6 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
 
             Intent intent;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                //Uri apkUri = FileProvider.getUriForFile(Objects.requireNonNull(context.getApplicationContext()), context.getPackageName() + PROVIDER_PATH, apk_file_path);
 
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -200,7 +182,6 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
                 intent.setData(apk_file_uri);
 
             } else {
-                //Uri apkUri = Uri.fromFile(apk_file_path);
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(apk_file_uri, APP_INSTALL_PATH);
                 intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);

@@ -4,6 +4,10 @@ import android.util.Log;
 
 public class Constants {
 
+    public static final int REQUEST_LOCATION_CHECK_SETTINGS = 9874;
+    public static final int REQUEST_CODE_PERMISSION = 9875;   //Code for request normal permissions.
+    public static final int REQUEST_CODE_OPEN_SETTINGS = 9876;    //Code for request to open settings.
+
     public static final int PLAY_STORE_UPDATE = 0;
     public static final int THIRD_PARTY_UPDATE = 1;
     public static final String PERMISSION_PREFERENCES = "Permission_Prefs";

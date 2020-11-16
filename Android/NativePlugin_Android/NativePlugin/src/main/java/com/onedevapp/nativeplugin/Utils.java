@@ -27,7 +27,7 @@ public class Utils {
         return false;
     }
 
-    /** Check if the “su” command was successful
+    /** Check if the SU command was successful
      * Execute su and then id to check if the current user has a uid of 0 or if it contains (root).
      */
     public static boolean checkRootMethod3() {

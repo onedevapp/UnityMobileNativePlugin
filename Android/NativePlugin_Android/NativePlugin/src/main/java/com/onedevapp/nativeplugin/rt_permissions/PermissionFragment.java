@@ -22,12 +22,9 @@ import java.util.ArrayList;
 import static com.onedevapp.nativeplugin.Constants.*;
 
 
-public class InvisibleFragment extends Fragment {
+public class PermissionFragment extends Fragment {
 
     // region Declarations
-    private final int REQUEST_CODE_OPEN_SETTINGS = 9876;    //Code for request to open settings.
-    private final int REQUEST_CODE_PERMISSION = 9875;   //Code for request normal permissions.
-
     private OnPermissionListener mOnPermissionListener; //Callback listener
     private ArrayList<String> mGrantedPermissionsList;  //holds granted permissions in the request permissions.
     private ArrayList<String> mDeniedPermissionsList;   //holds denied permissions in the request permissions.
@@ -48,9 +45,13 @@ public class InvisibleFragment extends Fragment {
     /**
      * Default constructor
      */
-    public InvisibleFragment()
+    public PermissionFragment()
     {
         mOnPermissionListener = null;
+    }
+
+    public static PermissionFragment newInstance() {
+        return new PermissionFragment();
     }
 
     /**
@@ -60,8 +61,8 @@ public class InvisibleFragment extends Fragment {
      * @param bundle arguments for the fragments
      * @return InvisibleFragment instance
      */
-    public static InvisibleFragment build(OnPermissionListener mOnPermissionListener, Bundle bundle) {
-        InvisibleFragment fragment = new InvisibleFragment();
+    public static PermissionFragment build(OnPermissionListener mOnPermissionListener, Bundle bundle) {
+        PermissionFragment fragment = new PermissionFragment();
         fragment.setPermissionListener(mOnPermissionListener);
         fragment.setArguments(bundle);
         return fragment;
@@ -86,7 +87,10 @@ public class InvisibleFragment extends Fragment {
             if (Looper.getMainLooper() != Looper.myLooper()) {
                 throw new RuntimeException("you must request permission in main thread!!");
             }
-            activity.getFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
+            //if(activity instanceof AppCompatActivity)
+            //    ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
+            //else
+                activity.getFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
         } else {
             throw new RuntimeException("activity is null!!");
         }
@@ -204,20 +208,7 @@ public class InvisibleFragment extends Fragment {
             }
         }
 
-        //Remove this fragment when work is done
-        getFragmentManager().beginTransaction().remove(this).commit();
-
-        try
-        {
-            Intent resumeUnityActivity = new Intent(getActivity(), getActivity().getClass());
-            resumeUnityActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            getActivity().startActivityIfNeeded(resumeUnityActivity, 0);
-        }
-        catch (Exception e)
-        {
-            Constants.WriteLog("Exception (resume) : "+ e.toString());
-            mOnPermissionListener.onPermissionError(e.toString());
-        }
+        removeFragment();
     }
 
     //endregion
@@ -253,20 +244,7 @@ public class InvisibleFragment extends Fragment {
             mOnPermissionListener.onPermissionDenied(mDeniedPermissionsList.toArray(new String[0]));
         }
 
-        //Remove this fragment when work is done
-        getFragmentManager().beginTransaction().remove(this).commit();
-
-        try
-        {
-            Intent resumeUnityActivity = new Intent(getActivity(), getActivity().getClass());
-            resumeUnityActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            getActivity().startActivityIfNeeded(resumeUnityActivity, 0);
-        }
-        catch (Exception e)
-        {
-            Constants.WriteLog("Exception (resume) : "+ e.toString());
-            mOnPermissionListener.onPermissionError(e.toString());
-        }
+        removeFragment();
     }
 
     /**
@@ -379,5 +357,21 @@ public class InvisibleFragment extends Fragment {
                 });
     }
 
+
+    protected void removeFragment() {
+        //Remove this fragment when work is done
+        getFragmentManager().beginTransaction().remove(this).commit();
+
+        try
+        {
+            Intent resumeUnityActivity = new Intent(getActivity(), getActivity().getClass());
+            resumeUnityActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            getActivity().startActivityIfNeeded(resumeUnityActivity, 0);
+        }
+        catch (Exception e)
+        {
+            mOnPermissionListener.onPermissionError(e.toString());
+        }
+    }
     //endregion
 }

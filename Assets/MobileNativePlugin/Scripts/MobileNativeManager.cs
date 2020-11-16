@@ -328,6 +328,26 @@ namespace OneDevApp
         }
         #endregion
 
+        #region Location
+        /// <summary>
+        /// Enable Location.
+        /// </summary>
+        public void EnableLocation()
+        {
+#if UNITY_ANDROID
+            if (mAndroidBridge.CallStatic<bool>("checkPermission", mContext, "android.permission.ACCESS_FINE_LOCATION"))
+            {
+                mAndroidBridge.CallStatic("EnableLocation", mContext);
+            }
+            else
+            {
+                Debug.Log("Permisson not granted");
+                RequestPermission("android.permission.ACCESS_FINE_LOCATION");
+            }
+#endif
+        }
+        #endregion
+
         #region Toast
         /// <summary>
         /// Shows the toast.
@@ -467,23 +487,6 @@ namespace OneDevApp
             mAndroidBridge.CallStatic("OpenSettings", mContext);
 #endif
         }
-        #endregion
-
-        #region Debug
-        /// <summary>
-        /// By default puglin console log will be diabled, but can be enabled
-        /// </summary>
-        /// <param name="showLog">If set true then log will be displayed else disabled</param>
-        public void PluginDebug(bool showLog = true)
-        {
-#if UNITY_ANDROID
-
-            var constantClass = new AndroidJavaClass("com.onedevapp.nativeplugin.Constants");
-            constantClass.SetStatic("enableLog", showLog);
-#endif
-        }
-        #endregion
-
 
 #if UNITY_ANDROID
         /// <summary>
@@ -504,6 +507,22 @@ namespace OneDevApp
             return arrayObject;
         }
 #endif
+        #endregion
+
+        #region Debug
+        /// <summary>
+        /// By default puglin console log will be diabled, but can be enabled
+        /// </summary>
+        /// <param name="showLog">If set true then log will be displayed else disabled</param>
+        public void PluginDebug(bool showLog = true)
+        {
+#if UNITY_ANDROID
+
+            var constantClass = new AndroidJavaClass("com.onedevapp.nativeplugin.Constants");
+            constantClass.SetStatic("enableLog", showLog);
+#endif
+        }
+        #endregion
     }
 
 }

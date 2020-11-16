@@ -20,7 +20,6 @@ public class UpdateManager {//implements LifecycleObserver {
     private WeakReference<Activity> mActivityWeakReference; //Activity references
     private OnUpdateListener mOnUpdateListener; //Callback listener
     private BaseUpdateClass mUpdateApp; //Parent class for app update mode
-    private boolean resumeUpdates = false;
 
     //endregion
 
@@ -121,18 +120,6 @@ public class UpdateManager {//implements LifecycleObserver {
         return this;
     }
 
-    /**
-     * Checks that the update is not stalled during 'onResume()'.
-     * If the update is downloaded but not installed, will notify
-     * the user to complete the update.
-     *
-     * @param resumeUpdates the resume updates
-     * @return the update manager instance
-     */
-    /*public UpdateManager resumeUpdates(boolean resumeUpdates) {
-        this.resumeUpdates = resumeUpdates;
-        return this;
-    }*/
 
     /**
      * Set the update link for download
@@ -229,15 +216,6 @@ public class UpdateManager {//implements LifecycleObserver {
             reportUpdateError(-1, "continueUpdate() : Error :"+ e.toString());
         }
     }
-    //endregion
-
-    //region Lifecycle
-    /*@OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    public void onResume() {
-        if (resumeUpdates)
-            continueUpdate();
-    }*/
-
     //endregion
 
 }

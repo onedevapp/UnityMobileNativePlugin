@@ -23,6 +23,7 @@ public class NativePluginDemo : MonoBehaviour
     public Button toggleUpdateBtn;
     public Button toggleTypeBtn;
     public Button toggleLogBtn;
+    public Button enableLocationBtn;
 
     private UpdateMode updateMode = UpdateMode.PLAY_STORE;
     private UpdateType updateType = UpdateType.FLEXIBLE;
@@ -136,6 +137,10 @@ public class NativePluginDemo : MonoBehaviour
         toggleTypeBtn.onClick.Invoke();
         toggleLogBtn.onClick.Invoke();
 
+
+        enableLocationBtn.onClick.AddListener(() => {
+            MobileNativeManager.Instance.EnableLocation();
+        });
     }
 
     private void OnUpdateError(int code, string error)
@@ -194,6 +199,10 @@ public class NativePluginDemo : MonoBehaviour
         if (all)
         {
             Debug.Log("OnPermissionGranted : All permissions are granted. You good to go.");
+            if(grantedPermissions[0] == "android.permission.ACCESS_FINE_LOCATION")
+            {
+                MobileNativeManager.Instance.EnableLocation();
+            }
         }
         else
         {

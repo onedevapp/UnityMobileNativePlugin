@@ -18,7 +18,7 @@ public class PermissionManager {
     // region Declarations
     private static PermissionManager instance;
 
-    public final String FRAGMENT_TAG = "InvisibleFragment"; //TAG of InvisibleFragment to find and create.
+    public final String FRAGMENT_TAG = "PermissionManagerFragment"; //TAG of InvisibleFragment to find and create.
 
     private OnPermissionListener mOnPermissionListener; //Callback listener
     private Set<String> mPermissionsSet;  //
@@ -218,7 +218,7 @@ public class PermissionManager {
                 bundle.putString(Constants.EXTRA_SETTINGS_POSITIVE, mSettingDialogPositiveText);
                 bundle.putString(Constants.EXTRA_SETTINGS_NEGATIVE, mSettingDialogNegativeText);
 
-                InvisibleFragment.build(mOnPermissionListener, bundle).requestNow(getActivity());
+                PermissionFragment.build(mOnPermissionListener, bundle).requestNow(getActivity());
             }
         });
     }
