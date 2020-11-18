@@ -2,16 +2,12 @@ package com.onedevapp.nativeplugin.inappupdate;
 
 import android.app.Activity;
 
-//import androidx.lifecycle.Lifecycle;
-//import androidx.lifecycle.LifecycleObserver;
-//import androidx.lifecycle.OnLifecycleEvent;
-
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.onedevapp.nativeplugin.Constants;
 
 import java.lang.ref.WeakReference;
 
-public class UpdateManager {//implements LifecycleObserver {
+public class UpdateManager {
 
     // region Declarations
     private static UpdateManager instance;

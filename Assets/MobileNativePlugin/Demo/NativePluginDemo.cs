@@ -93,7 +93,7 @@ public class NativePluginDemo : MonoBehaviour
             MobileNativeManager.Instance.ShowDatePicker();
         });
         RootStatusBtn.onClick.AddListener(() => {
-            Debug.Log("isDeviceRooted::" + MobileNativeManager.Instance.isDeviceRooted());
+            Debug.Log("isDeviceRooted::" + MobileNativeManager.Instance.IsDeviceRooted());
         });
         openSettingsBtn.onClick.AddListener(() => {
             MobileNativeManager.Instance.OpenSettingScreen();

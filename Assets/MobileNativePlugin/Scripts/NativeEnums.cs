@@ -43,6 +43,8 @@
         ERROR_PLAY_STORE_NOT_FOUND = -9,
         ERROR_UNKNOWN = -2,
         NO_ERROR = 0,
-        ERROR_LIBRARY = -1
+        ERROR_LIBRARY = -1,
+        ERROR_STORAGE_PERMISSION = -101,
+        ERROR_NETWORK = -102
     }
 }

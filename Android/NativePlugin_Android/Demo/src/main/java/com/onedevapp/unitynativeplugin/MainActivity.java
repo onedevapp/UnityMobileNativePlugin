@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity
 
                             @Override
                             public void onPermissionDenied(String[] deniedPermissions) {
-                                if(AndroidBridge.checkPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)){
+                                if(AndroidBridge.CheckPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)){
                                     // open device settings when the permission is
                                     // denied permanently
                                     AndroidBridge.OpenSettings(MainActivity.this);

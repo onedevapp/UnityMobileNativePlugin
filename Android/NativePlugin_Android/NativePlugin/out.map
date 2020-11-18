@@ -1,14 +1,17 @@
 # compiler: R8
 # compiler_version: 2.0.74
-# pg_map_id: 5aa54e7
+# pg_map_id: 1f9ccfb
 # common_typos_disable
 com.onedevapp.nativeplugin.AndroidBridge -> com.onedevapp.nativeplugin.AndroidBridge:
-    com.google.android.gms.common.api.GoogleApiClient googleApiClient -> c
     android.app.ProgressDialog mProgressDialog -> a
     java.lang.ref.WeakReference mActivityWeakReference -> b
     1:1:void <init>():43:43 -> <init>
+    1:1:boolean CheckPermission(android.app.Activity,java.lang.String):490:490 -> CheckPermission
+    1:1:boolean CheckPermissionRationale(android.app.Activity,java.lang.String):502:502 -> CheckPermissionRationale
     1:12:void DismissProgressBar():180:191 -> DismissProgressBar
-    1:67:void EnableLocation(android.app.Activity):373:439 -> EnableLocation
+    1:65:void EnableLocation(android.app.Activity):375:439 -> EnableLocation
+    1:1:boolean IsDeviceRooted():449:449 -> IsDeviceRooted
+    1:16:boolean IsNetworkAvailable(android.app.Activity):461:476 -> IsNetworkAvailable
     1:1:void OpenSettings(android.app.Activity):326:326 -> OpenSettings
     1:1:void OpenSettingsForResult(android.app.Activity):351:351 -> OpenSettingsForResult
     1:1:void ShowAlertMessage(android.app.Activity,java.lang.String,java.lang.String,java.lang.String,com.onedevapp.nativeplugin.AndroidBridge$OnClickListener):81:81 -> ShowAlertMessage
@@ -19,11 +22,7 @@ com.onedevapp.nativeplugin.AndroidBridge -> com.onedevapp.nativeplugin.AndroidBr
     1:1:void ShowTimePicker(android.app.Activity,com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener):202:202 -> ShowTimePicker
     2:2:void ShowTimePicker(android.app.Activity,int,int,boolean,com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener):235:235 -> ShowTimePicker
     1:1:void ShowToast(android.app.Activity,java.lang.String,int):61:61 -> ShowToast
-    1:1:boolean checkPermission(android.app.Activity,java.lang.String):490:490 -> checkPermission
-    1:1:boolean checkPermissionRationale(android.app.Activity,java.lang.String):502:502 -> checkPermissionRationale
-    1:1:boolean isDeviceRooted():449:449 -> isDeviceRooted
-    1:16:boolean isNetworkAvailable(android.app.Activity):461:476 -> isNetworkAvailable
-com.onedevapp.nativeplugin.AndroidBridge$1 -> com.onedevapp.nativeplugin.AndroidBridge$g:
+com.onedevapp.nativeplugin.AndroidBridge$1 -> com.onedevapp.nativeplugin.AndroidBridge$e:
     android.app.Activity val$activity -> a
     java.lang.String val$message -> b
     int val$length -> c
@@ -38,21 +37,13 @@ com.onedevapp.nativeplugin.AndroidBridge$11 -> com.onedevapp.nativeplugin.Androi
     1:1:void <init>(android.app.Activity):351:351 -> <init>
     1:6:void run():357:362 -> run
 com.onedevapp.nativeplugin.AndroidBridge$12 -> com.onedevapp.nativeplugin.AndroidBridge$c:
-    1:1:void <init>():389:389 -> <init>
-    1:1:void onConnectionFailed(com.google.android.gms.common.ConnectionResult):393:393 -> onConnectionFailed
-com.onedevapp.nativeplugin.AndroidBridge$13 -> com.onedevapp.nativeplugin.AndroidBridge$d:
-    1:1:void <init>():378:378 -> <init>
-    1:1:com.google.android.gms.common.api.GoogleApiClient com.onedevapp.nativeplugin.AndroidBridge.access$100():43:43 -> onConnectionSuspended
-    1:1:void onConnectionSuspended(int):386 -> onConnectionSuspended
-    2:2:void onConnectionSuspended(int):386:386 -> onConnectionSuspended
-com.onedevapp.nativeplugin.AndroidBridge$14 -> com.onedevapp.nativeplugin.AndroidBridge$e:
     1:1:void <init>():411:411 -> <init>
     1:1:void onSuccess(java.lang.Object):411:411 -> onSuccess
-com.onedevapp.nativeplugin.AndroidBridge$15 -> com.onedevapp.nativeplugin.AndroidBridge$f:
+com.onedevapp.nativeplugin.AndroidBridge$13 -> com.onedevapp.nativeplugin.AndroidBridge$d:
     android.app.Activity val$activity -> a
     1:1:void <init>(android.app.Activity):420:420 -> <init>
     1:8:void onFailure(java.lang.Exception):424:431 -> onFailure
-com.onedevapp.nativeplugin.AndroidBridge$2 -> com.onedevapp.nativeplugin.AndroidBridge$h:
+com.onedevapp.nativeplugin.AndroidBridge$2 -> com.onedevapp.nativeplugin.AndroidBridge$f:
     com.onedevapp.nativeplugin.AndroidBridge$OnClickListener val$positiveListener -> e
     android.app.Activity val$activity -> a
     java.lang.String val$message -> c
@@ -60,11 +51,11 @@ com.onedevapp.nativeplugin.AndroidBridge$2 -> com.onedevapp.nativeplugin.Android
     java.lang.String val$positiveLabel -> d
     1:1:void <init>(android.app.Activity,java.lang.String,java.lang.String,java.lang.String,com.onedevapp.nativeplugin.AndroidBridge$OnClickListener):81:81 -> <init>
     1:12:void run():85:96 -> run
-com.onedevapp.nativeplugin.AndroidBridge$2$1 -> com.onedevapp.nativeplugin.AndroidBridge$h$a:
+com.onedevapp.nativeplugin.AndroidBridge$2$1 -> com.onedevapp.nativeplugin.AndroidBridge$f$a:
     com.onedevapp.nativeplugin.AndroidBridge$2 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$2):89:89 -> <init>
     1:1:void onClick(android.content.DialogInterface,int):91:91 -> onClick
-com.onedevapp.nativeplugin.AndroidBridge$3 -> com.onedevapp.nativeplugin.AndroidBridge$i:
+com.onedevapp.nativeplugin.AndroidBridge$3 -> com.onedevapp.nativeplugin.AndroidBridge$g:
     java.lang.String val$negativeLabel -> f
     com.onedevapp.nativeplugin.AndroidBridge$OnClickListener val$negativeListener -> g
     com.onedevapp.nativeplugin.AndroidBridge$OnClickListener val$positiveListener -> e
@@ -74,15 +65,15 @@ com.onedevapp.nativeplugin.AndroidBridge$3 -> com.onedevapp.nativeplugin.Android
     java.lang.String val$positiveLabel -> d
     1:1:void <init>(android.app.Activity,java.lang.String,java.lang.String,java.lang.String,com.onedevapp.nativeplugin.AndroidBridge$OnClickListener,java.lang.String,com.onedevapp.nativeplugin.AndroidBridge$OnClickListener):114:114 -> <init>
     1:20:void run():118:137 -> run
-com.onedevapp.nativeplugin.AndroidBridge$3$1 -> com.onedevapp.nativeplugin.AndroidBridge$i$a:
+com.onedevapp.nativeplugin.AndroidBridge$3$1 -> com.onedevapp.nativeplugin.AndroidBridge$g$a:
     com.onedevapp.nativeplugin.AndroidBridge$3 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$3):122:122 -> <init>
     1:1:void onClick(android.content.DialogInterface,int):125:125 -> onClick
-com.onedevapp.nativeplugin.AndroidBridge$3$2 -> com.onedevapp.nativeplugin.AndroidBridge$i$b:
+com.onedevapp.nativeplugin.AndroidBridge$3$2 -> com.onedevapp.nativeplugin.AndroidBridge$g$b:
     com.onedevapp.nativeplugin.AndroidBridge$3 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$3):129:129 -> <init>
     1:1:void onClick(android.content.DialogInterface,int):132:132 -> onClick
-com.onedevapp.nativeplugin.AndroidBridge$4 -> com.onedevapp.nativeplugin.AndroidBridge$j:
+com.onedevapp.nativeplugin.AndroidBridge$4 -> com.onedevapp.nativeplugin.AndroidBridge$h:
     java.lang.String val$title -> a
     java.lang.String val$message -> b
     android.app.Activity val$activity -> c
@@ -113,21 +104,21 @@ com.onedevapp.nativeplugin.AndroidBridge$4 -> com.onedevapp.nativeplugin.Android
     17:17:android.app.ProgressDialog com.onedevapp.nativeplugin.AndroidBridge.access$000():43:43 -> run
     17:17:void run():168 -> run
     18:18:void run():168:168 -> run
-com.onedevapp.nativeplugin.AndroidBridge$5 -> com.onedevapp.nativeplugin.AndroidBridge$k:
+com.onedevapp.nativeplugin.AndroidBridge$5 -> com.onedevapp.nativeplugin.AndroidBridge$i:
     1:1:void <init>():180:180 -> <init>
     1:1:android.app.ProgressDialog com.onedevapp.nativeplugin.AndroidBridge.access$000():43:43 -> run
     1:1:void run():183 -> run
     2:2:void run():184:184 -> run
-com.onedevapp.nativeplugin.AndroidBridge$6 -> com.onedevapp.nativeplugin.AndroidBridge$l:
+com.onedevapp.nativeplugin.AndroidBridge$6 -> com.onedevapp.nativeplugin.AndroidBridge$j:
     com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener val$mOnSelectListener -> b
     android.app.Activity val$activity -> a
     1:1:void <init>(android.app.Activity,com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener):202:202 -> <init>
     1:16:void run():206:221 -> run
-com.onedevapp.nativeplugin.AndroidBridge$6$1 -> com.onedevapp.nativeplugin.AndroidBridge$l$a:
+com.onedevapp.nativeplugin.AndroidBridge$6$1 -> com.onedevapp.nativeplugin.AndroidBridge$j$a:
     com.onedevapp.nativeplugin.AndroidBridge$6 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$6):212:212 -> <init>
     1:1:void onTimeSet(android.widget.TimePicker,int,int):218:218 -> onTimeSet
-com.onedevapp.nativeplugin.AndroidBridge$7 -> com.onedevapp.nativeplugin.AndroidBridge$m:
+com.onedevapp.nativeplugin.AndroidBridge$7 -> com.onedevapp.nativeplugin.AndroidBridge$k:
     boolean val$is24Hours -> e
     int val$mMinute -> d
     com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener val$mOnSelectListener -> b
@@ -135,11 +126,11 @@ com.onedevapp.nativeplugin.AndroidBridge$7 -> com.onedevapp.nativeplugin.Android
     int val$mHour -> c
     1:1:void <init>(android.app.Activity,com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener,int,int,boolean):235:235 -> <init>
     1:11:void run():239:249 -> run
-com.onedevapp.nativeplugin.AndroidBridge$7$1 -> com.onedevapp.nativeplugin.AndroidBridge$m$a:
+com.onedevapp.nativeplugin.AndroidBridge$7$1 -> com.onedevapp.nativeplugin.AndroidBridge$k$a:
     com.onedevapp.nativeplugin.AndroidBridge$7 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$7):240:240 -> <init>
     1:1:void onTimeSet(android.widget.TimePicker,int,int):246:246 -> onTimeSet
-com.onedevapp.nativeplugin.AndroidBridge$8 -> com.onedevapp.nativeplugin.AndroidBridge$n:
+com.onedevapp.nativeplugin.AndroidBridge$8 -> com.onedevapp.nativeplugin.AndroidBridge$l:
     int val$mMonth -> d
     com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener val$mOnSelectListener -> b
     int val$mDay -> e
@@ -147,11 +138,11 @@ com.onedevapp.nativeplugin.AndroidBridge$8 -> com.onedevapp.nativeplugin.Android
     int val$mYear -> c
     1:1:void <init>(android.app.Activity,com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener,int,int,int):268:268 -> <init>
     1:13:void run():272:284 -> run
-com.onedevapp.nativeplugin.AndroidBridge$8$1 -> com.onedevapp.nativeplugin.AndroidBridge$n$a:
+com.onedevapp.nativeplugin.AndroidBridge$8$1 -> com.onedevapp.nativeplugin.AndroidBridge$l$a:
     com.onedevapp.nativeplugin.AndroidBridge$8 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$8):273:273 -> <init>
     1:3:void onDateSet(android.widget.DatePicker,int,int,int):279:281 -> onDateSet
-com.onedevapp.nativeplugin.AndroidBridge$9 -> com.onedevapp.nativeplugin.AndroidBridge$o:
+com.onedevapp.nativeplugin.AndroidBridge$9 -> com.onedevapp.nativeplugin.AndroidBridge$m:
     int val$mMonth -> d
     com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener val$mOnSelectListener -> b
     int val$mDay -> e
@@ -159,7 +150,7 @@ com.onedevapp.nativeplugin.AndroidBridge$9 -> com.onedevapp.nativeplugin.Android
     int val$mYear -> c
     1:1:void <init>(android.app.Activity,com.onedevapp.nativeplugin.AndroidBridge$OnSelectListener,int,int,int):299:299 -> <init>
     1:13:void run():303:315 -> run
-com.onedevapp.nativeplugin.AndroidBridge$9$1 -> com.onedevapp.nativeplugin.AndroidBridge$o$a:
+com.onedevapp.nativeplugin.AndroidBridge$9$1 -> com.onedevapp.nativeplugin.AndroidBridge$m$a:
     com.onedevapp.nativeplugin.AndroidBridge$9 this$0 -> a
     1:1:void <init>(com.onedevapp.nativeplugin.AndroidBridge$9):304:304 -> <init>
     1:3:void onDateSet(android.widget.DatePicker,int,int,int):310:312 -> onDateSet
@@ -232,44 +223,44 @@ com.onedevapp.nativeplugin.inappupdate.PlayStoreUpdate$3 -> com.onedevapp.native
     1:1:void onSuccess(java.lang.Object):139:139 -> onSuccess
 com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate -> com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate:
     android.net.Uri apk_file_uri -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.inappupdate.UpdateManager):32:32 -> <init>
-    1:24:void installApk(android.content.Context):170:193 -> a
-    1:19:void checkUpdate():43:61 -> checkUpdate
-    1:1:void completeUpdate():146:146 -> completeUpdate
-    1:6:void continueUpdate():155:160 -> continueUpdate
-    1:65:void startUpdate():73:137 -> startUpdate
+    1:1:void <init>(com.onedevapp.nativeplugin.inappupdate.UpdateManager):27:27 -> <init>
+    1:24:void installApk(android.content.Context):165:188 -> a
+    1:19:void checkUpdate():38:56 -> checkUpdate
+    1:1:void completeUpdate():141:141 -> completeUpdate
+    1:6:void continueUpdate():150:155 -> continueUpdate
+    1:65:void startUpdate():68:132 -> startUpdate
 com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate$1 -> com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate$a:
     long val$downloadId -> a
     android.app.DownloadManager val$manager -> b
     com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate this$0 -> c
-    1:1:void <init>(com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate,long,android.app.DownloadManager):96:96 -> <init>
-    1:13:void run():101:113 -> run
-    14:14:android.net.Uri com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate.access$002(com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate,android.net.Uri):21:21 -> run
-    14:14:void run():113 -> run
-    15:30:void run():114:129 -> run
+    1:1:void <init>(com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate,long,android.app.DownloadManager):91:91 -> <init>
+    1:13:void run():96:108 -> run
+    14:14:android.net.Uri com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate.access$002(com.onedevapp.nativeplugin.inappupdate.ThirdPartyUpdate,android.net.Uri):16:16 -> run
+    14:14:void run():108 -> run
+    15:30:void run():109:124 -> run
 com.onedevapp.nativeplugin.inappupdate.UpdateManager -> com.onedevapp.nativeplugin.inappupdate.UpdateManager:
     com.onedevapp.nativeplugin.inappupdate.UpdateManager instance -> e
     com.onedevapp.nativeplugin.inappupdate.OnUpdateListener mOnUpdateListener -> c
     java.lang.ref.WeakReference mActivityWeakReference -> b
     com.onedevapp.nativeplugin.inappupdate.BaseUpdateClass mUpdateApp -> d
     int requestCode -> a
-    1:1:void <init>(android.app.Activity):56:56 -> <init>
-    2:42:void <init>(android.app.Activity):19:59 -> <init>
-    43:43:void <init>(android.app.Activity,int):63:63 -> <init>
-    44:92:void <init>(android.app.Activity,int):19:67 -> <init>
-    1:4:com.onedevapp.nativeplugin.inappupdate.UpdateManager Builder(android.app.Activity):35:38 -> Builder
-    5:8:com.onedevapp.nativeplugin.inappupdate.UpdateManager Builder(android.app.Activity,int):49:52 -> Builder
-    1:3:void checkUpdate():181:183 -> checkUpdate
-    1:3:void completeUpdate():203:205 -> completeUpdate
-    1:3:void continueUpdate():214:216 -> continueUpdate
-    1:1:android.app.Activity getActivity():150:150 -> getActivity
-    1:1:int getRequestCode():156:156 -> getRequestCode
-    1:2:com.onedevapp.nativeplugin.inappupdate.UpdateManager handler(com.onedevapp.nativeplugin.inappupdate.OnUpdateListener):118:119 -> handler
-    1:4:void reportUpdateError(int,java.lang.String):165:168 -> reportUpdateError
-    1:3:void startUpdate():192:194 -> startUpdate
-    1:7:com.onedevapp.nativeplugin.inappupdate.UpdateManager updateLink(java.lang.String):131:137 -> updateLink
-    1:5:com.onedevapp.nativeplugin.inappupdate.UpdateManager updateMode(int):81:85 -> updateMode
-    1:7:com.onedevapp.nativeplugin.inappupdate.UpdateManager updateType(int):100:106 -> updateType
+    1:1:void <init>(android.app.Activity):52:52 -> <init>
+    2:42:void <init>(android.app.Activity):15:55 -> <init>
+    43:43:void <init>(android.app.Activity,int):59:59 -> <init>
+    44:92:void <init>(android.app.Activity,int):15:63 -> <init>
+    1:4:com.onedevapp.nativeplugin.inappupdate.UpdateManager Builder(android.app.Activity):31:34 -> Builder
+    5:8:com.onedevapp.nativeplugin.inappupdate.UpdateManager Builder(android.app.Activity,int):45:48 -> Builder
+    1:3:void checkUpdate():177:179 -> checkUpdate
+    1:3:void completeUpdate():199:201 -> completeUpdate
+    1:3:void continueUpdate():210:212 -> continueUpdate
+    1:1:android.app.Activity getActivity():146:146 -> getActivity
+    1:1:int getRequestCode():152:152 -> getRequestCode
+    1:2:com.onedevapp.nativeplugin.inappupdate.UpdateManager handler(com.onedevapp.nativeplugin.inappupdate.OnUpdateListener):114:115 -> handler
+    1:4:void reportUpdateError(int,java.lang.String):161:164 -> reportUpdateError
+    1:3:void startUpdate():188:190 -> startUpdate
+    1:7:com.onedevapp.nativeplugin.inappupdate.UpdateManager updateLink(java.lang.String):127:133 -> updateLink
+    1:5:com.onedevapp.nativeplugin.inappupdate.UpdateManager updateMode(int):77:81 -> updateMode
+    1:7:com.onedevapp.nativeplugin.inappupdate.UpdateManager updateType(int):96:102 -> updateType
 com.onedevapp.nativeplugin.rt_permissions.PermissionFragment -> com.onedevapp.nativeplugin.rt_permissions.PermissionFragment:
     java.lang.String mRationalDialogNegativeText -> g
     java.lang.String mRationalDialogPositiveText -> f
@@ -287,79 +278,79 @@ com.onedevapp.nativeplugin.rt_permissions.PermissionFragment -> com.onedevapp.na
     2:2:com.onedevapp.nativeplugin.rt_permissions.PermissionFragment build(com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener,android.os.Bundle):66 -> build
     3:3:com.onedevapp.nativeplugin.rt_permissions.PermissionFragment build(com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener,android.os.Bundle):67:67 -> build
     1:1:com.onedevapp.nativeplugin.rt_permissions.PermissionFragment newInstance():54:54 -> newInstance
-    1:14:void onActivityCreated(android.os.Bundle):141:154 -> onActivityCreated
-    15:30:void startRequestPermission():255:270 -> onActivityCreated
-    15:30:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
+    1:14:void onActivityCreated(android.os.Bundle):139:152 -> onActivityCreated
+    15:30:void startRequestPermission():253:268 -> onActivityCreated
+    15:30:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
     31:31:boolean com.onedevapp.nativeplugin.rt_permissions.PermissionUtils.isFirstTimeAskingPermission(android.content.Context,java.lang.String):174:174 -> onActivityCreated
-    31:31:void startRequestPermission():270 -> onActivityCreated
-    31:31:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    32:32:void startRequestPermission():271:271 -> onActivityCreated
-    32:32:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
+    31:31:void startRequestPermission():268 -> onActivityCreated
+    31:31:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    32:32:void startRequestPermission():269:269 -> onActivityCreated
+    32:32:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
     33:34:void com.onedevapp.nativeplugin.rt_permissions.PermissionUtils.firstTimeAskingPermission(android.content.Context,java.lang.String):162:163 -> onActivityCreated
-    33:34:void startRequestPermission():271 -> onActivityCreated
-    33:34:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    35:41:void startRequestPermission():278:284 -> onActivityCreated
-    35:41:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    42:42:void showSettingDialog():303:303 -> onActivityCreated
-    42:42:void startRequestPermission():285 -> onActivityCreated
-    42:42:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
+    33:34:void startRequestPermission():269 -> onActivityCreated
+    33:34:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    35:41:void startRequestPermission():276:282 -> onActivityCreated
+    35:41:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    42:42:void showSettingDialog():301:301 -> onActivityCreated
+    42:42:void startRequestPermission():283 -> onActivityCreated
+    42:42:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
     43:49:void com.onedevapp.nativeplugin.rt_permissions.PermissionUtils.showDialogMessage(android.content.Context,java.lang.String,java.lang.String,android.content.DialogInterface$OnClickListener,java.lang.String,android.content.DialogInterface$OnClickListener):146:152 -> onActivityCreated
-    43:49:void showSettingDialog():303 -> onActivityCreated
-    43:49:void startRequestPermission():285 -> onActivityCreated
-    43:49:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    50:50:void startRequestPermission():287:287 -> onActivityCreated
-    50:50:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    51:51:void showRationaleDialog():337:337 -> onActivityCreated
-    51:51:void startRequestPermission():288 -> onActivityCreated
-    51:51:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
+    43:49:void showSettingDialog():301 -> onActivityCreated
+    43:49:void startRequestPermission():283 -> onActivityCreated
+    43:49:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    50:50:void startRequestPermission():285:285 -> onActivityCreated
+    50:50:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    51:51:void showRationaleDialog():335:335 -> onActivityCreated
+    51:51:void startRequestPermission():286 -> onActivityCreated
+    51:51:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
     52:58:void com.onedevapp.nativeplugin.rt_permissions.PermissionUtils.showDialogMessage(android.content.Context,java.lang.String,java.lang.String,android.content.DialogInterface$OnClickListener,java.lang.String,android.content.DialogInterface$OnClickListener):146:152 -> onActivityCreated
-    52:58:void showRationaleDialog():337 -> onActivityCreated
-    52:58:void startRequestPermission():288 -> onActivityCreated
-    52:58:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    59:63:void startRequestPermission():290:294 -> onActivityCreated
-    59:63:void onActivityCreated(android.os.Bundle):156 -> onActivityCreated
-    1:1:void onActivityResult(int,int,android.content.Intent):165:165 -> onActivityResult
-    2:26:void checkPermissionAfterResult():223:247 -> onActivityResult
-    2:26:void onActivityResult(int,int,android.content.Intent):166 -> onActivityResult
-    27:31:void onActivityResult(int,int,android.content.Intent):169:173 -> onActivityResult
-    1:22:void onRequestPermissionsResult(int,java.lang.String[],int[]):190:211 -> onRequestPermissionsResult
-    1:9:void onSaveInstanceState(android.os.Bundle):106:114 -> onSaveInstanceState
-    1:11:void onViewStateRestored(android.os.Bundle):122:132 -> onViewStateRestored
-    1:11:void removeFragment():363:373 -> removeFragment
-    1:7:void requestNow(android.app.Activity):87:93 -> requestNow
-    8:15:void requestNow(android.app.Activity):88:95 -> requestNow
+    52:58:void showRationaleDialog():335 -> onActivityCreated
+    52:58:void startRequestPermission():286 -> onActivityCreated
+    52:58:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    59:63:void startRequestPermission():288:292 -> onActivityCreated
+    59:63:void onActivityCreated(android.os.Bundle):154 -> onActivityCreated
+    1:1:void onActivityResult(int,int,android.content.Intent):163:163 -> onActivityResult
+    2:26:void checkPermissionAfterResult():221:245 -> onActivityResult
+    2:26:void onActivityResult(int,int,android.content.Intent):164 -> onActivityResult
+    27:31:void onActivityResult(int,int,android.content.Intent):167:171 -> onActivityResult
+    1:22:void onRequestPermissionsResult(int,java.lang.String[],int[]):188:209 -> onRequestPermissionsResult
+    1:9:void onSaveInstanceState(android.os.Bundle):104:112 -> onSaveInstanceState
+    1:11:void onViewStateRestored(android.os.Bundle):120:130 -> onViewStateRestored
+    1:11:void removeFragment():361:371 -> removeFragment
+    1:5:void requestNow(android.app.Activity):87:91 -> requestNow
+    6:11:void requestNow(android.app.Activity):88:93 -> requestNow
 com.onedevapp.nativeplugin.rt_permissions.PermissionFragment$1 -> a.a.a.a.a:
     com.onedevapp.nativeplugin.rt_permissions.PermissionFragment this$0 -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):305:305 -> <init>
-    1:10:void onClick(android.content.DialogInterface,int):309:318 -> onClick
+    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):303:303 -> <init>
+    1:10:void onClick(android.content.DialogInterface,int):307:316 -> onClick
     11:11:com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener com.onedevapp.nativeplugin.rt_permissions.PermissionFragment.access$000(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):25:25 -> onClick
-    11:11:void onClick(android.content.DialogInterface,int):318 -> onClick
-    12:12:void onClick(android.content.DialogInterface,int):318:318 -> onClick
+    11:11:void onClick(android.content.DialogInterface,int):316 -> onClick
+    12:12:void onClick(android.content.DialogInterface,int):316:316 -> onClick
 com.onedevapp.nativeplugin.rt_permissions.PermissionFragment$2 -> a.a.a.a.b:
     com.onedevapp.nativeplugin.rt_permissions.PermissionFragment this$0 -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):323:323 -> <init>
-    1:2:void onClick(android.content.DialogInterface,int):327:328 -> onClick
+    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):321:321 -> <init>
+    1:2:void onClick(android.content.DialogInterface,int):325:326 -> onClick
     3:3:com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener com.onedevapp.nativeplugin.rt_permissions.PermissionFragment.access$000(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):25:25 -> onClick
-    3:3:void onClick(android.content.DialogInterface,int):328 -> onClick
+    3:3:void onClick(android.content.DialogInterface,int):326 -> onClick
     4:4:java.util.ArrayList com.onedevapp.nativeplugin.rt_permissions.PermissionFragment.access$100(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):25:25 -> onClick
-    4:4:void onClick(android.content.DialogInterface,int):328 -> onClick
-    5:5:void onClick(android.content.DialogInterface,int):328:328 -> onClick
+    4:4:void onClick(android.content.DialogInterface,int):326 -> onClick
+    5:5:void onClick(android.content.DialogInterface,int):326:326 -> onClick
 com.onedevapp.nativeplugin.rt_permissions.PermissionFragment$3 -> a.a.a.a.c:
     com.onedevapp.nativeplugin.rt_permissions.PermissionFragment this$0 -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):339:339 -> <init>
-    1:3:void onClick(android.content.DialogInterface,int):343:345 -> onClick
+    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):337:337 -> <init>
+    1:3:void onClick(android.content.DialogInterface,int):341:343 -> onClick
     4:4:java.lang.String[] com.onedevapp.nativeplugin.rt_permissions.PermissionFragment.access$200(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):25:25 -> onClick
-    4:4:void onClick(android.content.DialogInterface,int):345 -> onClick
-    5:5:void onClick(android.content.DialogInterface,int):345:345 -> onClick
+    4:4:void onClick(android.content.DialogInterface,int):343 -> onClick
+    5:5:void onClick(android.content.DialogInterface,int):343:343 -> onClick
 com.onedevapp.nativeplugin.rt_permissions.PermissionFragment$4 -> a.a.a.a.d:
     com.onedevapp.nativeplugin.rt_permissions.PermissionFragment this$0 -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):350:350 -> <init>
-    1:2:void onClick(android.content.DialogInterface,int):354:355 -> onClick
+    1:1:void <init>(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):348:348 -> <init>
+    1:2:void onClick(android.content.DialogInterface,int):352:353 -> onClick
     3:3:com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener com.onedevapp.nativeplugin.rt_permissions.PermissionFragment.access$000(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):25:25 -> onClick
-    3:3:void onClick(android.content.DialogInterface,int):355 -> onClick
+    3:3:void onClick(android.content.DialogInterface,int):353 -> onClick
     4:4:java.util.ArrayList com.onedevapp.nativeplugin.rt_permissions.PermissionFragment.access$100(com.onedevapp.nativeplugin.rt_permissions.PermissionFragment):25:25 -> onClick
-    4:4:void onClick(android.content.DialogInterface,int):355 -> onClick
-    5:5:void onClick(android.content.DialogInterface,int):355:355 -> onClick
+    4:4:void onClick(android.content.DialogInterface,int):353 -> onClick
+    5:5:void onClick(android.content.DialogInterface,int):353:353 -> onClick
 com.onedevapp.nativeplugin.rt_permissions.PermissionManager -> com.onedevapp.nativeplugin.rt_permissions.PermissionManager:
     java.lang.String mSettingDialogMessage -> g
     java.lang.String mRationalDialogNegativeText -> f

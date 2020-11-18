@@ -26,8 +26,8 @@ namespace OneDevApp
         [Tooltip("Android Launcher Activity")]
         [SerializeField]
         private string m_unityMainActivity = "com.unity3d.player.UnityPlayer";
-        
-#if UNITY_ANDROID
+
+#if UNITY_ANDROID && !UNITY_EDITOR
         private AndroidJavaObject mContext = null;
         private AndroidJavaObject mUpdateManager = null;
         private AndroidJavaObject mPermissionManager = null;
@@ -184,12 +184,14 @@ namespace OneDevApp
                 Instance = this;
             }
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             if (Application.platform == RuntimePlatform.Android)
             {
                 mContext = new AndroidJavaClass(m_unityMainActivity).GetStatic<AndroidJavaObject>("currentActivity");
                 mAndroidBridge = new AndroidJavaClass("com.onedevapp.nativeplugin.AndroidBridge");
             }
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -211,7 +213,7 @@ namespace OneDevApp
         /// <param name="apkLink">new apk link</param>
         public void CheckForUpdate(UpdateMode updateMode= UpdateMode.PLAY_STORE, UpdateType updateType = UpdateType.FLEXIBLE, string thirdPartyLink  = "")
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Update Manager
             var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.inappupdate.UpdateManager");
 
@@ -225,6 +227,8 @@ namespace OneDevApp
                 mUpdateManager.Call<AndroidJavaObject>("updateLink", thirdPartyLink);
 
             mUpdateManager.Call("checkUpdate");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -234,9 +238,11 @@ namespace OneDevApp
         /// </summary>
         public void StartUpdate()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             if (mUpdateManager != null)
                 mUpdateManager.Call("startUpdate");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -246,9 +252,11 @@ namespace OneDevApp
         /// </summary>
         public void CompleteUpdate()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             if (mUpdateManager != null)
                 mUpdateManager.Call("completeUpdate");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -257,9 +265,11 @@ namespace OneDevApp
         /// </summary>
         public void ContinueUpdate()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             if (mUpdateManager != null)
                 mUpdateManager.Call("continueUpdate");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -273,7 +283,7 @@ namespace OneDevApp
         public void RequestPermission(params string[] permissions)
         {
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Permission Manager
             var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.rt_permissions.PermissionManager");
 
@@ -282,6 +292,8 @@ namespace OneDevApp
                 .Call<AndroidJavaObject>("handler", new OnPermissionListener())
                 .Call<AndroidJavaObject>("addPermissions", javaArrayFromCS(permissions))
                 .Call("requestPermission");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -292,7 +304,7 @@ namespace OneDevApp
         public void RequestPermission(string permission)
         {
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Permission Manager
             var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.rt_permissions.PermissionManager");
 
@@ -301,6 +313,8 @@ namespace OneDevApp
                 .Call<AndroidJavaObject>("handler", new OnPermissionListener())
                 .Call<AndroidJavaObject>("addPermission", permission)
                 .Call("requestPermission");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -311,8 +325,10 @@ namespace OneDevApp
         /// <returns>Returns True if already permission granted for this permission else false.</returns>
         public bool CheckPermission(string permission)
         {
-#if UNITY_ANDROID
-            return mAndroidBridge.CallStatic<bool>("checkPermission", mContext, permission);
+#if UNITY_ANDROID && !UNITY_EDITOR
+            return mAndroidBridge.CallStatic<bool>("CheckPermission", mContext, permission);
+#elif UNITY_EDITOR
+            return true;
 #endif
         }
 
@@ -322,8 +338,10 @@ namespace OneDevApp
         /// <returns>Returns True if permission is requested but not granted and can show rationale dialog else false.</returns>
         public bool CheckPermissionRationale(string permission)
         {
-#if UNITY_ANDROID
-            return mAndroidBridge.CallStatic<bool>("checkPermissionRationale", mContext, permission);
+#if UNITY_ANDROID && !UNITY_EDITOR
+            return mAndroidBridge.CallStatic<bool>("CheckPermissionRationale", mContext, permission);
+#elif UNITY_EDITOR
+            return true;
 #endif
         }
         #endregion
@@ -334,8 +352,8 @@ namespace OneDevApp
         /// </summary>
         public void EnableLocation()
         {
-#if UNITY_ANDROID
-            if (mAndroidBridge.CallStatic<bool>("checkPermission", mContext, "android.permission.ACCESS_FINE_LOCATION"))
+#if UNITY_ANDROID && !UNITY_EDITOR
+            if (mAndroidBridge.CallStatic<bool>("CheckPermission", mContext, "android.permission.ACCESS_FINE_LOCATION"))
             {
                 mAndroidBridge.CallStatic("EnableLocation", mContext);
             }
@@ -344,6 +362,8 @@ namespace OneDevApp
                 Debug.Log("Permisson not granted");
                 RequestPermission("android.permission.ACCESS_FINE_LOCATION");
             }
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -356,8 +376,10 @@ namespace OneDevApp
         /// <param name="Length">Toast Duration, For Short 0,For Long 1.</param>
         public void ShowToast(string message, int Length = 0)
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowToast", mContext, message, Length);
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -371,8 +393,10 @@ namespace OneDevApp
         /// <param name="positiveButtonName">Positive Button Name.</param>
         public void ShowAlertMessage(string title, string message, string positiveButtonName = "OK")
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowAlertMessage", mContext, title, message, positiveButtonName, new OnClickPositiveListener());
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -385,8 +409,10 @@ namespace OneDevApp
         /// <param name="negativeButtonName">Negative Button Name.</param>
         public void ShowConfirmationMessage(string title, string message, string positiveButtonName = "OK", string negativeButtonName = "Cancel")
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowConfirmationMessage", mContext, title, message, positiveButtonName, new OnClickPositiveListener(), negativeButtonName, new OnClickNegativeListener());
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -398,8 +424,10 @@ namespace OneDevApp
         /// <param name="cancelable">If set true then on clicking outside disable ProgressBar</param>
         public void ShowProgressBar(string title, string message, bool cancelable = true)
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowProgressBar", mContext, title, message, cancelable);
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -408,8 +436,10 @@ namespace OneDevApp
         /// </summary>
         public void DismissProgressBar()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("DismissProgressBar");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -418,8 +448,10 @@ namespace OneDevApp
         /// </summary>
         public void ShowTimePicker()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowTimePicker", mContext, new OnSelectedListener());
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -431,8 +463,10 @@ namespace OneDevApp
         /// <param name="is24HourFormat">If set true then time picker dialog shows with 24 hours format else 12 hours</param>
         public void ShowTimePicker(int hour, int minutes, bool is24HourFormat)
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowTimePicker", mContext, hour, minutes, is24HourFormat, new OnSelectedListener());
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -441,8 +475,10 @@ namespace OneDevApp
         /// </summary>
         public void ShowDatePicker()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowDatePicker", mContext, new OnSelectedListener());
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
 
@@ -454,27 +490,33 @@ namespace OneDevApp
         /// <param name="day">Date.</param>
         public void ShowDatePicker(int year, int month, int day)
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("ShowDatePicker", mContext, year, month, day, new OnSelectedListener());
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
         #endregion
 
         #region Options
-        public string GetPackageName()
+        /*public string GetPackageName()
         {
 #if UNITY_ANDROID
             return mContext.Call<string>("getPackageName");
+#else
+            return "";
 #endif
-        }
+        }*/
 
         /// <summary>
         /// Check whether device is rooted or not
         /// </summary>
-        public bool isDeviceRooted()
+        public bool IsDeviceRooted()
         {
-#if UNITY_ANDROID
-            return mAndroidBridge.CallStatic<bool>("isDeviceRooted");
+#if UNITY_ANDROID && !UNITY_EDITOR
+            return mAndroidBridge.CallStatic<bool>("IsDeviceRooted");
+#elif UNITY_EDITOR
+            return false;
 #endif
         }
 
@@ -483,12 +525,33 @@ namespace OneDevApp
         /// </summary>
         public void OpenSettingScreen()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             mAndroidBridge.CallStatic("OpenSettings", mContext);
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
+        #endregion
 
-#if UNITY_ANDROID
+        #region Debug
+        /// <summary>
+        /// By default puglin console log will be diabled, but can be enabled
+        /// </summary>
+        /// <param name="showLog">If set true then log will be displayed else disabled</param>
+        public void PluginDebug(bool showLog = true)
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+
+            var constantClass = new AndroidJavaClass("com.onedevapp.nativeplugin.Constants");
+            constantClass.SetStatic("enableLog", showLog);
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
+#endif
+        }
+        #endregion
+
+
+#if UNITY_ANDROID && !UNITY_EDITOR
         /// <summary>
         /// Converts Csharp array to java array
         /// https://stackoverflow.com/questions/42681410/androidjavaobject-call-array-passing-error-unity-for-android
@@ -507,22 +570,6 @@ namespace OneDevApp
             return arrayObject;
         }
 #endif
-        #endregion
-
-        #region Debug
-        /// <summary>
-        /// By default puglin console log will be diabled, but can be enabled
-        /// </summary>
-        /// <param name="showLog">If set true then log will be displayed else disabled</param>
-        public void PluginDebug(bool showLog = true)
-        {
-#if UNITY_ANDROID
-
-            var constantClass = new AndroidJavaClass("com.onedevapp.nativeplugin.Constants");
-            constantClass.SetStatic("enableLog", showLog);
-#endif
-        }
-        #endregion
     }
 
 }

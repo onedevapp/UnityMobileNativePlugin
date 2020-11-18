@@ -45,8 +45,6 @@ public class AndroidBridge {
     // region Declarations
     private static ProgressDialog mProgressDialog;  //Progress dialog reference to dismiss later
     private static WeakReference<Activity> mActivityWeakReference; //Activity references
-
-    private static GoogleApiClient googleApiClient;
     //endregion
 
     /**
@@ -370,31 +368,8 @@ public class AndroidBridge {
      * @param activity current context
      */
     public static void EnableLocation(final Activity activity) {
-        googleApiClient = null;
 
-        if (checkPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)) {
-            googleApiClient = new GoogleApiClient.Builder(activity)
-                    .addApi(LocationServices.API)
-                    .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
-                        @Override
-                        public void onConnected(Bundle bundle) {
-
-                        }
-
-                        @Override
-                        public void onConnectionSuspended(int i) {
-                            googleApiClient.connect();
-                        }
-                    })
-                    .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-                        @Override
-                        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-                            Constants.WriteLog("Location error " + connectionResult.getErrorCode());
-                        }
-                    }).build();
-
-            googleApiClient.connect();
+        if (CheckPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)) {
 
             LocationRequest locationRequest = LocationRequest.create();
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -445,7 +420,7 @@ public class AndroidBridge {
      *
      * @return true if the phone is rooted, false otherwise.
      */
-    public static boolean isDeviceRooted() {
+    public static boolean IsDeviceRooted() {
         return checkRootMethod1() || checkRootMethod2() || checkRootMethod3();
     }
 
@@ -456,7 +431,7 @@ public class AndroidBridge {
      * @return boolean true if any network available else false
      */
     @SuppressLint("MissingPermission")
-    public static boolean isNetworkAvailable(final Activity activity) {
+    public static boolean IsNetworkAvailable(final Activity activity) {
 
         ConnectivityManager connMgr = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connMgr.getActiveNetworkInfo();
@@ -485,7 +460,7 @@ public class AndroidBridge {
      * @param permission    This is the permission we need to check
      * @return  boolean     Returns True if already permission granted for this permission else false.
      */
-    public static boolean checkPermission(Activity activity,  String permission) {
+    public static boolean CheckPermission(Activity activity,  String permission) {
 
         return PermissionUtils.checkPermission(activity, permission);
     }
@@ -497,7 +472,7 @@ public class AndroidBridge {
      * @param permission    This is the permission we need to check
      * @return  boolean     Returns True if permission is requested but not granted and can show rationale dialog else false.
      */
-    public static boolean checkPermissionRationale(Activity activity,  String permission) {
+    public static boolean CheckPermissionRationale(Activity activity,  String permission) {
 
         return PermissionUtils.checkPermissionRationale(activity, permission);
     }

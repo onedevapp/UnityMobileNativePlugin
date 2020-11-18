@@ -9,14 +9,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 
-import androidx.core.content.FileProvider;
-
 import com.google.android.play.core.install.model.InstallStatus;
 import com.onedevapp.nativeplugin.AndroidBridge;
 import com.onedevapp.nativeplugin.Constants;
-
-import java.io.File;
-import java.util.Objects;
 
 public class ThirdPartyUpdate extends BaseUpdateClass {
 
@@ -45,13 +40,13 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
         String errorMsg = "";
         int errorCode = -1;
 
-        if(!AndroidBridge.isNetworkAvailable(context)){
+        if(!AndroidBridge.IsNetworkAvailable(context)){
             isPermissionAvailable = false;
-            errorMsg = "checkUpdate() : isNetworkAvailable : false";
+            errorMsg = "checkUpdate() : IsNetworkAvailable : false";
             errorCode = -102;
-        }else if(!AndroidBridge.checkPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+        }else if(!AndroidBridge.CheckPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             isPermissionAvailable = false;
-            errorMsg = "checkUpdate() : isStoragePermissionGranted : false";
+            errorMsg = "checkUpdate() : IsStoragePermissionGranted : false";
             errorCode = -101;
         }
 

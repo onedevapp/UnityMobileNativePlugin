@@ -30,7 +30,7 @@ android {
                     }
                 }
                 //into project.buildDir
-                into ('/../../../Release/')
+                into ('/../../../ReleaseFiles/')
             }
             /*copy {
                 from('/../../../release/')

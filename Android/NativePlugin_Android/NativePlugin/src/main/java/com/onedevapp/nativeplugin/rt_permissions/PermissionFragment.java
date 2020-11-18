@@ -87,10 +87,8 @@ public class PermissionFragment extends Fragment {
             if (Looper.getMainLooper() != Looper.myLooper()) {
                 throw new RuntimeException("you must request permission in main thread!!");
             }
-            //if(activity instanceof AppCompatActivity)
-            //    ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
-            //else
-                activity.getFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
+
+            activity.getFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
         } else {
             throw new RuntimeException("activity is null!!");
         }
