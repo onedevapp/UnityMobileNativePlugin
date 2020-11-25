@@ -31,7 +31,7 @@
     }
 
     //Status of a error.
-    public enum InstallErroCode
+    public enum InstallErrorCode
     {
         ERROR_DOWNLOAD_NOT_PRESENT = -7,
         ERROR_API_NOT_AVAILABLE = -3,

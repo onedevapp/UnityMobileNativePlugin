@@ -145,10 +145,10 @@ public class NativePluginDemo : MonoBehaviour
 
     private void OnUpdateError(int code, string error)
     {
-        if (code == (int)InstallErroCode.ERROR_LIBRARY)
+        if (code == (int)InstallErrorCode.ERROR_LIBRARY)
             Debug.Log("Error : " + error);
         else
-            Debug.Log("Error Code : " + (InstallErroCode)code + " :: " + error);
+            Debug.Log("Error Code : " + (InstallErrorCode)code + " :: " + error);
         startUpdateBtn.interactable = false;
         checkUpdateBtn.interactable = true;
 

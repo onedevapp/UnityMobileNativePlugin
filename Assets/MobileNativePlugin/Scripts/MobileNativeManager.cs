@@ -206,7 +206,7 @@ namespace OneDevApp
 
         #region App Update
         /// <summary>
-		/// Check for update and returns OnUpdateListener.onUpdateAvailable true are false
+		/// Check for update and returns OnUpdateListener.onUpdateAvailable true or false
 		/// </summary>
         /// <param name="updateMode">update mode</param>
         /// <param name="updatetype">update type</param>
