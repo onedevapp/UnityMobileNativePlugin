@@ -12,7 +12,7 @@ There are 2 ways to install this plugin:
 
 ## Android Native Functions
 
-## Requirements
+### Requirements
 * Work with Unity 5 or later.
 * You project should build against Android 4.0 (API level 14) SDK at least.
 * Runtime Permission works only with devices running Android 6.0 (API level 23) or higher.
@@ -35,7 +35,7 @@ If your project doesn't have an AndroidManifest, you can copy Unity's default on
 Or select from plugins `\Assets\MobileNativePlugin\Plugins\Android`
 <br><br><br>
 
-## Dialogs
+### Dialogs
 
 -	Show alert dialog with positive button
 	```C#
@@ -103,21 +103,35 @@ Or select from plugins `\Assets\MobileNativePlugin\Plugins\Android`
 			Debug.Log("OnSelectedAction selected:: " + value);
 		}
 		``` 
-	
-	![dialog](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/dialog.png)
-	
-	![time_picker](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/time_picker.png)
 
-## Toast
+	<table>
+		<tr>
+			<td>Dialog</td>
+			<td>Time Picker</td>
+		</tr>
+		<tr>
+			<td><img src="Images/dialog.png" width=270 height=540></td>
+			<td><img src="Images/time_picker.png" width=270 height=540></td>
+		</tr>
+	</table>
+
+### Toast
 -	Show the toast.
 	```C#
 	//Toast Duration: For Short 0,For Long 1.
 	MobileNativeManager.ShowToast(string message, int Length)
 	``` 
 
-	![toast](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/toast.png)
+	<table>
+		<tr>
+			<td>Toast</td>
+		</tr>
+		<tr>
+			<td><img src="Images/toast.png" width=270 height=540></td>
+		</tr>
+	</table>
 
-## Location
+### Location
 -	Add uses-permission to AndroidManifest
 	```C#
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
@@ -126,11 +140,17 @@ Or select from plugins `\Assets\MobileNativePlugin\Plugins\Android`
 	```C#
  	MobileNativeManager.Instance.EnableLocation();
 	```
+	<table>
+		<tr>
+			<td>Enable Location</td>
+		</tr>
+		<tr>
+			<td><img src="Images/enable_location.png" width=270 height=540></td>
+		</tr>
+	</table>
 
-	![enable_location](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/enable_location.png)
 
-
-## Options
+### Options
 -	Check whether device is rooted or not
 	```C#
 	(bool) MobileNativeManager.IsDeviceRooted()
@@ -141,7 +161,7 @@ Or select from plugins `\Assets\MobileNativePlugin\Plugins\Android`
 	```
 <br><br>
 
-## Runtime Permissions
+### Runtime Permissions
 Check the status of a permission, request a set of permissions and get a callback with the result.
 
 *Optional step:* By default, Unity shows a permission dialog on startup to prevent plugins from crashing/malfunctioning. This can be disabled, if you want, but you must make sure to handle all the runtime permissions carefully in your app's lifecycle. 
@@ -203,13 +223,19 @@ To disable this dialog, add the following line inside the  `<application>...</ap
 		private void OnPermissionError(string error) {}
 		```
 
-
-	![permission_dialog](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/permission_dialog.png)
-	
-	![request_permission](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/request_permission.png)
+	<table>
+		<tr>
+			<td>Permission Dialog</td>
+			<td>Request Permission</td>
+		</tr>
+		<tr>
+			<td><img src="Images/permission_dialog.png" width=270 height=540></td>
+			<td><img src="Images/request_permission.png" width=270 height=540></td>
+		</tr>
+	</table>
 <br><br>
 
-## In App Update
+### In App Update
 
 Now android application can be updated wihtout leaving the app, its works on both scenarios:
 
@@ -217,7 +243,7 @@ Now android application can be updated wihtout leaving the app, its works on bot
 2. Using External Link (Some app will not be available on playstore but still can be updated)
 <br><br>
 
-## Play Store In-App Update
+### Play Store In-App Update
 There are two update modes.
 
 Flexible (default) - Shows the user an upgrade dialog but performs the downloading of the update within the background. This means that the user can continue using our app whilst the update is being downloaded. When the update is downloaded asks the user confirmation to perform the install.
@@ -225,7 +251,7 @@ Flexible (default) - Shows the user an upgrade dialog but performs the downloadi
 Immediate - Will trigger a blocking UI until download and installation is finished. Restart is triggered automatically
 <br><br>
 
-## External Link In-App Update
+### External Link In-App Update
 Downloads an apk from server and tries install it automatically, but requires storage and install packages permissions.
 <br><br>
 ### API 
@@ -313,7 +339,14 @@ Downloads an apk from server and tries install it automatically, but requires st
 	ERROR_NETWORK = -102
 	```
 
-	![check_update](https://github.com/onedevapp/UnityMobileNativePlugin/blob/master/Images/check_update.png)
+	<table>
+		<tr>
+			<td>Check Update</td>
+		</tr>
+		<tr>
+			<td><img src="Images/check_update.png" width=270 height=540></td>
+		</tr>
+	</table>
 
 **Note:** 
 1. You can decide which update should be forced by using either Firebase Remote Config or a Configuration file hosted on your server
