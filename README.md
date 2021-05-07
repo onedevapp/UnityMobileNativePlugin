@@ -265,14 +265,15 @@ Share content on WhatsApp
 	MobileNativeManager.Instance.ShareOnWhatsApp(string message, string mobileNo = "", string filePath = "", bool isFileUri = false, string header = "")
 ```
 
-	<table>
-		<tr>
-			<td>Share</td>
-		</tr>
-		<tr>
-			<td><img src="Images/share_on_mail.png" width=270 height=540></td>
-		</tr>
-	</table>
+<table>
+	<tr>
+		<td>Share</td>
+	</tr>
+	<tr>
+		<td><img src="Images/share_on_mail.png" width=270 height=540></td>
+	</tr>
+</table>
+<br><br>
 
 ### Image Picker Camera / Gallery
 
@@ -299,16 +300,17 @@ or
 	MobileNativeManager.OnImagePickedError += OnImagePickedError;
 ```
 
-	<table>
-		<tr>
-			<td>Image picker choice</td>
-			<td>Selected image from gallery</td>
-		</tr>
-		<tr>
-			<td><img src="Images/Image_picker_choice.png" width=270 height=540></td>
-			<td><img src="Images/Image_picker_gallery.png" width=270 height=540></td>
-		</tr>
-	</table>
+<table>
+	<tr>
+		<td>Image picker choice</td>
+		<td>Selected image from gallery</td>
+	</tr>
+	<tr>
+		<td><img src="Images/Image_picker_choice.png" width=270 height=540></td>
+		<td><img src="Images/Image_picker_gallery.png" width=270 height=540></td>
+	</tr>
+</table>
+<br><br>
 
 ### In App Update
 
