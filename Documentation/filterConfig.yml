@@ -1,7 +1,0 @@
-apiRules:
-- include:
-    uidRegex: ^OneDevApp
-    type: Namespace
-- exclude:
-    uidRegex: .*
-    type: Namespace
