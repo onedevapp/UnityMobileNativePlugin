@@ -1,0 +1,241 @@
+{
+  "sitemap": {
+    "fileOptions": {
+      "api/*": {
+        "baseUrl": "https://onedevapp.github.io/UnityMobileNativePlugin/",
+        "changefreq": "daily"
+      }
+    },
+    "baseUrl": "https://onedevapp.github.io/UnityMobileNativePlugin/",
+    "changefreq": "weekly"
+  },
+  "homepages": [],
+  "source_base_path": "D:/DeveloperStuff/GitSource/UnityMobileNativePlugin/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.EmailSharingData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.EmailSharingData.html",
+          "hash": "mvp4/BBjs5c0OutfVlEEDdVQMV9nqusu1T+np9+TCkY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.ImageData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.ImageData.html",
+          "hash": "uwEximUUSSWC6NkxxaK/z9uyAT5zoPwrkUSiNRuPUXc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.ImagePickerErrorCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.ImagePickerErrorCode.html",
+          "hash": "hNgQps/mv0D+YffrrMS/7zF47NGNLhbpJQ3vQU8iIlo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.ImagePickerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.ImagePickerType.html",
+          "hash": "wLGKDCryLjr8tmJ9CdQCgrhcU/4quSuT8yl64HJXk5M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.InstallErrorCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.InstallErrorCode.html",
+          "hash": "LUS5f+Eg4Y3/arbk8s+0BGTX6H7wmmlp65GhWfiznkU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.InstallStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.InstallStatus.html",
+          "hash": "ZnZc6vJK4xnmV9Thl5NZnNokKF9rGwlkw8iPinbhmmo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.MobileNativeManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.MobileNativeManager.html",
+          "hash": "eom2rIO8t3+7j9l6kgeOm5V9VM63u/lFen5lyV4caEk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.MultipleFilesData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.MultipleFilesData.html",
+          "hash": "atfa3Dkb75zZLypN7IQJwcQg0Isgk1AH0W9K8lJvtr4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.UpdateMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.UpdateMode.html",
+          "hash": "TH+iGh2Ck6oLNN36Fups/lJ84kQwJmCWC8RieZbVacU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.UpdateType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.UpdateType.html",
+          "hash": "IukLHD8MbmQBQb9+NiR56Sl1LHzfgY/jgv5FRSmd8E8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OneDevApp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OneDevApp.html",
+          "hash": "1Zpd+U1c/p3K5ceJOuVR6YWOiVkcx2usrGImHKif8pU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Mb7nZ/kl8gWJRxcc7yRRqj8peCUDzu49RC4SFWP/Fks="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "qNcJQwUs+9atMCZUeBPzMZjy2PLBbyzdl4IHBG1SJtc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "U+sUbK/o/d9gPjMQvrpUGSCmuejQJSTq1goz+JAi48g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 1,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 11,
+          "skipped_file_count": 1
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,1352 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MobileNativeManager
+   | Unity Mobile Native Plugin documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MobileNativeManager
+   | Unity Mobile Native Plugin documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OneDevApp.MobileNativeManager">
+  
+  
+  <h1 id="OneDevApp_MobileNativeManager" data-uid="OneDevApp.MobileNativeManager" class="text-break">Class MobileNativeManager
+  </h1>
+  <div class="markdown level0 summary"><p>MobileNativeManager is a single intance class which calls Native Android APIs</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">MobileNativeManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OneDevApp.html">OneDevApp</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OneDevApp_MobileNativeManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MobileNativeManager : MonoBehaviour</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_Instance_" data-uid="OneDevApp.MobileNativeManager.Instance*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_Instance" data-uid="OneDevApp.MobileNativeManager.Instance">Instance</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MobileNativeManager Instance { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OneDevApp.MobileNativeManager.html">MobileNativeManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_CheckForUpdate_" data-uid="OneDevApp.MobileNativeManager.CheckForUpdate*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_CheckForUpdate_OneDevApp_UpdateMode_OneDevApp_UpdateType_System_String_" data-uid="OneDevApp.MobileNativeManager.CheckForUpdate(OneDevApp.UpdateMode,OneDevApp.UpdateType,System.String)">CheckForUpdate(UpdateMode, UpdateType, String)</h4>
+  <div class="markdown level1 summary"><p>Check for update and returns OnUpdateListener.onUpdateAvailable true or false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CheckForUpdate(UpdateMode updateMode = UpdateMode.PLAY_STORE, UpdateType updateType = UpdateType.FLEXIBLE, string thirdPartyLink = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OneDevApp.UpdateMode.html">UpdateMode</a></td>
+        <td><span class="parametername">updateMode</span></td>
+        <td><p>update mode</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OneDevApp.UpdateType.html">UpdateType</a></td>
+        <td><span class="parametername">updateType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">thirdPartyLink</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_CheckPermission_" data-uid="OneDevApp.MobileNativeManager.CheckPermission*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_CheckPermission_System_String_" data-uid="OneDevApp.MobileNativeManager.CheckPermission(System.String)">CheckPermission(String)</h4>
+  <div class="markdown level1 summary"><p>Check whether permission is granted or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CheckPermission(string permission)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">permission</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Returns True if already permission granted for this permission else false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_CheckPermissionRationale_" data-uid="OneDevApp.MobileNativeManager.CheckPermissionRationale*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_CheckPermissionRationale_System_String_" data-uid="OneDevApp.MobileNativeManager.CheckPermissionRationale(System.String)">CheckPermissionRationale(String)</h4>
+  <div class="markdown level1 summary"><p>Check whether permission permission can show rationale dialog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CheckPermissionRationale(string permission)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">permission</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Returns True if permission is requested but not granted and can show rationale dialog else false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_CompleteUpdate_" data-uid="OneDevApp.MobileNativeManager.CompleteUpdate*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_CompleteUpdate" data-uid="OneDevApp.MobileNativeManager.CompleteUpdate">CompleteUpdate()</h4>
+  <div class="markdown level1 summary"><p>To complete the instalation of the update, you should call this function after OnUpdateListener.onUpdateInstallState().
+This has no impact while using third party link update</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CompleteUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ContinueUpdate_" data-uid="OneDevApp.MobileNativeManager.ContinueUpdate*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ContinueUpdate" data-uid="OneDevApp.MobileNativeManager.ContinueUpdate">ContinueUpdate()</h4>
+  <div class="markdown level1 summary"><p>To continue update and must can called only on app onresume to complete the pending update of previous update</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ContinueUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_DismissProgressBar_" data-uid="OneDevApp.MobileNativeManager.DismissProgressBar*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_DismissProgressBar" data-uid="OneDevApp.MobileNativeManager.DismissProgressBar">DismissProgressBar()</h4>
+  <div class="markdown level1 summary"><p>Dismiss the progress bar</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DismissProgressBar()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_EnableLocation_" data-uid="OneDevApp.MobileNativeManager.EnableLocation*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_EnableLocation" data-uid="OneDevApp.MobileNativeManager.EnableLocation">EnableLocation()</h4>
+  <div class="markdown level1 summary"><p>Enable Location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnableLocation()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_GetImageFromDevice_" data-uid="OneDevApp.MobileNativeManager.GetImageFromDevice*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_GetImageFromDevice_OneDevApp_ImagePickerType_System_Int32_System_Int32_System_Int32_" data-uid="OneDevApp.MobileNativeManager.GetImageFromDevice(OneDevApp.ImagePickerType,System.Int32,System.Int32,System.Int32)">GetImageFromDevice(ImagePickerType, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Get image from device via Camera or Gallery</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GetImageFromDevice(ImagePickerType pickerType = ImagePickerType.CHOICE, int maxWidth = 612, int maxHeight = 816, int quality = 80)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OneDevApp.ImagePickerType.html">ImagePickerType</a></td>
+        <td><span class="parametername">pickerType</span></td>
+        <td><p>ImagePickerType of Choice or Camera or Gallery</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxWidth</span></td>
+        <td><p>image max width to compress</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxHeight</span></td>
+        <td><p>image max height to compress</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">quality</span></td>
+        <td><p>image quality from 1 to 100</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_IsDeviceRooted_" data-uid="OneDevApp.MobileNativeManager.IsDeviceRooted*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_IsDeviceRooted" data-uid="OneDevApp.MobileNativeManager.IsDeviceRooted">IsDeviceRooted()</h4>
+  <div class="markdown level1 summary"><p>Check whether device is rooted or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDeviceRooted()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_OnImagePickedResult_" data-uid="OneDevApp.MobileNativeManager.OnImagePickedResult*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_OnImagePickedResult_System_String_" data-uid="OneDevApp.MobileNativeManager.OnImagePickedResult(System.String)">OnImagePickedResult(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnImagePickedResult(string param)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">param</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_OpenSettingScreen_" data-uid="OneDevApp.MobileNativeManager.OpenSettingScreen*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_OpenSettingScreen" data-uid="OneDevApp.MobileNativeManager.OpenSettingScreen">OpenSettingScreen()</h4>
+  <div class="markdown level1 summary"><p>Opens app settings page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OpenSettingScreen()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_PluginDebug_" data-uid="OneDevApp.MobileNativeManager.PluginDebug*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_PluginDebug_System_Boolean_" data-uid="OneDevApp.MobileNativeManager.PluginDebug(System.Boolean)">PluginDebug(Boolean)</h4>
+  <div class="markdown level1 summary"><p>By default puglin console log will be diabled, but can be enabled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PluginDebug(bool showLog = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">showLog</span></td>
+        <td><p>If set true then log will be displayed else disabled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_RequestPermission_" data-uid="OneDevApp.MobileNativeManager.RequestPermission*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_RequestPermission_System_String_" data-uid="OneDevApp.MobileNativeManager.RequestPermission(System.String)">RequestPermission(String)</h4>
+  <div class="markdown level1 summary"><p>Check for permission and returns status in OnPermissionListener.onPermissionGranted()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestPermission(string permission)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">permission</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_RequestPermission_" data-uid="OneDevApp.MobileNativeManager.RequestPermission*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_RequestPermission_System_String___" data-uid="OneDevApp.MobileNativeManager.RequestPermission(System.String[])">RequestPermission(String[])</h4>
+  <div class="markdown level1 summary"><p>Check for permission and returns status in OnPermissionListener.onPermissionGranted()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestPermission(params string[] permissions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>[]</td>
+        <td><span class="parametername">permissions</span></td>
+        <td><p>Array of requested permissions</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShareFileContent_" data-uid="OneDevApp.MobileNativeManager.ShareFileContent*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShareFileContent_System_String_System_String_System_Boolean_System_String_" data-uid="OneDevApp.MobileNativeManager.ShareFileContent(System.String,System.String,System.Boolean,System.String)">ShareFileContent(String, String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>Share Single File</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShareFileContent(string message, string filePath = &quot;&quot;, bool isFileUri = false, string header = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>message to be shared</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td><p>file path/ file Uri to be shared</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">isFileUri</span></td>
+        <td><p>bool which represent filepath is path or uri, if true then filePath takes as Uri</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>share chooser header text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShareMultipleFileContent_" data-uid="OneDevApp.MobileNativeManager.ShareMultipleFileContent*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShareMultipleFileContent_System_String_OneDevApp_MultipleFilesData_System_String_" data-uid="OneDevApp.MobileNativeManager.ShareMultipleFileContent(System.String,OneDevApp.MultipleFilesData,System.String)">ShareMultipleFileContent(String, MultipleFilesData, String)</h4>
+  <div class="markdown level1 summary"><p>Share Multiple Files</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShareMultipleFileContent(string message, MultipleFilesData fileData, string header = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>message to be shared</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OneDevApp.MultipleFilesData.html">MultipleFilesData</a></td>
+        <td><span class="parametername">fileData</span></td>
+        <td><p>MultipleFilesData which holds array of file path and file Uri</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>share chooser header text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShareOnMail_" data-uid="OneDevApp.MobileNativeManager.ShareOnMail*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShareOnMail_OneDevApp_EmailSharingData_System_String_" data-uid="OneDevApp.MobileNativeManager.ShareOnMail(OneDevApp.EmailSharingData,System.String)">ShareOnMail(EmailSharingData, String)</h4>
+  <div class="markdown level1 summary"><p>Share via Mail</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShareOnMail(EmailSharingData emailData, string header = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OneDevApp.EmailSharingData.html">EmailSharingData</a></td>
+        <td><span class="parametername">emailData</span></td>
+        <td><p>EmailSharingData which holds array of to, cc and bcc mail ids along with MultipleFilesData</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>share chooser header text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShareOnWhatsApp_" data-uid="OneDevApp.MobileNativeManager.ShareOnWhatsApp*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShareOnWhatsApp_System_String_System_String_System_String_System_Boolean_System_String_" data-uid="OneDevApp.MobileNativeManager.ShareOnWhatsApp(System.String,System.String,System.String,System.Boolean,System.String)">ShareOnWhatsApp(String, String, String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>Share on whatsapp</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShareOnWhatsApp(string message, string mobileNo = &quot;&quot;, string filePath = &quot;&quot;, bool isFileUri = false, string header = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>message to be shared</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">mobileNo</span></td>
+        <td><p>to share on specific phone no</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td><p>file path/ file Uri to be shared</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">isFileUri</span></td>
+        <td><p>bool which represent filepath is path or uri, if true then filePath takes as Uri</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>share chooser header text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShareTextContent_" data-uid="OneDevApp.MobileNativeManager.ShareTextContent*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShareTextContent_System_String_System_String_" data-uid="OneDevApp.MobileNativeManager.ShareTextContent(System.String,System.String)">ShareTextContent(String, String)</h4>
+  <div class="markdown level1 summary"><p>Share Text</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShareTextContent(string message, string header = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>message to be shared</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>share chooser header text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowAlertMessage_" data-uid="OneDevApp.MobileNativeManager.ShowAlertMessage*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowAlertMessage_System_String_System_String_System_String_" data-uid="OneDevApp.MobileNativeManager.ShowAlertMessage(System.String,System.String,System.String)">ShowAlertMessage(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Shows alert dialog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowAlertMessage(string title, string message, string positiveButtonName = &quot;OK&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>Title.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">positiveButtonName</span></td>
+        <td><p>Positive Button Name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowConfirmationMessage_" data-uid="OneDevApp.MobileNativeManager.ShowConfirmationMessage*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowConfirmationMessage_System_String_System_String_System_String_System_String_" data-uid="OneDevApp.MobileNativeManager.ShowConfirmationMessage(System.String,System.String,System.String,System.String)">ShowConfirmationMessage(String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Shows confirmation dialog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowConfirmationMessage(string title, string message, string positiveButtonName = &quot;OK&quot;, string negativeButtonName = &quot;Cancel&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>Title.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">positiveButtonName</span></td>
+        <td><p>Positive Button Name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">negativeButtonName</span></td>
+        <td><p>Negative Button Name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowDatePicker_" data-uid="OneDevApp.MobileNativeManager.ShowDatePicker*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowDatePicker" data-uid="OneDevApp.MobileNativeManager.ShowDatePicker">ShowDatePicker()</h4>
+  <div class="markdown level1 summary"><p>Shows the date picker dialog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowDatePicker()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowDatePicker_" data-uid="OneDevApp.MobileNativeManager.ShowDatePicker*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowDatePicker_System_Int32_System_Int32_System_Int32_" data-uid="OneDevApp.MobileNativeManager.ShowDatePicker(System.Int32,System.Int32,System.Int32)">ShowDatePicker(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Shows the date picker dialog with requested date</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowDatePicker(int year, int month, int day)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">year</span></td>
+        <td><p>Year.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">month</span></td>
+        <td><p>Month.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">day</span></td>
+        <td><p>Date.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowProgressBar_" data-uid="OneDevApp.MobileNativeManager.ShowProgressBar*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowProgressBar_System_String_System_String_System_Boolean_" data-uid="OneDevApp.MobileNativeManager.ShowProgressBar(System.String,System.String,System.Boolean)">ShowProgressBar(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Shows the progress bar.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowProgressBar(string title, string message, bool cancelable = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>Title.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">cancelable</span></td>
+        <td><p>If set true then on clicking outside disable ProgressBar</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowTimePicker_" data-uid="OneDevApp.MobileNativeManager.ShowTimePicker*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowTimePicker" data-uid="OneDevApp.MobileNativeManager.ShowTimePicker">ShowTimePicker()</h4>
+  <div class="markdown level1 summary"><p>Shows the time picker dialog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowTimePicker()</code></pre>
+  </div>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowTimePicker_" data-uid="OneDevApp.MobileNativeManager.ShowTimePicker*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowTimePicker_System_Int32_System_Int32_System_Boolean_" data-uid="OneDevApp.MobileNativeManager.ShowTimePicker(System.Int32,System.Int32,System.Boolean)">ShowTimePicker(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Shows the time picker dialog with requested hour, mins and format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowTimePicker(int hour, int minutes, bool is24HourFormat)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">hour</span></td>
+        <td><p>Hour.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">minutes</span></td>
+        <td><p>Mintues.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">is24HourFormat</span></td>
+        <td><p>If set true then time picker dialog shows with 24 hours format else 12 hours</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_ShowToast_" data-uid="OneDevApp.MobileNativeManager.ShowToast*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_ShowToast_System_String_System_Int32_" data-uid="OneDevApp.MobileNativeManager.ShowToast(System.String,System.Int32)">ShowToast(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Shows the toast.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowToast(string message, int Length = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">Length</span></td>
+        <td><p>Toast Duration, For Short 0,For Long 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OneDevApp_MobileNativeManager_StartUpdate_" data-uid="OneDevApp.MobileNativeManager.StartUpdate*"></a>
+  <h4 id="OneDevApp_MobileNativeManager_StartUpdate" data-uid="OneDevApp.MobileNativeManager.StartUpdate">StartUpdate()</h4>
+  <div class="markdown level1 summary"><p>To start the instalation of the update, you should call this function after OnUpdateListener.onUpdate(isUpdateAvailable, isUpdateTypeAllowed)
+and only if both isUpdateAvailable and isUpdateTypeAllowed are true </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartUpdate()</code></pre>
+  </div>
+  <h3 id="events">Events
+  </h3>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnClickAction" data-uid="OneDevApp.MobileNativeManager.OnClickAction">OnClickAction</h4>
+  <div class="markdown level1 summary"><p>Event triggered when dialog buttons are clicked</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;bool&gt; OnClickAction</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnImagePicked" data-uid="OneDevApp.MobileNativeManager.OnImagePicked">OnImagePicked</h4>
+  <div class="markdown level1 summary"><p>Event triggered with image picked</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;ImageData&gt; OnImagePicked</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="OneDevApp.ImageData.html">ImageData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnImagePickedError" data-uid="OneDevApp.MobileNativeManager.OnImagePickedError">OnImagePickedError</h4>
+  <div class="markdown level1 summary"><p>Event triggered with image picked</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;int, string&gt; OnImagePickedError</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnPermissionDenied" data-uid="OneDevApp.MobileNativeManager.OnPermissionDenied">OnPermissionDenied</h4>
+  <div class="markdown level1 summary"><p>Event triggered with permissions denied</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;string[]&gt; OnPermissionDenied</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>[]&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnPermissionError" data-uid="OneDevApp.MobileNativeManager.OnPermissionError">OnPermissionError</h4>
+  <div class="markdown level1 summary"><p>Event triggered with error when during permissions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;string&gt; OnPermissionError</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnPermissionGranted" data-uid="OneDevApp.MobileNativeManager.OnPermissionGranted">OnPermissionGranted</h4>
+  <div class="markdown level1 summary"><p>Event triggered with permissions granted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;string[], bool&gt; OnPermissionGranted</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>[], <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnSelectedAction" data-uid="OneDevApp.MobileNativeManager.OnSelectedAction">OnSelectedAction</h4>
+  <div class="markdown level1 summary"><p>Event triggered with value when selected</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;string&gt; OnSelectedAction</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnUpdateAvailable" data-uid="OneDevApp.MobileNativeManager.OnUpdateAvailable">OnUpdateAvailable</h4>
+  <div class="markdown level1 summary"><p>Event triggered when the update is available or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;bool&gt; OnUpdateAvailable</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnUpdateDownloading" data-uid="OneDevApp.MobileNativeManager.OnUpdateDownloading">OnUpdateDownloading</h4>
+  <div class="markdown level1 summary"><p>Event triggered with downloading value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;long, long&gt; OnUpdateDownloading</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int64">Int64</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int64">Int64</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnUpdateError" data-uid="OneDevApp.MobileNativeManager.OnUpdateError">OnUpdateError</h4>
+  <div class="markdown level1 summary"><p>Event triggered with error during update</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;int, string&gt; OnUpdateError</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnUpdateInstallState" data-uid="OneDevApp.MobileNativeManager.OnUpdateInstallState">OnUpdateInstallState</h4>
+  <div class="markdown level1 summary"><p>Event triggered with install state during update</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;InstallStatus&gt; OnUpdateInstallState</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="OneDevApp.InstallStatus.html">InstallStatus</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnUpdateStalenessDays" data-uid="OneDevApp.MobileNativeManager.OnUpdateStalenessDays">OnUpdateStalenessDays</h4>
+  <div class="markdown level1 summary"><p>Event triggered with staleness days available to download</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;int&gt; OnUpdateStalenessDays</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OneDevApp_MobileNativeManager_OnUpdateVersionCode" data-uid="OneDevApp.MobileNativeManager.OnUpdateVersionCode">OnUpdateVersionCode</h4>
+  <div class="markdown level1 summary"><p>Event triggered with version code available</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action&lt;int&gt; OnUpdateVersionCode</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Unity Mobile Native Plugin documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
