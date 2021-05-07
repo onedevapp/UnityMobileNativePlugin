@@ -7,13 +7,16 @@ import com.onedevapp.nativeplugin.Constants;
 
 import java.lang.ref.WeakReference;
 
+/**
+ * UpdateManager is the responsible class updating the App either via PlayStore or from ThirdParty site.
+ */
 public class UpdateManager {
 
     // region Declarations
     private static UpdateManager instance;
 
     private int requestCode = 9877;      //Request code for activity
-    private WeakReference<Activity> mActivityWeakReference; //Activity references
+    private final WeakReference<Activity> mActivityWeakReference; //Activity references
     private OnUpdateListener mOnUpdateListener; //Callback listener
     private BaseUpdateClass mUpdateApp; //Parent class for app update mode
 
@@ -73,9 +76,9 @@ public class UpdateManager {
      * @return UpdateManager itself
      */
     public UpdateManager updateMode(int updateMode) {
-        if(updateMode == Constants.PLAY_STORE_UPDATE){
+        if (updateMode == Constants.PLAY_STORE_UPDATE) {
             mUpdateApp = new PlayStoreUpdate(this);
-        }else if(updateMode == Constants.THIRD_PARTY_UPDATE){
+        } else if (updateMode == Constants.THIRD_PARTY_UPDATE) {
             mUpdateApp = new ThirdPartyUpdate(this);
         } else {
             Constants.WriteLog("Unknown Update mode");
@@ -92,13 +95,13 @@ public class UpdateManager {
      */
     public UpdateManager updateType(int updateType) {
 
-        if(updateType == 0){
+        if (updateType == 0) {
             mUpdateApp.setUpdateType(AppUpdateType.FLEXIBLE);
-        }else if(updateType == 1){
+        } else if (updateType == 1) {
             mUpdateApp.setUpdateType(AppUpdateType.IMMEDIATE);
-        }else{
+        } else {
             Constants.WriteLog("Unknown Update type");
-            if(mOnUpdateListener != null)
+            if (mOnUpdateListener != null)
                 mOnUpdateListener.onUpdateError(-1, "Unknown Update type");
         }
         return this;
@@ -124,12 +127,11 @@ public class UpdateManager {
      * @return UpdateManager itself
      */
     public UpdateManager updateLink(String mUpdateLink) {
-        if(!mUpdateLink.isEmpty())
+        if (!mUpdateLink.isEmpty())
             mUpdateApp.setUpdateLink(mUpdateLink);
-        else
-        {
+        else {
             Constants.WriteLog("Update link can't be empty");
-            if(mOnUpdateListener != null)
+            if (mOnUpdateListener != null)
                 mOnUpdateListener.onUpdateError(-1, "Update link can't be empty");
         }
         return this;
@@ -149,17 +151,19 @@ public class UpdateManager {
     /**
      * Returns the Request code
      */
-    protected int getRequestCode() { return requestCode; }
+    protected int getRequestCode() {
+        return requestCode;
+    }
 
     /**
      * Common functions to report error to users
      *
-     * @param errorCode the link for third party URL
-     * @param error the link for third party URL
+     * @param errorCode
+     * @param error
      */
     protected void reportUpdateError(int errorCode, String error) {
-        Constants.WriteLog( "errorCode::" +errorCode);
-        Constants.WriteLog( "error::" +error);
+        Constants.WriteLog("errorCode::" + errorCode);
+        Constants.WriteLog("error::" + error);
         if (instance.mOnUpdateListener != null) {
             instance.mOnUpdateListener.onUpdateError(errorCode, error);
         }
@@ -176,7 +180,7 @@ public class UpdateManager {
         try {
             mUpdateApp.checkUpdate();
         } catch (Exception e) {
-            reportUpdateError(-1, "checkUpdate() : Error :"+ e.toString());
+            reportUpdateError(-1, "checkUpdate() : Error :" + e.toString());
         }
     }
 
@@ -187,7 +191,7 @@ public class UpdateManager {
         try {
             mUpdateApp.startUpdate();
         } catch (Exception e) {
-            reportUpdateError(-1, "startUpdate() : Error :"+ e.toString());
+            reportUpdateError(-1, "startUpdate() : Error :" + e.toString());
         }
     }
 
@@ -198,7 +202,7 @@ public class UpdateManager {
         try {
             mUpdateApp.completeUpdate();
         } catch (Exception e) {
-            reportUpdateError(-1, "completeUpdate() : Error :"+ e.toString());
+            reportUpdateError(-1, "completeUpdate() : Error :" + e.toString());
         }
     }
 
@@ -209,7 +213,7 @@ public class UpdateManager {
         try {
             mUpdateApp.continueUpdate();
         } catch (Exception e) {
-            reportUpdateError(-1, "continueUpdate() : Error :"+ e.toString());
+            reportUpdateError(-1, "continueUpdate() : Error :" + e.toString());
         }
     }
     //endregion

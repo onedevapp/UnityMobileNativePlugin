@@ -1,6 +1,9 @@
 ﻿
 using System;
 
+/// <summary>
+/// Helper class for converting downloading size to user readable format
+/// </summary>
 public static class ConverterExtension
 {
     private const long OneKb = 1024;

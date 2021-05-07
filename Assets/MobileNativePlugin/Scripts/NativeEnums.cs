@@ -1,5 +1,32 @@
 ﻿namespace OneDevApp
 {
+    /// <summary>
+    /// Image picker options
+    /// </summary>
+    public enum ImagePickerType
+    {
+        // choice if he user wants to choose
+        CHOICE = 0,
+        // Opens camera
+        CAMERA = 1,
+        // Opens gallery
+        GALLERY = 2
+    }
+
+    /// <summary>
+    /// Status of a error.
+    /// </summary>
+    public enum ImagePickerErrorCode
+    {
+        ERROR_PERMISSION_FAILED = 1,
+        ERROR_FILE_NOT_READABLE = 2,
+        ERROR_INTERNAL_ERROR = 4,
+        ERROR_FILE_CANT_CREATE = 5,
+    }
+
+    /// <summary>
+    /// Update mode
+    /// </summary>
     public enum UpdateMode
     {
         // Update from playstore
@@ -8,6 +35,9 @@
         THIRD_PARTY = 1
     }
 
+    /// <summary>
+    /// Update type for playstore
+    /// </summary>
     public enum UpdateType
     {
         // Flexible will let the user 
@@ -17,7 +47,9 @@
         IMMEDIATE = 1
     }
 
-    //Status of a download / install.
+    /// <summary>
+    /// Status of a download / install.
+    /// </summary>
     public enum InstallStatus
     {
         DOWNLOADED = 11,
@@ -30,7 +62,9 @@
         UNKNOWN = 0
     }
 
-    //Status of a error.
+    /// <summary>
+    /// Status of a error during update
+    /// </summary>
     public enum InstallErrorCode
     {
         ERROR_DOWNLOAD_NOT_PRESENT = -7,

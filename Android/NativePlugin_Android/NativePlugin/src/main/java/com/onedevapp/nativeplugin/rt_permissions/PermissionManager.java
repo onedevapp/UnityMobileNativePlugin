@@ -12,7 +12,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
+/**
+ *
+ * PermissionManager is the responsible class to request permission.
+ */
 public class PermissionManager {
 
     // region Declarations
@@ -21,8 +24,8 @@ public class PermissionManager {
     public final String FRAGMENT_TAG = "PermissionManagerFragment"; //TAG of InvisibleFragment to find and create.
 
     private OnPermissionListener mOnPermissionListener; //Callback listener
-    private Set<String> mPermissionsSet;  //
-    private WeakReference<Activity> mActivityWeakReference; //Activity references
+    private final Set<String> mPermissionsSet;  //
+    private final WeakReference<Activity> mActivityWeakReference; //Activity references
 
     //Rational dialog
     private String mRationalMessage = "This app needs permission to work without any problems.";
@@ -54,7 +57,7 @@ public class PermissionManager {
     /**
      * Creates a builder
      *
-     * @param fragment    the current fragment
+     * @param fragment the current fragment
      * @return a new {@link PermissionManager} instance
      */
     public static PermissionManager Builder(Fragment fragment) {
@@ -81,59 +84,64 @@ public class PermissionManager {
 
     /**
      * Add permissions that you want to request.
+     *
      * @param permission permission to be requested.
      * @return PermissionManager itself.
      */
-    public PermissionManager addPermission(String permission){
+    public PermissionManager addPermission(String permission) {
         mPermissionsSet.add(permission);
         return this;
     }
 
     /**
      * All permissions that you want to request.
+     *
      * @param permissions permissions to be requested.
      * @return PermissionManager itself.
      */
-    public PermissionManager addPermissions(String[] permissions){
+    public PermissionManager addPermissions(String[] permissions) {
         mPermissionsSet.addAll(Arrays.asList(permissions));
         return this;
     }
 
     /**
      * Rational message will be shown when rational dialog is shown
+     *
      * @param rationalMessage rational message about why this permission is required.
      * @return PermissionManager itself.
      */
-    public PermissionManager setRationalMessage(String rationalMessage){
-        if(!rationalMessage.isEmpty()) this.mRationalMessage = rationalMessage;
+    public PermissionManager setRationalMessage(String rationalMessage) {
+        if (!rationalMessage.isEmpty()) this.mRationalMessage = rationalMessage;
         return this;
     }
 
     /**
      * Rational message will be shown when rational dialog is shown
-     * @param dialogMessage rational message about why this permission is required.
+     *
+     * @param dialogMessage      rational message about why this permission is required.
      * @param dialogPositiveText rational positive button text.
      * @param dialogNegativeText rational Negative button text.
      * @return PermissionManager itself.
      */
-    public PermissionManager setRationalDialog(String dialogMessage, String dialogPositiveText, String dialogNegativeText){
-        if(!dialogMessage.isEmpty()) this.mRationalMessage = dialogMessage;
-        if(!dialogPositiveText.isEmpty()) this.mRationalDialogPositiveText = dialogPositiveText;
-        if(!dialogNegativeText.isEmpty()) this.mRationalDialogNegativeText = dialogNegativeText;
+    public PermissionManager setRationalDialog(String dialogMessage, String dialogPositiveText, String dialogNegativeText) {
+        if (!dialogMessage.isEmpty()) this.mRationalMessage = dialogMessage;
+        if (!dialogPositiveText.isEmpty()) this.mRationalDialogPositiveText = dialogPositiveText;
+        if (!dialogNegativeText.isEmpty()) this.mRationalDialogNegativeText = dialogNegativeText;
         return this;
     }
 
     /**
      * Settings message will be shown when "Never ask permission is enabled"
-     * @param dialogMessage settings dialog message.
+     *
+     * @param dialogMessage      settings dialog message.
      * @param dialogPositiveText settings positive button text.
      * @param dialogNegativeText settings Negative button text.
      * @return PermissionManager itself.
      */
-    public PermissionManager setSettingsDialog(String dialogMessage, String dialogPositiveText, String dialogNegativeText){
-        if(!dialogMessage.isEmpty()) this.mSettingDialogMessage = dialogMessage;
-        if(!dialogPositiveText.isEmpty()) this.mSettingDialogPositiveText= dialogPositiveText;
-        if(!dialogNegativeText.isEmpty()) this.mSettingDialogNegativeText = dialogNegativeText;
+    public PermissionManager setSettingsDialog(String dialogMessage, String dialogPositiveText, String dialogNegativeText) {
+        if (!dialogMessage.isEmpty()) this.mSettingDialogMessage = dialogMessage;
+        if (!dialogPositiveText.isEmpty()) this.mSettingDialogPositiveText = dialogPositiveText;
+        if (!dialogNegativeText.isEmpty()) this.mSettingDialogNegativeText = dialogNegativeText;
         return this;
     }
 
@@ -164,7 +172,7 @@ public class PermissionManager {
     /**
      * Request all manifest permissions at once in the fragment.
      */
-    public void requestAllManifestPermissions(){
+    public void requestAllManifestPermissions() {
 
         mPermissionsSet.addAll(Objects.requireNonNull(PermissionUtils.getManifestPermissions(getActivity().getApplicationContext())));
         requestPermission();
@@ -173,17 +181,17 @@ public class PermissionManager {
     /**
      * Request permissions at once in the fragment.
      */
-    public void requestPermission(){
+    public void requestPermission() {
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mOnPermissionListener == null) {
-                    Constants.WriteLog( "The permission listener callback interface must be implemented");
+                    Constants.WriteLog("The permission listener callback interface must be implemented");
                     return;
                 }
 
-                if (!PermissionUtils.isOverMarshmallow()){
+                if (!PermissionUtils.isOverMarshmallow()) {
                     mOnPermissionListener.onPermissionGranted(null, true);
                     return;
                 }
@@ -206,6 +214,7 @@ public class PermissionManager {
                 if (failPermissions == null || failPermissions.isEmpty()) {
                     mOnPermissionListener.onPermissionGranted(null, true);
                     mOnPermissionListener.onPermissionError("The requested permission has no denied permissions");
+                    Constants.WriteLog("The requested permission has no denied permissions");
                     return;
                 }
 

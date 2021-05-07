@@ -51,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.exifinterface:exifinterface:1.3.0-alpha01'
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "androidx.core:core:1.3.2"
 
     compileOnly 'com.google.android.play:core:1.8.3'

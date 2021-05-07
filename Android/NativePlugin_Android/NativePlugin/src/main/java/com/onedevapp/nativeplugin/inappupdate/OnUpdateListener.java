@@ -4,26 +4,25 @@ package com.onedevapp.nativeplugin.inappupdate;
 /**
  * Callback methods where update events are reported.
  */
-public interface OnUpdateListener
-{
+public interface OnUpdateListener {
     /**
      * Version code on update available.
      *
-     * @param versionCode  the code
+     * @param versionCode the code
      */
     void onUpdateVersionCode(int versionCode);
 
     /**
      * Staleness Days on update available.
      *
-     * @param days  the days
+     * @param days the days
      */
     void onUpdateStalenessDays(int days);
 
     /**
      * Returns update is available or not.
      *
-     * @param isUpdateAvailable  the update available
+     * @param isUpdateAvailable   the update available
      * @param isUpdateTypeAllowed the isUpdateTypeAllowed either flexible or immediate as requested
      */
     void onUpdateAvailable(boolean isUpdateAvailable, boolean isUpdateTypeAllowed);
@@ -31,15 +30,15 @@ public interface OnUpdateListener
     /**
      * Returns update install state from play store.
      *
-     * @param state  the install state
+     * @param state the install state
      */
     void onUpdateInstallState(int state);
 
     /**
      * While update is Downloading returns with total bytes to download and bytes downloaded.
      *
-     * @param totalBytesToDownload  the code
-     * @param bytesDownloaded the error
+     * @param totalBytesToDownload the code
+     * @param bytesDownloaded      the error
      */
     void onUpdateDownloading(long totalBytesToDownload, long bytesDownloaded);
 

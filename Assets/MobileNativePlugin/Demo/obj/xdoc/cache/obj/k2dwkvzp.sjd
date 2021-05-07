@@ -1,0 +1,4792 @@
+id: cs.temp.dll
+language: CSharp
+name:
+  Default: cs.temp.dll
+qualifiedName:
+  Default: cs.temp.dll
+type: Assembly
+modifiers: {}
+items:
+- id: OneDevApp
+  commentId: N:OneDevApp
+  language: CSharp
+  name:
+    CSharp: OneDevApp
+    VB: OneDevApp
+  nameWithType:
+    CSharp: OneDevApp
+    VB: OneDevApp
+  qualifiedName:
+    CSharp: OneDevApp
+    VB: OneDevApp
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+  modifiers: {}
+  items:
+  - id: OneDevApp.MobileNativeManager
+    commentId: T:OneDevApp.MobileNativeManager
+    language: CSharp
+    name:
+      CSharp: MobileNativeManager
+      VB: MobileNativeManager
+    nameWithType:
+      CSharp: MobileNativeManager
+      VB: MobileNativeManager
+    qualifiedName:
+      CSharp: OneDevApp.MobileNativeManager
+      VB: OneDevApp.MobileNativeManager
+    type: Class
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: MobileNativeManager
+      path: ''
+      startLine: 400
+    summary: "\nMobileNativeManager is a single intance class which calls Native Android APIs\n"
+    example: []
+    syntax:
+      content:
+        CSharp: 'public class MobileNativeManager : MonoBehaviour'
+        VB: >-
+          Public Class MobileNativeManager
+
+              Inherits MonoBehaviour
+    inheritance:
+    - System.Object
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: OneDevApp.MobileNativeManager.OnUpdateAvailable
+      commentId: E:OneDevApp.MobileNativeManager.OnUpdateAvailable
+      language: CSharp
+      name:
+        CSharp: OnUpdateAvailable
+        VB: OnUpdateAvailable
+      nameWithType:
+        CSharp: MobileNativeManager.OnUpdateAvailable
+        VB: MobileNativeManager.OnUpdateAvailable
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnUpdateAvailable
+        VB: OneDevApp.MobileNativeManager.OnUpdateAvailable
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnUpdateAvailable
+        path: ''
+        startLine: 408
+      summary: "\nEvent triggered when the update is available or not\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<bool> OnUpdateAvailable
+          VB: Public Shared Event OnUpdateAvailable As Action(Of Boolean)
+        return:
+          type: System.Action{System.Boolean}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnUpdateVersionCode
+      commentId: E:OneDevApp.MobileNativeManager.OnUpdateVersionCode
+      language: CSharp
+      name:
+        CSharp: OnUpdateVersionCode
+        VB: OnUpdateVersionCode
+      nameWithType:
+        CSharp: MobileNativeManager.OnUpdateVersionCode
+        VB: MobileNativeManager.OnUpdateVersionCode
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnUpdateVersionCode
+        VB: OneDevApp.MobileNativeManager.OnUpdateVersionCode
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnUpdateVersionCode
+        path: ''
+        startLine: 412
+      summary: "\nEvent triggered with version code available\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<int> OnUpdateVersionCode
+          VB: Public Shared Event OnUpdateVersionCode As Action(Of Integer)
+        return:
+          type: System.Action{System.Int32}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnUpdateStalenessDays
+      commentId: E:OneDevApp.MobileNativeManager.OnUpdateStalenessDays
+      language: CSharp
+      name:
+        CSharp: OnUpdateStalenessDays
+        VB: OnUpdateStalenessDays
+      nameWithType:
+        CSharp: MobileNativeManager.OnUpdateStalenessDays
+        VB: MobileNativeManager.OnUpdateStalenessDays
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnUpdateStalenessDays
+        VB: OneDevApp.MobileNativeManager.OnUpdateStalenessDays
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnUpdateStalenessDays
+        path: ''
+        startLine: 416
+      summary: "\nEvent triggered with staleness days available to download\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<int> OnUpdateStalenessDays
+          VB: Public Shared Event OnUpdateStalenessDays As Action(Of Integer)
+        return:
+          type: System.Action{System.Int32}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnUpdateInstallState
+      commentId: E:OneDevApp.MobileNativeManager.OnUpdateInstallState
+      language: CSharp
+      name:
+        CSharp: OnUpdateInstallState
+        VB: OnUpdateInstallState
+      nameWithType:
+        CSharp: MobileNativeManager.OnUpdateInstallState
+        VB: MobileNativeManager.OnUpdateInstallState
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnUpdateInstallState
+        VB: OneDevApp.MobileNativeManager.OnUpdateInstallState
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnUpdateInstallState
+        path: ''
+        startLine: 420
+      summary: "\nEvent triggered with install state during update\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<InstallStatus> OnUpdateInstallState
+          VB: Public Shared Event OnUpdateInstallState As Action(Of InstallStatus)
+        return:
+          type: System.Action{OneDevApp.InstallStatus}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnUpdateDownloading
+      commentId: E:OneDevApp.MobileNativeManager.OnUpdateDownloading
+      language: CSharp
+      name:
+        CSharp: OnUpdateDownloading
+        VB: OnUpdateDownloading
+      nameWithType:
+        CSharp: MobileNativeManager.OnUpdateDownloading
+        VB: MobileNativeManager.OnUpdateDownloading
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnUpdateDownloading
+        VB: OneDevApp.MobileNativeManager.OnUpdateDownloading
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnUpdateDownloading
+        path: ''
+        startLine: 424
+      summary: "\nEvent triggered with downloading value\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<long, long> OnUpdateDownloading
+          VB: Public Shared Event OnUpdateDownloading As Action(Of Long, Long)
+        return:
+          type: System.Action{System.Int64,System.Int64}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnUpdateError
+      commentId: E:OneDevApp.MobileNativeManager.OnUpdateError
+      language: CSharp
+      name:
+        CSharp: OnUpdateError
+        VB: OnUpdateError
+      nameWithType:
+        CSharp: MobileNativeManager.OnUpdateError
+        VB: MobileNativeManager.OnUpdateError
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnUpdateError
+        VB: OneDevApp.MobileNativeManager.OnUpdateError
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnUpdateError
+        path: ''
+        startLine: 428
+      summary: "\nEvent triggered with error during update\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<int, string> OnUpdateError
+          VB: Public Shared Event OnUpdateError As Action(Of Integer, String)
+        return:
+          type: System.Action{System.Int32,System.String}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnPermissionGranted
+      commentId: E:OneDevApp.MobileNativeManager.OnPermissionGranted
+      language: CSharp
+      name:
+        CSharp: OnPermissionGranted
+        VB: OnPermissionGranted
+      nameWithType:
+        CSharp: MobileNativeManager.OnPermissionGranted
+        VB: MobileNativeManager.OnPermissionGranted
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnPermissionGranted
+        VB: OneDevApp.MobileNativeManager.OnPermissionGranted
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnPermissionGranted
+        path: ''
+        startLine: 432
+      summary: "\nEvent triggered with permissions granted\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<string[], bool> OnPermissionGranted
+          VB: Public Shared Event OnPermissionGranted As Action(Of String(), Boolean)
+        return:
+          type: System.Action{System.String[],System.Boolean}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnPermissionDenied
+      commentId: E:OneDevApp.MobileNativeManager.OnPermissionDenied
+      language: CSharp
+      name:
+        CSharp: OnPermissionDenied
+        VB: OnPermissionDenied
+      nameWithType:
+        CSharp: MobileNativeManager.OnPermissionDenied
+        VB: MobileNativeManager.OnPermissionDenied
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnPermissionDenied
+        VB: OneDevApp.MobileNativeManager.OnPermissionDenied
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnPermissionDenied
+        path: ''
+        startLine: 436
+      summary: "\nEvent triggered with permissions denied\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<string[]> OnPermissionDenied
+          VB: Public Shared Event OnPermissionDenied As Action(Of String())
+        return:
+          type: System.Action{System.String[]}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnPermissionError
+      commentId: E:OneDevApp.MobileNativeManager.OnPermissionError
+      language: CSharp
+      name:
+        CSharp: OnPermissionError
+        VB: OnPermissionError
+      nameWithType:
+        CSharp: MobileNativeManager.OnPermissionError
+        VB: MobileNativeManager.OnPermissionError
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnPermissionError
+        VB: OneDevApp.MobileNativeManager.OnPermissionError
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnPermissionError
+        path: ''
+        startLine: 440
+      summary: "\nEvent triggered with error when during permissions\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<string> OnPermissionError
+          VB: Public Shared Event OnPermissionError As Action(Of String)
+        return:
+          type: System.Action{System.String}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnImagePicked
+      commentId: E:OneDevApp.MobileNativeManager.OnImagePicked
+      language: CSharp
+      name:
+        CSharp: OnImagePicked
+        VB: OnImagePicked
+      nameWithType:
+        CSharp: MobileNativeManager.OnImagePicked
+        VB: MobileNativeManager.OnImagePicked
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnImagePicked
+        VB: OneDevApp.MobileNativeManager.OnImagePicked
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnImagePicked
+        path: ''
+        startLine: 444
+      summary: "\nEvent triggered with image picked\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<ImageData> OnImagePicked
+          VB: Public Shared Event OnImagePicked As Action(Of ImageData)
+        return:
+          type: System.Action{OneDevApp.ImageData}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnImagePickedError
+      commentId: E:OneDevApp.MobileNativeManager.OnImagePickedError
+      language: CSharp
+      name:
+        CSharp: OnImagePickedError
+        VB: OnImagePickedError
+      nameWithType:
+        CSharp: MobileNativeManager.OnImagePickedError
+        VB: MobileNativeManager.OnImagePickedError
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnImagePickedError
+        VB: OneDevApp.MobileNativeManager.OnImagePickedError
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnImagePickedError
+        path: ''
+        startLine: 448
+      summary: "\nEvent triggered with image picked\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<int, string> OnImagePickedError
+          VB: Public Shared Event OnImagePickedError As Action(Of Integer, String)
+        return:
+          type: System.Action{System.Int32,System.String}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnClickAction
+      commentId: E:OneDevApp.MobileNativeManager.OnClickAction
+      language: CSharp
+      name:
+        CSharp: OnClickAction
+        VB: OnClickAction
+      nameWithType:
+        CSharp: MobileNativeManager.OnClickAction
+        VB: MobileNativeManager.OnClickAction
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnClickAction
+        VB: OneDevApp.MobileNativeManager.OnClickAction
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnClickAction
+        path: ''
+        startLine: 452
+      summary: "\nEvent triggered when dialog buttons are clicked\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<bool> OnClickAction
+          VB: Public Shared Event OnClickAction As Action(Of Boolean)
+        return:
+          type: System.Action{System.Boolean}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.OnSelectedAction
+      commentId: E:OneDevApp.MobileNativeManager.OnSelectedAction
+      language: CSharp
+      name:
+        CSharp: OnSelectedAction
+        VB: OnSelectedAction
+      nameWithType:
+        CSharp: MobileNativeManager.OnSelectedAction
+        VB: MobileNativeManager.OnSelectedAction
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnSelectedAction
+        VB: OneDevApp.MobileNativeManager.OnSelectedAction
+      type: Event
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnSelectedAction
+        path: ''
+        startLine: 456
+      summary: "\nEvent triggered with value when selected\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public static event Action<string> OnSelectedAction
+          VB: Public Shared Event OnSelectedAction As Action(Of String)
+        return:
+          type: System.Action{System.String}
+      modifiers:
+        CSharp:
+        - public
+        - static
+        VB:
+        - Public
+        - Shared
+    - id: OneDevApp.MobileNativeManager.Instance
+      commentId: P:OneDevApp.MobileNativeManager.Instance
+      language: CSharp
+      name:
+        CSharp: Instance
+        VB: Instance
+      nameWithType:
+        CSharp: MobileNativeManager.Instance
+        VB: MobileNativeManager.Instance
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.Instance
+        VB: OneDevApp.MobileNativeManager.Instance
+      type: Property
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: Instance
+        path: ''
+        startLine: 461
+      syntax:
+        content:
+          CSharp: public static MobileNativeManager Instance { get; }
+          VB: Public Shared ReadOnly Property Instance As MobileNativeManager
+        parameters: []
+        return:
+          type: OneDevApp.MobileNativeManager
+      overload: OneDevApp.MobileNativeManager.Instance*
+      modifiers:
+        CSharp:
+        - public
+        - static
+        - get
+        VB:
+        - Public
+        - Shared
+        - ReadOnly
+    - id: OneDevApp.MobileNativeManager.CheckForUpdate(OneDevApp.UpdateMode,OneDevApp.UpdateType,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.CheckForUpdate(OneDevApp.UpdateMode,OneDevApp.UpdateType,System.String)
+      language: CSharp
+      name:
+        CSharp: CheckForUpdate(UpdateMode, UpdateType, String)
+        VB: CheckForUpdate(UpdateMode, UpdateType, String)
+      nameWithType:
+        CSharp: MobileNativeManager.CheckForUpdate(UpdateMode, UpdateType, String)
+        VB: MobileNativeManager.CheckForUpdate(UpdateMode, UpdateType, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.CheckForUpdate(OneDevApp.UpdateMode, OneDevApp.UpdateType, System.String)
+        VB: OneDevApp.MobileNativeManager.CheckForUpdate(OneDevApp.UpdateMode, OneDevApp.UpdateType, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CheckForUpdate
+        path: ''
+        startLine: 659
+      summary: "\nCheck for update and returns OnUpdateListener.onUpdateAvailable true or false\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void CheckForUpdate(UpdateMode updateMode = UpdateMode.PLAY_STORE, UpdateType updateType = UpdateType.FLEXIBLE, string thirdPartyLink = "")
+          VB: Public Sub CheckForUpdate(updateMode As UpdateMode = UpdateMode.PLAY_STORE, updateType As UpdateType = UpdateType.FLEXIBLE, thirdPartyLink As String = "")
+        parameters:
+        - id: updateMode
+          type: OneDevApp.UpdateMode
+          description: update mode
+        - id: updateType
+          type: OneDevApp.UpdateType
+        - id: thirdPartyLink
+          type: System.String
+      overload: OneDevApp.MobileNativeManager.CheckForUpdate*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.StartUpdate
+      commentId: M:OneDevApp.MobileNativeManager.StartUpdate
+      language: CSharp
+      name:
+        CSharp: StartUpdate()
+        VB: StartUpdate()
+      nameWithType:
+        CSharp: MobileNativeManager.StartUpdate()
+        VB: MobileNativeManager.StartUpdate()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.StartUpdate()
+        VB: OneDevApp.MobileNativeManager.StartUpdate()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: StartUpdate
+        path: ''
+        startLine: 684
+      summary: "\nTo start the instalation of the update, you should call this function after OnUpdateListener.onUpdate(isUpdateAvailable, isUpdateTypeAllowed)\nand only if both isUpdateAvailable and isUpdateTypeAllowed are true \n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void StartUpdate()
+          VB: Public Sub StartUpdate
+      overload: OneDevApp.MobileNativeManager.StartUpdate*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.CompleteUpdate
+      commentId: M:OneDevApp.MobileNativeManager.CompleteUpdate
+      language: CSharp
+      name:
+        CSharp: CompleteUpdate()
+        VB: CompleteUpdate()
+      nameWithType:
+        CSharp: MobileNativeManager.CompleteUpdate()
+        VB: MobileNativeManager.CompleteUpdate()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.CompleteUpdate()
+        VB: OneDevApp.MobileNativeManager.CompleteUpdate()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CompleteUpdate
+        path: ''
+        startLine: 698
+      summary: "\nTo complete the instalation of the update, you should call this function after OnUpdateListener.onUpdateInstallState().\nThis has no impact while using third party link update\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void CompleteUpdate()
+          VB: Public Sub CompleteUpdate
+      overload: OneDevApp.MobileNativeManager.CompleteUpdate*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ContinueUpdate
+      commentId: M:OneDevApp.MobileNativeManager.ContinueUpdate
+      language: CSharp
+      name:
+        CSharp: ContinueUpdate()
+        VB: ContinueUpdate()
+      nameWithType:
+        CSharp: MobileNativeManager.ContinueUpdate()
+        VB: MobileNativeManager.ContinueUpdate()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ContinueUpdate()
+        VB: OneDevApp.MobileNativeManager.ContinueUpdate()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ContinueUpdate
+        path: ''
+        startLine: 711
+      summary: "\nTo continue update and must can called only on app onresume to complete the pending update of previous update\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ContinueUpdate()
+          VB: Public Sub ContinueUpdate
+      overload: OneDevApp.MobileNativeManager.ContinueUpdate*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.RequestPermission(System.String[])
+      commentId: M:OneDevApp.MobileNativeManager.RequestPermission(System.String[])
+      language: CSharp
+      name:
+        CSharp: RequestPermission(String[])
+        VB: RequestPermission(String())
+      nameWithType:
+        CSharp: MobileNativeManager.RequestPermission(String[])
+        VB: MobileNativeManager.RequestPermission(String())
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.RequestPermission(System.String[])
+        VB: OneDevApp.MobileNativeManager.RequestPermission(System.String())
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: RequestPermission
+        path: ''
+        startLine: 728
+      summary: "\nCheck for permission and returns status in OnPermissionListener.onPermissionGranted()\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void RequestPermission(params string[] permissions)
+          VB: Public Sub RequestPermission(ParamArray permissions As String())
+        parameters:
+        - id: permissions
+          type: System.String[]
+          description: Array of requested permissions
+      overload: OneDevApp.MobileNativeManager.RequestPermission*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.RequestPermission(System.String)
+      commentId: M:OneDevApp.MobileNativeManager.RequestPermission(System.String)
+      language: CSharp
+      name:
+        CSharp: RequestPermission(String)
+        VB: RequestPermission(String)
+      nameWithType:
+        CSharp: MobileNativeManager.RequestPermission(String)
+        VB: MobileNativeManager.RequestPermission(String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.RequestPermission(System.String)
+        VB: OneDevApp.MobileNativeManager.RequestPermission(System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: RequestPermission
+        path: ''
+        startLine: 749
+      summary: "\nCheck for permission and returns status in OnPermissionListener.onPermissionGranted()\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void RequestPermission(string permission)
+          VB: Public Sub RequestPermission(permission As String)
+        parameters:
+        - id: permission
+          type: System.String
+      overload: OneDevApp.MobileNativeManager.RequestPermission*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.CheckPermission(System.String)
+      commentId: M:OneDevApp.MobileNativeManager.CheckPermission(System.String)
+      language: CSharp
+      name:
+        CSharp: CheckPermission(String)
+        VB: CheckPermission(String)
+      nameWithType:
+        CSharp: MobileNativeManager.CheckPermission(String)
+        VB: MobileNativeManager.CheckPermission(String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.CheckPermission(System.String)
+        VB: OneDevApp.MobileNativeManager.CheckPermission(System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CheckPermission
+        path: ''
+        startLine: 771
+      summary: "\nCheck whether permission is granted or not\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public bool CheckPermission(string permission)
+          VB: Public Function CheckPermission(permission As String) As Boolean
+        parameters:
+        - id: permission
+          type: System.String
+        return:
+          type: System.Boolean
+          description: Returns True if already permission granted for this permission else false.
+      overload: OneDevApp.MobileNativeManager.CheckPermission*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.CheckPermissionRationale(System.String)
+      commentId: M:OneDevApp.MobileNativeManager.CheckPermissionRationale(System.String)
+      language: CSharp
+      name:
+        CSharp: CheckPermissionRationale(String)
+        VB: CheckPermissionRationale(String)
+      nameWithType:
+        CSharp: MobileNativeManager.CheckPermissionRationale(String)
+        VB: MobileNativeManager.CheckPermissionRationale(String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.CheckPermissionRationale(System.String)
+        VB: OneDevApp.MobileNativeManager.CheckPermissionRationale(System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CheckPermissionRationale
+        path: ''
+        startLine: 784
+      summary: "\nCheck whether permission permission can show rationale dialog\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public bool CheckPermissionRationale(string permission)
+          VB: Public Function CheckPermissionRationale(permission As String) As Boolean
+        parameters:
+        - id: permission
+          type: System.String
+        return:
+          type: System.Boolean
+          description: Returns True if permission is requested but not granted and can show rationale dialog else false.
+      overload: OneDevApp.MobileNativeManager.CheckPermissionRationale*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.GetImageFromDevice(OneDevApp.ImagePickerType,System.Int32,System.Int32,System.Int32)
+      commentId: M:OneDevApp.MobileNativeManager.GetImageFromDevice(OneDevApp.ImagePickerType,System.Int32,System.Int32,System.Int32)
+      language: CSharp
+      name:
+        CSharp: GetImageFromDevice(ImagePickerType, Int32, Int32, Int32)
+        VB: GetImageFromDevice(ImagePickerType, Int32, Int32, Int32)
+      nameWithType:
+        CSharp: MobileNativeManager.GetImageFromDevice(ImagePickerType, Int32, Int32, Int32)
+        VB: MobileNativeManager.GetImageFromDevice(ImagePickerType, Int32, Int32, Int32)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.GetImageFromDevice(OneDevApp.ImagePickerType, System.Int32, System.Int32, System.Int32)
+        VB: OneDevApp.MobileNativeManager.GetImageFromDevice(OneDevApp.ImagePickerType, System.Int32, System.Int32, System.Int32)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: GetImageFromDevice
+        path: ''
+        startLine: 799
+      summary: "\nCheck for permission and returns status in OnPermissionListener.onPermissionGranted()\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void GetImageFromDevice(ImagePickerType pickerType = ImagePickerType.CHOICE, int maxWidth = 612, int maxHeight = 816, int quality = 80)
+          VB: Public Sub GetImageFromDevice(pickerType As ImagePickerType = ImagePickerType.CHOICE, maxWidth As Integer = 612, maxHeight As Integer = 816, quality As Integer = 80)
+        parameters:
+        - id: pickerType
+          type: OneDevApp.ImagePickerType
+        - id: maxWidth
+          type: System.Int32
+        - id: maxHeight
+          type: System.Int32
+        - id: quality
+          type: System.Int32
+      overload: OneDevApp.MobileNativeManager.GetImageFromDevice*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShareOnWhatsApp(System.String,System.String,System.String,System.Boolean,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShareOnWhatsApp(System.String,System.String,System.String,System.Boolean,System.String)
+      language: CSharp
+      name:
+        CSharp: ShareOnWhatsApp(String, String, String, Boolean, String)
+        VB: ShareOnWhatsApp(String, String, String, Boolean, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShareOnWhatsApp(String, String, String, Boolean, String)
+        VB: MobileNativeManager.ShareOnWhatsApp(String, String, String, Boolean, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShareOnWhatsApp(System.String, System.String, System.String, System.Boolean, System.String)
+        VB: OneDevApp.MobileNativeManager.ShareOnWhatsApp(System.String, System.String, System.String, System.Boolean, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShareOnWhatsApp
+        path: ''
+        startLine: 829
+      summary: "\nShare on whatsapp\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShareOnWhatsApp(string message, string mobileNo = "", string filePath = "", bool isFileUri = false, string header = "")
+          VB: Public Sub ShareOnWhatsApp(message As String, mobileNo As String = "", filePath As String = "", isFileUri As Boolean = False, header As String = "")
+        parameters:
+        - id: message
+          type: System.String
+          description: message to be shared
+        - id: mobileNo
+          type: System.String
+          description: to share on specific phone no
+        - id: filePath
+          type: System.String
+          description: file path/ file Uri to be shared
+        - id: isFileUri
+          type: System.Boolean
+          description: bool which represent filepath is path or uri, if true then filePath takes as Uri
+        - id: header
+          type: System.String
+          description: share chooser header text
+      overload: OneDevApp.MobileNativeManager.ShareOnWhatsApp*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShareTextContent(System.String,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShareTextContent(System.String,System.String)
+      language: CSharp
+      name:
+        CSharp: ShareTextContent(String, String)
+        VB: ShareTextContent(String, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShareTextContent(String, String)
+        VB: MobileNativeManager.ShareTextContent(String, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShareTextContent(System.String, System.String)
+        VB: OneDevApp.MobileNativeManager.ShareTextContent(System.String, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShareTextContent
+        path: ''
+        startLine: 856
+      summary: "\nShare Text\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShareTextContent(string message, string header = "")
+          VB: Public Sub ShareTextContent(message As String, header As String = "")
+        parameters:
+        - id: message
+          type: System.String
+          description: message to be shared
+        - id: header
+          type: System.String
+          description: share chooser header text
+      overload: OneDevApp.MobileNativeManager.ShareTextContent*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShareFileContent(System.String,System.String,System.Boolean,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShareFileContent(System.String,System.String,System.Boolean,System.String)
+      language: CSharp
+      name:
+        CSharp: ShareFileContent(String, String, Boolean, String)
+        VB: ShareFileContent(String, String, Boolean, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShareFileContent(String, String, Boolean, String)
+        VB: MobileNativeManager.ShareFileContent(String, String, Boolean, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShareFileContent(System.String, System.String, System.Boolean, System.String)
+        VB: OneDevApp.MobileNativeManager.ShareFileContent(System.String, System.String, System.Boolean, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShareFileContent
+        path: ''
+        startLine: 882
+      summary: "\nShare Single File\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShareFileContent(string message, string filePath = "", bool isFileUri = false, string header = "")
+          VB: Public Sub ShareFileContent(message As String, filePath As String = "", isFileUri As Boolean = False, header As String = "")
+        parameters:
+        - id: message
+          type: System.String
+          description: message to be shared
+        - id: filePath
+          type: System.String
+          description: file path/ file Uri to be shared
+        - id: isFileUri
+          type: System.Boolean
+          description: bool which represent filepath is path or uri, if true then filePath takes as Uri
+        - id: header
+          type: System.String
+          description: share chooser header text
+      overload: OneDevApp.MobileNativeManager.ShareFileContent*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShareMultipleFileContent(System.String,OneDevApp.MultipleFilesData,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShareMultipleFileContent(System.String,OneDevApp.MultipleFilesData,System.String)
+      language: CSharp
+      name:
+        CSharp: ShareMultipleFileContent(String, MultipleFilesData, String)
+        VB: ShareMultipleFileContent(String, MultipleFilesData, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShareMultipleFileContent(String, MultipleFilesData, String)
+        VB: MobileNativeManager.ShareMultipleFileContent(String, MultipleFilesData, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShareMultipleFileContent(System.String, OneDevApp.MultipleFilesData, System.String)
+        VB: OneDevApp.MobileNativeManager.ShareMultipleFileContent(System.String, OneDevApp.MultipleFilesData, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShareMultipleFileContent
+        path: ''
+        startLine: 909
+      summary: "\nShare Multiple Files\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShareMultipleFileContent(string message, MultipleFilesData fileData, string header = "")
+          VB: Public Sub ShareMultipleFileContent(message As String, fileData As MultipleFilesData, header As String = "")
+        parameters:
+        - id: message
+          type: System.String
+          description: message to be shared
+        - id: fileData
+          type: OneDevApp.MultipleFilesData
+          description: MultipleFilesData which holds array of file path and file Uri
+        - id: header
+          type: System.String
+          description: share chooser header text
+      overload: OneDevApp.MobileNativeManager.ShareMultipleFileContent*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShareOnMail(OneDevApp.EmailSharingData,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShareOnMail(OneDevApp.EmailSharingData,System.String)
+      language: CSharp
+      name:
+        CSharp: ShareOnMail(EmailSharingData, String)
+        VB: ShareOnMail(EmailSharingData, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShareOnMail(EmailSharingData, String)
+        VB: MobileNativeManager.ShareOnMail(EmailSharingData, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShareOnMail(OneDevApp.EmailSharingData, System.String)
+        VB: OneDevApp.MobileNativeManager.ShareOnMail(OneDevApp.EmailSharingData, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShareOnMail
+        path: ''
+        startLine: 944
+      summary: "\nShare via Mail\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShareOnMail(EmailSharingData emailData, string header = "")
+          VB: Public Sub ShareOnMail(emailData As EmailSharingData, header As String = "")
+        parameters:
+        - id: emailData
+          type: OneDevApp.EmailSharingData
+          description: EmailSharingData which holds array of to, cc and bcc mail ids along with MultipleFilesData
+        - id: header
+          type: System.String
+          description: share chooser header text
+      overload: OneDevApp.MobileNativeManager.ShareOnMail*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.EnableLocation
+      commentId: M:OneDevApp.MobileNativeManager.EnableLocation
+      language: CSharp
+      name:
+        CSharp: EnableLocation()
+        VB: EnableLocation()
+      nameWithType:
+        CSharp: MobileNativeManager.EnableLocation()
+        VB: MobileNativeManager.EnableLocation()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.EnableLocation()
+        VB: OneDevApp.MobileNativeManager.EnableLocation()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: EnableLocation
+        path: ''
+        startLine: 994
+      summary: "\nEnable Location.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void EnableLocation()
+          VB: Public Sub EnableLocation
+      overload: OneDevApp.MobileNativeManager.EnableLocation*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowToast(System.String,System.Int32)
+      commentId: M:OneDevApp.MobileNativeManager.ShowToast(System.String,System.Int32)
+      language: CSharp
+      name:
+        CSharp: ShowToast(String, Int32)
+        VB: ShowToast(String, Int32)
+      nameWithType:
+        CSharp: MobileNativeManager.ShowToast(String, Int32)
+        VB: MobileNativeManager.ShowToast(String, Int32)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowToast(System.String, System.Int32)
+        VB: OneDevApp.MobileNativeManager.ShowToast(System.String, System.Int32)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowToast
+        path: ''
+        startLine: 1018
+      summary: "\nShows the toast.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowToast(string message, int Length = 0)
+          VB: Public Sub ShowToast(message As String, Length As Integer = 0)
+        parameters:
+        - id: message
+          type: System.String
+          description: Message.
+        - id: Length
+          type: System.Int32
+          description: Toast Duration, For Short 0,For Long 1.
+      overload: OneDevApp.MobileNativeManager.ShowToast*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowAlertMessage(System.String,System.String,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShowAlertMessage(System.String,System.String,System.String)
+      language: CSharp
+      name:
+        CSharp: ShowAlertMessage(String, String, String)
+        VB: ShowAlertMessage(String, String, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShowAlertMessage(String, String, String)
+        VB: MobileNativeManager.ShowAlertMessage(String, String, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowAlertMessage(System.String, System.String, System.String)
+        VB: OneDevApp.MobileNativeManager.ShowAlertMessage(System.String, System.String, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowAlertMessage
+        path: ''
+        startLine: 1035
+      summary: "\nShows alert dialog\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowAlertMessage(string title, string message, string positiveButtonName = "OK")
+          VB: Public Sub ShowAlertMessage(title As String, message As String, positiveButtonName As String = "OK")
+        parameters:
+        - id: title
+          type: System.String
+          description: Title.
+        - id: message
+          type: System.String
+          description: Message.
+        - id: positiveButtonName
+          type: System.String
+          description: Positive Button Name.
+      overload: OneDevApp.MobileNativeManager.ShowAlertMessage*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowConfirmationMessage(System.String,System.String,System.String,System.String)
+      commentId: M:OneDevApp.MobileNativeManager.ShowConfirmationMessage(System.String,System.String,System.String,System.String)
+      language: CSharp
+      name:
+        CSharp: ShowConfirmationMessage(String, String, String, String)
+        VB: ShowConfirmationMessage(String, String, String, String)
+      nameWithType:
+        CSharp: MobileNativeManager.ShowConfirmationMessage(String, String, String, String)
+        VB: MobileNativeManager.ShowConfirmationMessage(String, String, String, String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowConfirmationMessage(System.String, System.String, System.String, System.String)
+        VB: OneDevApp.MobileNativeManager.ShowConfirmationMessage(System.String, System.String, System.String, System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowConfirmationMessage
+        path: ''
+        startLine: 1051
+      summary: "\nShows confirmation dialog\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowConfirmationMessage(string title, string message, string positiveButtonName = "OK", string negativeButtonName = "Cancel")
+          VB: Public Sub ShowConfirmationMessage(title As String, message As String, positiveButtonName As String = "OK", negativeButtonName As String = "Cancel")
+        parameters:
+        - id: title
+          type: System.String
+          description: Title.
+        - id: message
+          type: System.String
+          description: Message.
+        - id: positiveButtonName
+          type: System.String
+          description: Positive Button Name.
+        - id: negativeButtonName
+          type: System.String
+          description: Negative Button Name.
+      overload: OneDevApp.MobileNativeManager.ShowConfirmationMessage*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowProgressBar(System.String,System.String,System.Boolean)
+      commentId: M:OneDevApp.MobileNativeManager.ShowProgressBar(System.String,System.String,System.Boolean)
+      language: CSharp
+      name:
+        CSharp: ShowProgressBar(String, String, Boolean)
+        VB: ShowProgressBar(String, String, Boolean)
+      nameWithType:
+        CSharp: MobileNativeManager.ShowProgressBar(String, String, Boolean)
+        VB: MobileNativeManager.ShowProgressBar(String, String, Boolean)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowProgressBar(System.String, System.String, System.Boolean)
+        VB: OneDevApp.MobileNativeManager.ShowProgressBar(System.String, System.String, System.Boolean)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowProgressBar
+        path: ''
+        startLine: 1066
+      summary: "\nShows the progress bar.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowProgressBar(string title, string message, bool cancelable = true)
+          VB: Public Sub ShowProgressBar(title As String, message As String, cancelable As Boolean = True)
+        parameters:
+        - id: title
+          type: System.String
+          description: Title.
+        - id: message
+          type: System.String
+          description: Message.
+        - id: cancelable
+          type: System.Boolean
+          description: If set true then on clicking outside disable ProgressBar
+      overload: OneDevApp.MobileNativeManager.ShowProgressBar*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.DismissProgressBar
+      commentId: M:OneDevApp.MobileNativeManager.DismissProgressBar
+      language: CSharp
+      name:
+        CSharp: DismissProgressBar()
+        VB: DismissProgressBar()
+      nameWithType:
+        CSharp: MobileNativeManager.DismissProgressBar()
+        VB: MobileNativeManager.DismissProgressBar()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.DismissProgressBar()
+        VB: OneDevApp.MobileNativeManager.DismissProgressBar()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: DismissProgressBar
+        path: ''
+        startLine: 1078
+      summary: "\nDismiss the progress bar\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void DismissProgressBar()
+          VB: Public Sub DismissProgressBar
+      overload: OneDevApp.MobileNativeManager.DismissProgressBar*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowTimePicker
+      commentId: M:OneDevApp.MobileNativeManager.ShowTimePicker
+      language: CSharp
+      name:
+        CSharp: ShowTimePicker()
+        VB: ShowTimePicker()
+      nameWithType:
+        CSharp: MobileNativeManager.ShowTimePicker()
+        VB: MobileNativeManager.ShowTimePicker()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowTimePicker()
+        VB: OneDevApp.MobileNativeManager.ShowTimePicker()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowTimePicker
+        path: ''
+        startLine: 1090
+      summary: "\nShows the time picker dialog\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowTimePicker()
+          VB: Public Sub ShowTimePicker
+      overload: OneDevApp.MobileNativeManager.ShowTimePicker*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowTimePicker(System.Int32,System.Int32,System.Boolean)
+      commentId: M:OneDevApp.MobileNativeManager.ShowTimePicker(System.Int32,System.Int32,System.Boolean)
+      language: CSharp
+      name:
+        CSharp: ShowTimePicker(Int32, Int32, Boolean)
+        VB: ShowTimePicker(Int32, Int32, Boolean)
+      nameWithType:
+        CSharp: MobileNativeManager.ShowTimePicker(Int32, Int32, Boolean)
+        VB: MobileNativeManager.ShowTimePicker(Int32, Int32, Boolean)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowTimePicker(System.Int32, System.Int32, System.Boolean)
+        VB: OneDevApp.MobileNativeManager.ShowTimePicker(System.Int32, System.Int32, System.Boolean)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowTimePicker
+        path: ''
+        startLine: 1105
+      summary: "\nShows the time picker dialog with requested hour, mins and format\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowTimePicker(int hour, int minutes, bool is24HourFormat)
+          VB: Public Sub ShowTimePicker(hour As Integer, minutes As Integer, is24HourFormat As Boolean)
+        parameters:
+        - id: hour
+          type: System.Int32
+          description: Hour.
+        - id: minutes
+          type: System.Int32
+          description: Mintues.
+        - id: is24HourFormat
+          type: System.Boolean
+          description: If set true then time picker dialog shows with 24 hours format else 12 hours
+      overload: OneDevApp.MobileNativeManager.ShowTimePicker*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowDatePicker
+      commentId: M:OneDevApp.MobileNativeManager.ShowDatePicker
+      language: CSharp
+      name:
+        CSharp: ShowDatePicker()
+        VB: ShowDatePicker()
+      nameWithType:
+        CSharp: MobileNativeManager.ShowDatePicker()
+        VB: MobileNativeManager.ShowDatePicker()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowDatePicker()
+        VB: OneDevApp.MobileNativeManager.ShowDatePicker()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowDatePicker
+        path: ''
+        startLine: 1117
+      summary: "\nShows the date picker dialog\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowDatePicker()
+          VB: Public Sub ShowDatePicker
+      overload: OneDevApp.MobileNativeManager.ShowDatePicker*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.ShowDatePicker(System.Int32,System.Int32,System.Int32)
+      commentId: M:OneDevApp.MobileNativeManager.ShowDatePicker(System.Int32,System.Int32,System.Int32)
+      language: CSharp
+      name:
+        CSharp: ShowDatePicker(Int32, Int32, Int32)
+        VB: ShowDatePicker(Int32, Int32, Int32)
+      nameWithType:
+        CSharp: MobileNativeManager.ShowDatePicker(Int32, Int32, Int32)
+        VB: MobileNativeManager.ShowDatePicker(Int32, Int32, Int32)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.ShowDatePicker(System.Int32, System.Int32, System.Int32)
+        VB: OneDevApp.MobileNativeManager.ShowDatePicker(System.Int32, System.Int32, System.Int32)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ShowDatePicker
+        path: ''
+        startLine: 1132
+      summary: "\nShows the date picker dialog with requested date\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ShowDatePicker(int year, int month, int day)
+          VB: Public Sub ShowDatePicker(year As Integer, month As Integer, day As Integer)
+        parameters:
+        - id: year
+          type: System.Int32
+          description: Year.
+        - id: month
+          type: System.Int32
+          description: Month.
+        - id: day
+          type: System.Int32
+          description: Date.
+      overload: OneDevApp.MobileNativeManager.ShowDatePicker*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.IsDeviceRooted
+      commentId: M:OneDevApp.MobileNativeManager.IsDeviceRooted
+      language: CSharp
+      name:
+        CSharp: IsDeviceRooted()
+        VB: IsDeviceRooted()
+      nameWithType:
+        CSharp: MobileNativeManager.IsDeviceRooted()
+        VB: MobileNativeManager.IsDeviceRooted()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.IsDeviceRooted()
+        VB: OneDevApp.MobileNativeManager.IsDeviceRooted()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: IsDeviceRooted
+        path: ''
+        startLine: 1146
+      summary: "\nCheck whether device is rooted or not\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public bool IsDeviceRooted()
+          VB: Public Function IsDeviceRooted As Boolean
+        return:
+          type: System.Boolean
+      overload: OneDevApp.MobileNativeManager.IsDeviceRooted*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.OpenSettingScreen
+      commentId: M:OneDevApp.MobileNativeManager.OpenSettingScreen
+      language: CSharp
+      name:
+        CSharp: OpenSettingScreen()
+        VB: OpenSettingScreen()
+      nameWithType:
+        CSharp: MobileNativeManager.OpenSettingScreen()
+        VB: MobileNativeManager.OpenSettingScreen()
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OpenSettingScreen()
+        VB: OneDevApp.MobileNativeManager.OpenSettingScreen()
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OpenSettingScreen
+        path: ''
+        startLine: 1158
+      summary: "\nOpens app settings page\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void OpenSettingScreen()
+          VB: Public Sub OpenSettingScreen
+      overload: OneDevApp.MobileNativeManager.OpenSettingScreen*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.PluginDebug(System.Boolean)
+      commentId: M:OneDevApp.MobileNativeManager.PluginDebug(System.Boolean)
+      language: CSharp
+      name:
+        CSharp: PluginDebug(Boolean)
+        VB: PluginDebug(Boolean)
+      nameWithType:
+        CSharp: MobileNativeManager.PluginDebug(Boolean)
+        VB: MobileNativeManager.PluginDebug(Boolean)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.PluginDebug(System.Boolean)
+        VB: OneDevApp.MobileNativeManager.PluginDebug(System.Boolean)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: PluginDebug
+        path: ''
+        startLine: 1173
+      summary: "\nBy default puglin console log will be diabled, but can be enabled\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void PluginDebug(bool showLog = true)
+          VB: Public Sub PluginDebug(showLog As Boolean = True)
+        parameters:
+        - id: showLog
+          type: System.Boolean
+          description: If set true then log will be displayed else disabled
+      overload: OneDevApp.MobileNativeManager.PluginDebug*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MobileNativeManager.OnImagePickedResult(System.String)
+      commentId: M:OneDevApp.MobileNativeManager.OnImagePickedResult(System.String)
+      language: CSharp
+      name:
+        CSharp: OnImagePickedResult(String)
+        VB: OnImagePickedResult(String)
+      nameWithType:
+        CSharp: MobileNativeManager.OnImagePickedResult(String)
+        VB: MobileNativeManager.OnImagePickedResult(String)
+      qualifiedName:
+        CSharp: OneDevApp.MobileNativeManager.OnImagePickedResult(System.String)
+        VB: OneDevApp.MobileNativeManager.OnImagePickedResult(System.String)
+      type: Method
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: OnImagePickedResult
+        path: ''
+        startLine: 1208
+      syntax:
+        content:
+          CSharp: public void OnImagePickedResult(string param)
+          VB: Public Sub OnImagePickedResult(param As String)
+        parameters:
+        - id: param
+          type: System.String
+      overload: OneDevApp.MobileNativeManager.OnImagePickedResult*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+  - id: OneDevApp.ImagePickerType
+    commentId: T:OneDevApp.ImagePickerType
+    language: CSharp
+    name:
+      CSharp: ImagePickerType
+      VB: ImagePickerType
+    nameWithType:
+      CSharp: ImagePickerType
+      VB: ImagePickerType
+    qualifiedName:
+      CSharp: OneDevApp.ImagePickerType
+      VB: OneDevApp.ImagePickerType
+    type: Enum
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: ImagePickerType
+      path: ''
+      startLine: 1238
+    summary: "\nImage picker options\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public enum ImagePickerType
+        VB: Public Enum ImagePickerType
+    modifiers:
+      CSharp:
+      - public
+      - enum
+      VB:
+      - Public
+      - Enum
+    items:
+    - id: OneDevApp.ImagePickerType.CHOICE
+      commentId: F:OneDevApp.ImagePickerType.CHOICE
+      language: CSharp
+      name:
+        CSharp: CHOICE
+        VB: CHOICE
+      nameWithType:
+        CSharp: ImagePickerType.CHOICE
+        VB: ImagePickerType.CHOICE
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerType.CHOICE
+        VB: OneDevApp.ImagePickerType.CHOICE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CHOICE
+        path: ''
+        startLine: 1241
+      syntax:
+        content:
+          CSharp: CHOICE = 0
+          VB: CHOICE = 0
+        return:
+          type: OneDevApp.ImagePickerType
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.ImagePickerType.CAMERA
+      commentId: F:OneDevApp.ImagePickerType.CAMERA
+      language: CSharp
+      name:
+        CSharp: CAMERA
+        VB: CAMERA
+      nameWithType:
+        CSharp: ImagePickerType.CAMERA
+        VB: ImagePickerType.CAMERA
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerType.CAMERA
+        VB: OneDevApp.ImagePickerType.CAMERA
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CAMERA
+        path: ''
+        startLine: 1243
+      syntax:
+        content:
+          CSharp: CAMERA = 1
+          VB: CAMERA = 1
+        return:
+          type: OneDevApp.ImagePickerType
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.ImagePickerType.GALLERY
+      commentId: F:OneDevApp.ImagePickerType.GALLERY
+      language: CSharp
+      name:
+        CSharp: GALLERY
+        VB: GALLERY
+      nameWithType:
+        CSharp: ImagePickerType.GALLERY
+        VB: ImagePickerType.GALLERY
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerType.GALLERY
+        VB: OneDevApp.ImagePickerType.GALLERY
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: GALLERY
+        path: ''
+        startLine: 1245
+      syntax:
+        content:
+          CSharp: GALLERY = 2
+          VB: GALLERY = 2
+        return:
+          type: OneDevApp.ImagePickerType
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+  - id: OneDevApp.ImagePickerErrorCode
+    commentId: T:OneDevApp.ImagePickerErrorCode
+    language: CSharp
+    name:
+      CSharp: ImagePickerErrorCode
+      VB: ImagePickerErrorCode
+    nameWithType:
+      CSharp: ImagePickerErrorCode
+      VB: ImagePickerErrorCode
+    qualifiedName:
+      CSharp: OneDevApp.ImagePickerErrorCode
+      VB: OneDevApp.ImagePickerErrorCode
+    type: Enum
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: ImagePickerErrorCode
+      path: ''
+      startLine: 1251
+    summary: "\nStatus of a error.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public enum ImagePickerErrorCode
+        VB: Public Enum ImagePickerErrorCode
+    modifiers:
+      CSharp:
+      - public
+      - enum
+      VB:
+      - Public
+      - Enum
+    items:
+    - id: OneDevApp.ImagePickerErrorCode.ERROR_PERMISSION_FAILED
+      commentId: F:OneDevApp.ImagePickerErrorCode.ERROR_PERMISSION_FAILED
+      language: CSharp
+      name:
+        CSharp: ERROR_PERMISSION_FAILED
+        VB: ERROR_PERMISSION_FAILED
+      nameWithType:
+        CSharp: ImagePickerErrorCode.ERROR_PERMISSION_FAILED
+        VB: ImagePickerErrorCode.ERROR_PERMISSION_FAILED
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerErrorCode.ERROR_PERMISSION_FAILED
+        VB: OneDevApp.ImagePickerErrorCode.ERROR_PERMISSION_FAILED
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_PERMISSION_FAILED
+        path: ''
+        startLine: 1253
+      syntax:
+        content:
+          CSharp: ERROR_PERMISSION_FAILED = 1
+          VB: ERROR_PERMISSION_FAILED = 1
+        return:
+          type: OneDevApp.ImagePickerErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.ImagePickerErrorCode.ERROR_FILE_NOT_READABLE
+      commentId: F:OneDevApp.ImagePickerErrorCode.ERROR_FILE_NOT_READABLE
+      language: CSharp
+      name:
+        CSharp: ERROR_FILE_NOT_READABLE
+        VB: ERROR_FILE_NOT_READABLE
+      nameWithType:
+        CSharp: ImagePickerErrorCode.ERROR_FILE_NOT_READABLE
+        VB: ImagePickerErrorCode.ERROR_FILE_NOT_READABLE
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerErrorCode.ERROR_FILE_NOT_READABLE
+        VB: OneDevApp.ImagePickerErrorCode.ERROR_FILE_NOT_READABLE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_FILE_NOT_READABLE
+        path: ''
+        startLine: 1254
+      syntax:
+        content:
+          CSharp: ERROR_FILE_NOT_READABLE = 2
+          VB: ERROR_FILE_NOT_READABLE = 2
+        return:
+          type: OneDevApp.ImagePickerErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.ImagePickerErrorCode.ERROR_INTERNAL_ERROR
+      commentId: F:OneDevApp.ImagePickerErrorCode.ERROR_INTERNAL_ERROR
+      language: CSharp
+      name:
+        CSharp: ERROR_INTERNAL_ERROR
+        VB: ERROR_INTERNAL_ERROR
+      nameWithType:
+        CSharp: ImagePickerErrorCode.ERROR_INTERNAL_ERROR
+        VB: ImagePickerErrorCode.ERROR_INTERNAL_ERROR
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerErrorCode.ERROR_INTERNAL_ERROR
+        VB: OneDevApp.ImagePickerErrorCode.ERROR_INTERNAL_ERROR
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_INTERNAL_ERROR
+        path: ''
+        startLine: 1255
+      syntax:
+        content:
+          CSharp: ERROR_INTERNAL_ERROR = 4
+          VB: ERROR_INTERNAL_ERROR = 4
+        return:
+          type: OneDevApp.ImagePickerErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.ImagePickerErrorCode.ERROR_FILE_CANT_CREATE
+      commentId: F:OneDevApp.ImagePickerErrorCode.ERROR_FILE_CANT_CREATE
+      language: CSharp
+      name:
+        CSharp: ERROR_FILE_CANT_CREATE
+        VB: ERROR_FILE_CANT_CREATE
+      nameWithType:
+        CSharp: ImagePickerErrorCode.ERROR_FILE_CANT_CREATE
+        VB: ImagePickerErrorCode.ERROR_FILE_CANT_CREATE
+      qualifiedName:
+        CSharp: OneDevApp.ImagePickerErrorCode.ERROR_FILE_CANT_CREATE
+        VB: OneDevApp.ImagePickerErrorCode.ERROR_FILE_CANT_CREATE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_FILE_CANT_CREATE
+        path: ''
+        startLine: 1256
+      syntax:
+        content:
+          CSharp: ERROR_FILE_CANT_CREATE = 5
+          VB: ERROR_FILE_CANT_CREATE = 5
+        return:
+          type: OneDevApp.ImagePickerErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+  - id: OneDevApp.UpdateMode
+    commentId: T:OneDevApp.UpdateMode
+    language: CSharp
+    name:
+      CSharp: UpdateMode
+      VB: UpdateMode
+    nameWithType:
+      CSharp: UpdateMode
+      VB: UpdateMode
+    qualifiedName:
+      CSharp: OneDevApp.UpdateMode
+      VB: OneDevApp.UpdateMode
+    type: Enum
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: UpdateMode
+      path: ''
+      startLine: 1262
+    summary: "\nUpdate mode\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public enum UpdateMode
+        VB: Public Enum UpdateMode
+    modifiers:
+      CSharp:
+      - public
+      - enum
+      VB:
+      - Public
+      - Enum
+    items:
+    - id: OneDevApp.UpdateMode.PLAY_STORE
+      commentId: F:OneDevApp.UpdateMode.PLAY_STORE
+      language: CSharp
+      name:
+        CSharp: PLAY_STORE
+        VB: PLAY_STORE
+      nameWithType:
+        CSharp: UpdateMode.PLAY_STORE
+        VB: UpdateMode.PLAY_STORE
+      qualifiedName:
+        CSharp: OneDevApp.UpdateMode.PLAY_STORE
+        VB: OneDevApp.UpdateMode.PLAY_STORE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: PLAY_STORE
+        path: ''
+        startLine: 1265
+      syntax:
+        content:
+          CSharp: PLAY_STORE = 0
+          VB: PLAY_STORE = 0
+        return:
+          type: OneDevApp.UpdateMode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.UpdateMode.THIRD_PARTY
+      commentId: F:OneDevApp.UpdateMode.THIRD_PARTY
+      language: CSharp
+      name:
+        CSharp: THIRD_PARTY
+        VB: THIRD_PARTY
+      nameWithType:
+        CSharp: UpdateMode.THIRD_PARTY
+        VB: UpdateMode.THIRD_PARTY
+      qualifiedName:
+        CSharp: OneDevApp.UpdateMode.THIRD_PARTY
+        VB: OneDevApp.UpdateMode.THIRD_PARTY
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: THIRD_PARTY
+        path: ''
+        startLine: 1267
+      syntax:
+        content:
+          CSharp: THIRD_PARTY = 1
+          VB: THIRD_PARTY = 1
+        return:
+          type: OneDevApp.UpdateMode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+  - id: OneDevApp.UpdateType
+    commentId: T:OneDevApp.UpdateType
+    language: CSharp
+    name:
+      CSharp: UpdateType
+      VB: UpdateType
+    nameWithType:
+      CSharp: UpdateType
+      VB: UpdateType
+    qualifiedName:
+      CSharp: OneDevApp.UpdateType
+      VB: OneDevApp.UpdateType
+    type: Enum
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: UpdateType
+      path: ''
+      startLine: 1273
+    summary: "\nUpdate type for playstore\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public enum UpdateType
+        VB: Public Enum UpdateType
+    modifiers:
+      CSharp:
+      - public
+      - enum
+      VB:
+      - Public
+      - Enum
+    items:
+    - id: OneDevApp.UpdateType.FLEXIBLE
+      commentId: F:OneDevApp.UpdateType.FLEXIBLE
+      language: CSharp
+      name:
+        CSharp: FLEXIBLE
+        VB: FLEXIBLE
+      nameWithType:
+        CSharp: UpdateType.FLEXIBLE
+        VB: UpdateType.FLEXIBLE
+      qualifiedName:
+        CSharp: OneDevApp.UpdateType.FLEXIBLE
+        VB: OneDevApp.UpdateType.FLEXIBLE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: FLEXIBLE
+        path: ''
+        startLine: 1277
+      syntax:
+        content:
+          CSharp: FLEXIBLE = 0
+          VB: FLEXIBLE = 0
+        return:
+          type: OneDevApp.UpdateType
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.UpdateType.IMMEDIATE
+      commentId: F:OneDevApp.UpdateType.IMMEDIATE
+      language: CSharp
+      name:
+        CSharp: IMMEDIATE
+        VB: IMMEDIATE
+      nameWithType:
+        CSharp: UpdateType.IMMEDIATE
+        VB: UpdateType.IMMEDIATE
+      qualifiedName:
+        CSharp: OneDevApp.UpdateType.IMMEDIATE
+        VB: OneDevApp.UpdateType.IMMEDIATE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: IMMEDIATE
+        path: ''
+        startLine: 1279
+      syntax:
+        content:
+          CSharp: IMMEDIATE = 1
+          VB: IMMEDIATE = 1
+        return:
+          type: OneDevApp.UpdateType
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+  - id: OneDevApp.InstallStatus
+    commentId: T:OneDevApp.InstallStatus
+    language: CSharp
+    name:
+      CSharp: InstallStatus
+      VB: InstallStatus
+    nameWithType:
+      CSharp: InstallStatus
+      VB: InstallStatus
+    qualifiedName:
+      CSharp: OneDevApp.InstallStatus
+      VB: OneDevApp.InstallStatus
+    type: Enum
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: InstallStatus
+      path: ''
+      startLine: 1285
+    summary: "\nStatus of a download / install.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public enum InstallStatus
+        VB: Public Enum InstallStatus
+    modifiers:
+      CSharp:
+      - public
+      - enum
+      VB:
+      - Public
+      - Enum
+    items:
+    - id: OneDevApp.InstallStatus.DOWNLOADED
+      commentId: F:OneDevApp.InstallStatus.DOWNLOADED
+      language: CSharp
+      name:
+        CSharp: DOWNLOADED
+        VB: DOWNLOADED
+      nameWithType:
+        CSharp: InstallStatus.DOWNLOADED
+        VB: InstallStatus.DOWNLOADED
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.DOWNLOADED
+        VB: OneDevApp.InstallStatus.DOWNLOADED
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: DOWNLOADED
+        path: ''
+        startLine: 1287
+      syntax:
+        content:
+          CSharp: DOWNLOADED = 11
+          VB: DOWNLOADED = 11
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.CANCELED
+      commentId: F:OneDevApp.InstallStatus.CANCELED
+      language: CSharp
+      name:
+        CSharp: CANCELED
+        VB: CANCELED
+      nameWithType:
+        CSharp: InstallStatus.CANCELED
+        VB: InstallStatus.CANCELED
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.CANCELED
+        VB: OneDevApp.InstallStatus.CANCELED
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: CANCELED
+        path: ''
+        startLine: 1288
+      syntax:
+        content:
+          CSharp: CANCELED = 6
+          VB: CANCELED = 6
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.FAILED
+      commentId: F:OneDevApp.InstallStatus.FAILED
+      language: CSharp
+      name:
+        CSharp: FAILED
+        VB: FAILED
+      nameWithType:
+        CSharp: InstallStatus.FAILED
+        VB: InstallStatus.FAILED
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.FAILED
+        VB: OneDevApp.InstallStatus.FAILED
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: FAILED
+        path: ''
+        startLine: 1289
+      syntax:
+        content:
+          CSharp: FAILED = 5
+          VB: FAILED = 5
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.INSTALLED
+      commentId: F:OneDevApp.InstallStatus.INSTALLED
+      language: CSharp
+      name:
+        CSharp: INSTALLED
+        VB: INSTALLED
+      nameWithType:
+        CSharp: InstallStatus.INSTALLED
+        VB: InstallStatus.INSTALLED
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.INSTALLED
+        VB: OneDevApp.InstallStatus.INSTALLED
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: INSTALLED
+        path: ''
+        startLine: 1290
+      syntax:
+        content:
+          CSharp: INSTALLED = 4
+          VB: INSTALLED = 4
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.INSTALLING
+      commentId: F:OneDevApp.InstallStatus.INSTALLING
+      language: CSharp
+      name:
+        CSharp: INSTALLING
+        VB: INSTALLING
+      nameWithType:
+        CSharp: InstallStatus.INSTALLING
+        VB: InstallStatus.INSTALLING
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.INSTALLING
+        VB: OneDevApp.InstallStatus.INSTALLING
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: INSTALLING
+        path: ''
+        startLine: 1291
+      syntax:
+        content:
+          CSharp: INSTALLING = 3
+          VB: INSTALLING = 3
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.DOWNLOADING
+      commentId: F:OneDevApp.InstallStatus.DOWNLOADING
+      language: CSharp
+      name:
+        CSharp: DOWNLOADING
+        VB: DOWNLOADING
+      nameWithType:
+        CSharp: InstallStatus.DOWNLOADING
+        VB: InstallStatus.DOWNLOADING
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.DOWNLOADING
+        VB: OneDevApp.InstallStatus.DOWNLOADING
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: DOWNLOADING
+        path: ''
+        startLine: 1292
+      syntax:
+        content:
+          CSharp: DOWNLOADING = 2
+          VB: DOWNLOADING = 2
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.PENDING
+      commentId: F:OneDevApp.InstallStatus.PENDING
+      language: CSharp
+      name:
+        CSharp: PENDING
+        VB: PENDING
+      nameWithType:
+        CSharp: InstallStatus.PENDING
+        VB: InstallStatus.PENDING
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.PENDING
+        VB: OneDevApp.InstallStatus.PENDING
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: PENDING
+        path: ''
+        startLine: 1293
+      syntax:
+        content:
+          CSharp: PENDING = 1
+          VB: PENDING = 1
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallStatus.UNKNOWN
+      commentId: F:OneDevApp.InstallStatus.UNKNOWN
+      language: CSharp
+      name:
+        CSharp: UNKNOWN
+        VB: UNKNOWN
+      nameWithType:
+        CSharp: InstallStatus.UNKNOWN
+        VB: InstallStatus.UNKNOWN
+      qualifiedName:
+        CSharp: OneDevApp.InstallStatus.UNKNOWN
+        VB: OneDevApp.InstallStatus.UNKNOWN
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: UNKNOWN
+        path: ''
+        startLine: 1294
+      syntax:
+        content:
+          CSharp: UNKNOWN = 0
+          VB: UNKNOWN = 0
+        return:
+          type: OneDevApp.InstallStatus
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+  - id: OneDevApp.InstallErrorCode
+    commentId: T:OneDevApp.InstallErrorCode
+    language: CSharp
+    name:
+      CSharp: InstallErrorCode
+      VB: InstallErrorCode
+    nameWithType:
+      CSharp: InstallErrorCode
+      VB: InstallErrorCode
+    qualifiedName:
+      CSharp: OneDevApp.InstallErrorCode
+      VB: OneDevApp.InstallErrorCode
+    type: Enum
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: InstallErrorCode
+      path: ''
+      startLine: 1300
+    summary: "\nStatus of a error during update\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public enum InstallErrorCode
+        VB: Public Enum InstallErrorCode
+    modifiers:
+      CSharp:
+      - public
+      - enum
+      VB:
+      - Public
+      - Enum
+    items:
+    - id: OneDevApp.InstallErrorCode.ERROR_DOWNLOAD_NOT_PRESENT
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_DOWNLOAD_NOT_PRESENT
+      language: CSharp
+      name:
+        CSharp: ERROR_DOWNLOAD_NOT_PRESENT
+        VB: ERROR_DOWNLOAD_NOT_PRESENT
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_DOWNLOAD_NOT_PRESENT
+        VB: InstallErrorCode.ERROR_DOWNLOAD_NOT_PRESENT
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_DOWNLOAD_NOT_PRESENT
+        VB: OneDevApp.InstallErrorCode.ERROR_DOWNLOAD_NOT_PRESENT
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_DOWNLOAD_NOT_PRESENT
+        path: ''
+        startLine: 1302
+      syntax:
+        content:
+          CSharp: ERROR_DOWNLOAD_NOT_PRESENT = -7
+          VB: ERROR_DOWNLOAD_NOT_PRESENT = -7
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_API_NOT_AVAILABLE
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_API_NOT_AVAILABLE
+      language: CSharp
+      name:
+        CSharp: ERROR_API_NOT_AVAILABLE
+        VB: ERROR_API_NOT_AVAILABLE
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_API_NOT_AVAILABLE
+        VB: InstallErrorCode.ERROR_API_NOT_AVAILABLE
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_API_NOT_AVAILABLE
+        VB: OneDevApp.InstallErrorCode.ERROR_API_NOT_AVAILABLE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_API_NOT_AVAILABLE
+        path: ''
+        startLine: 1303
+      syntax:
+        content:
+          CSharp: ERROR_API_NOT_AVAILABLE = -3
+          VB: ERROR_API_NOT_AVAILABLE = -3
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_INSTALL_IN_PROGRESS
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_INSTALL_IN_PROGRESS
+      language: CSharp
+      name:
+        CSharp: ERROR_INSTALL_IN_PROGRESS
+        VB: ERROR_INSTALL_IN_PROGRESS
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_INSTALL_IN_PROGRESS
+        VB: InstallErrorCode.ERROR_INSTALL_IN_PROGRESS
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_INSTALL_IN_PROGRESS
+        VB: OneDevApp.InstallErrorCode.ERROR_INSTALL_IN_PROGRESS
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_INSTALL_IN_PROGRESS
+        path: ''
+        startLine: 1304
+      syntax:
+        content:
+          CSharp: ERROR_INSTALL_IN_PROGRESS = -8
+          VB: ERROR_INSTALL_IN_PROGRESS = -8
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_INSTALL_NOT_ALLOWED
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_INSTALL_NOT_ALLOWED
+      language: CSharp
+      name:
+        CSharp: ERROR_INSTALL_NOT_ALLOWED
+        VB: ERROR_INSTALL_NOT_ALLOWED
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_INSTALL_NOT_ALLOWED
+        VB: InstallErrorCode.ERROR_INSTALL_NOT_ALLOWED
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_INSTALL_NOT_ALLOWED
+        VB: OneDevApp.InstallErrorCode.ERROR_INSTALL_NOT_ALLOWED
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_INSTALL_NOT_ALLOWED
+        path: ''
+        startLine: 1305
+      syntax:
+        content:
+          CSharp: ERROR_INSTALL_NOT_ALLOWED = -6
+          VB: ERROR_INSTALL_NOT_ALLOWED = -6
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_INSTALL_UNAVAILABLE
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_INSTALL_UNAVAILABLE
+      language: CSharp
+      name:
+        CSharp: ERROR_INSTALL_UNAVAILABLE
+        VB: ERROR_INSTALL_UNAVAILABLE
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_INSTALL_UNAVAILABLE
+        VB: InstallErrorCode.ERROR_INSTALL_UNAVAILABLE
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_INSTALL_UNAVAILABLE
+        VB: OneDevApp.InstallErrorCode.ERROR_INSTALL_UNAVAILABLE
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_INSTALL_UNAVAILABLE
+        path: ''
+        startLine: 1306
+      syntax:
+        content:
+          CSharp: ERROR_INSTALL_UNAVAILABLE = -5
+          VB: ERROR_INSTALL_UNAVAILABLE = -5
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_INTERNAL_ERROR
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_INTERNAL_ERROR
+      language: CSharp
+      name:
+        CSharp: ERROR_INTERNAL_ERROR
+        VB: ERROR_INTERNAL_ERROR
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_INTERNAL_ERROR
+        VB: InstallErrorCode.ERROR_INTERNAL_ERROR
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_INTERNAL_ERROR
+        VB: OneDevApp.InstallErrorCode.ERROR_INTERNAL_ERROR
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_INTERNAL_ERROR
+        path: ''
+        startLine: 1307
+      syntax:
+        content:
+          CSharp: ERROR_INTERNAL_ERROR = -100
+          VB: ERROR_INTERNAL_ERROR = -100
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_INVALID_REQUEST
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_INVALID_REQUEST
+      language: CSharp
+      name:
+        CSharp: ERROR_INVALID_REQUEST
+        VB: ERROR_INVALID_REQUEST
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_INVALID_REQUEST
+        VB: InstallErrorCode.ERROR_INVALID_REQUEST
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_INVALID_REQUEST
+        VB: OneDevApp.InstallErrorCode.ERROR_INVALID_REQUEST
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_INVALID_REQUEST
+        path: ''
+        startLine: 1308
+      syntax:
+        content:
+          CSharp: ERROR_INVALID_REQUEST = -4
+          VB: ERROR_INVALID_REQUEST = -4
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_PLAY_STORE_NOT_FOUND
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_PLAY_STORE_NOT_FOUND
+      language: CSharp
+      name:
+        CSharp: ERROR_PLAY_STORE_NOT_FOUND
+        VB: ERROR_PLAY_STORE_NOT_FOUND
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_PLAY_STORE_NOT_FOUND
+        VB: InstallErrorCode.ERROR_PLAY_STORE_NOT_FOUND
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_PLAY_STORE_NOT_FOUND
+        VB: OneDevApp.InstallErrorCode.ERROR_PLAY_STORE_NOT_FOUND
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_PLAY_STORE_NOT_FOUND
+        path: ''
+        startLine: 1309
+      syntax:
+        content:
+          CSharp: ERROR_PLAY_STORE_NOT_FOUND = -9
+          VB: ERROR_PLAY_STORE_NOT_FOUND = -9
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_UNKNOWN
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_UNKNOWN
+      language: CSharp
+      name:
+        CSharp: ERROR_UNKNOWN
+        VB: ERROR_UNKNOWN
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_UNKNOWN
+        VB: InstallErrorCode.ERROR_UNKNOWN
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_UNKNOWN
+        VB: OneDevApp.InstallErrorCode.ERROR_UNKNOWN
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_UNKNOWN
+        path: ''
+        startLine: 1310
+      syntax:
+        content:
+          CSharp: ERROR_UNKNOWN = -2
+          VB: ERROR_UNKNOWN = -2
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.NO_ERROR
+      commentId: F:OneDevApp.InstallErrorCode.NO_ERROR
+      language: CSharp
+      name:
+        CSharp: NO_ERROR
+        VB: NO_ERROR
+      nameWithType:
+        CSharp: InstallErrorCode.NO_ERROR
+        VB: InstallErrorCode.NO_ERROR
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.NO_ERROR
+        VB: OneDevApp.InstallErrorCode.NO_ERROR
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: NO_ERROR
+        path: ''
+        startLine: 1311
+      syntax:
+        content:
+          CSharp: NO_ERROR = 0
+          VB: NO_ERROR = 0
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_LIBRARY
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_LIBRARY
+      language: CSharp
+      name:
+        CSharp: ERROR_LIBRARY
+        VB: ERROR_LIBRARY
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_LIBRARY
+        VB: InstallErrorCode.ERROR_LIBRARY
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_LIBRARY
+        VB: OneDevApp.InstallErrorCode.ERROR_LIBRARY
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_LIBRARY
+        path: ''
+        startLine: 1312
+      syntax:
+        content:
+          CSharp: ERROR_LIBRARY = -1
+          VB: ERROR_LIBRARY = -1
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_STORAGE_PERMISSION
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_STORAGE_PERMISSION
+      language: CSharp
+      name:
+        CSharp: ERROR_STORAGE_PERMISSION
+        VB: ERROR_STORAGE_PERMISSION
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_STORAGE_PERMISSION
+        VB: InstallErrorCode.ERROR_STORAGE_PERMISSION
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_STORAGE_PERMISSION
+        VB: OneDevApp.InstallErrorCode.ERROR_STORAGE_PERMISSION
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_STORAGE_PERMISSION
+        path: ''
+        startLine: 1313
+      syntax:
+        content:
+          CSharp: ERROR_STORAGE_PERMISSION = -101
+          VB: ERROR_STORAGE_PERMISSION = -101
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+    - id: OneDevApp.InstallErrorCode.ERROR_NETWORK
+      commentId: F:OneDevApp.InstallErrorCode.ERROR_NETWORK
+      language: CSharp
+      name:
+        CSharp: ERROR_NETWORK
+        VB: ERROR_NETWORK
+      nameWithType:
+        CSharp: InstallErrorCode.ERROR_NETWORK
+        VB: InstallErrorCode.ERROR_NETWORK
+      qualifiedName:
+        CSharp: OneDevApp.InstallErrorCode.ERROR_NETWORK
+        VB: OneDevApp.InstallErrorCode.ERROR_NETWORK
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: ERROR_NETWORK
+        path: ''
+        startLine: 1314
+      syntax:
+        content:
+          CSharp: ERROR_NETWORK = -102
+          VB: ERROR_NETWORK = -102
+        return:
+          type: OneDevApp.InstallErrorCode
+      modifiers:
+        CSharp:
+        - public
+        - const
+        VB:
+        - Public
+        - Const
+  - id: OneDevApp.ImageData
+    commentId: T:OneDevApp.ImageData
+    language: CSharp
+    name:
+      CSharp: ImageData
+      VB: ImageData
+    nameWithType:
+      CSharp: ImageData
+      VB: ImageData
+    qualifiedName:
+      CSharp: OneDevApp.ImageData
+      VB: OneDevApp.ImageData
+    type: Class
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: ImageData
+      path: ''
+      startLine: 1326
+    summary: "\nImageData class model for sharing image details\n"
+    example: []
+    syntax:
+      content:
+        CSharp: >-
+          [Serializable]
+
+          public class ImageData
+        VB: >-
+          <Serializable>
+
+          Public Class ImageData
+    inheritance:
+    - System.Object
+    attributes:
+    - type: System.SerializableAttribute
+      ctor: System.SerializableAttribute.#ctor
+      arguments: []
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: OneDevApp.ImageData.status
+      commentId: F:OneDevApp.ImageData.status
+      language: CSharp
+      name:
+        CSharp: status
+        VB: status
+      nameWithType:
+        CSharp: ImageData.status
+        VB: ImageData.status
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.status
+        VB: OneDevApp.ImageData.status
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: status
+        path: ''
+        startLine: 1329
+      syntax:
+        content:
+          CSharp: public bool status
+          VB: Public status As Boolean
+        return:
+          type: System.Boolean
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.message
+      commentId: F:OneDevApp.ImageData.message
+      language: CSharp
+      name:
+        CSharp: message
+        VB: message
+      nameWithType:
+        CSharp: ImageData.message
+        VB: ImageData.message
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.message
+        VB: OneDevApp.ImageData.message
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: message
+        path: ''
+        startLine: 1330
+      syntax:
+        content:
+          CSharp: public string message
+          VB: Public message As String
+        return:
+          type: System.String
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.errorCode
+      commentId: F:OneDevApp.ImageData.errorCode
+      language: CSharp
+      name:
+        CSharp: errorCode
+        VB: errorCode
+      nameWithType:
+        CSharp: ImageData.errorCode
+        VB: ImageData.errorCode
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.errorCode
+        VB: OneDevApp.ImageData.errorCode
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: errorCode
+        path: ''
+        startLine: 1331
+      syntax:
+        content:
+          CSharp: public int errorCode
+          VB: Public errorCode As Integer
+        return:
+          type: System.Int32
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.width
+      commentId: F:OneDevApp.ImageData.width
+      language: CSharp
+      name:
+        CSharp: width
+        VB: width
+      nameWithType:
+        CSharp: ImageData.width
+        VB: ImageData.width
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.width
+        VB: OneDevApp.ImageData.width
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: width
+        path: ''
+        startLine: 1332
+      syntax:
+        content:
+          CSharp: public int width
+          VB: Public width As Integer
+        return:
+          type: System.Int32
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.height
+      commentId: F:OneDevApp.ImageData.height
+      language: CSharp
+      name:
+        CSharp: height
+        VB: height
+      nameWithType:
+        CSharp: ImageData.height
+        VB: ImageData.height
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.height
+        VB: OneDevApp.ImageData.height
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: height
+        path: ''
+        startLine: 1333
+      syntax:
+        content:
+          CSharp: public int height
+          VB: Public height As Integer
+        return:
+          type: System.Int32
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.uri
+      commentId: F:OneDevApp.ImageData.uri
+      language: CSharp
+      name:
+        CSharp: uri
+        VB: uri
+      nameWithType:
+        CSharp: ImageData.uri
+        VB: ImageData.uri
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.uri
+        VB: OneDevApp.ImageData.uri
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: uri
+        path: ''
+        startLine: 1334
+      syntax:
+        content:
+          CSharp: public string uri
+          VB: Public uri As String
+        return:
+          type: System.String
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.path
+      commentId: F:OneDevApp.ImageData.path
+      language: CSharp
+      name:
+        CSharp: path
+        VB: path
+      nameWithType:
+        CSharp: ImageData.path
+        VB: ImageData.path
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.path
+        VB: OneDevApp.ImageData.path
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: path
+        path: ''
+        startLine: 1335
+      syntax:
+        content:
+          CSharp: public string path
+          VB: Public path As String
+        return:
+          type: System.String
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.ImageData.imageBase64
+      commentId: F:OneDevApp.ImageData.imageBase64
+      language: CSharp
+      name:
+        CSharp: imageBase64
+        VB: imageBase64
+      nameWithType:
+        CSharp: ImageData.imageBase64
+        VB: ImageData.imageBase64
+      qualifiedName:
+        CSharp: OneDevApp.ImageData.imageBase64
+        VB: OneDevApp.ImageData.imageBase64
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: imageBase64
+        path: ''
+        startLine: 1336
+      syntax:
+        content:
+          CSharp: public string imageBase64
+          VB: Public imageBase64 As String
+        return:
+          type: System.String
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+  - id: OneDevApp.EmailSharingData
+    commentId: T:OneDevApp.EmailSharingData
+    language: CSharp
+    name:
+      CSharp: EmailSharingData
+      VB: EmailSharingData
+    nameWithType:
+      CSharp: EmailSharingData
+      VB: EmailSharingData
+    qualifiedName:
+      CSharp: OneDevApp.EmailSharingData
+      VB: OneDevApp.EmailSharingData
+    type: Class
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: EmailSharingData
+      path: ''
+      startLine: 1341
+    summary: "\nEmailSharingData class model for sharing email content details\n"
+    example: []
+    syntax:
+      content:
+        CSharp: >-
+          [Serializable]
+
+          public class EmailSharingData
+        VB: >-
+          <Serializable>
+
+          Public Class EmailSharingData
+    inheritance:
+    - System.Object
+    attributes:
+    - type: System.SerializableAttribute
+      ctor: System.SerializableAttribute.#ctor
+      arguments: []
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: OneDevApp.EmailSharingData.message
+      commentId: F:OneDevApp.EmailSharingData.message
+      language: CSharp
+      name:
+        CSharp: message
+        VB: message
+      nameWithType:
+        CSharp: EmailSharingData.message
+        VB: EmailSharingData.message
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.message
+        VB: OneDevApp.EmailSharingData.message
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: message
+        path: ''
+        startLine: 1344
+      syntax:
+        content:
+          CSharp: public string message
+          VB: Public message As String
+        return:
+          type: System.String
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.isHtmlText
+      commentId: F:OneDevApp.EmailSharingData.isHtmlText
+      language: CSharp
+      name:
+        CSharp: isHtmlText
+        VB: isHtmlText
+      nameWithType:
+        CSharp: EmailSharingData.isHtmlText
+        VB: EmailSharingData.isHtmlText
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.isHtmlText
+        VB: OneDevApp.EmailSharingData.isHtmlText
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: isHtmlText
+        path: ''
+        startLine: 1345
+      syntax:
+        content:
+          CSharp: public bool isHtmlText
+          VB: Public isHtmlText As Boolean
+        return:
+          type: System.Boolean
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.subject
+      commentId: F:OneDevApp.EmailSharingData.subject
+      language: CSharp
+      name:
+        CSharp: subject
+        VB: subject
+      nameWithType:
+        CSharp: EmailSharingData.subject
+        VB: EmailSharingData.subject
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.subject
+        VB: OneDevApp.EmailSharingData.subject
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: subject
+        path: ''
+        startLine: 1346
+      syntax:
+        content:
+          CSharp: public string subject
+          VB: Public subject As String
+        return:
+          type: System.String
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.emailTo
+      commentId: F:OneDevApp.EmailSharingData.emailTo
+      language: CSharp
+      name:
+        CSharp: emailTo
+        VB: emailTo
+      nameWithType:
+        CSharp: EmailSharingData.emailTo
+        VB: EmailSharingData.emailTo
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.emailTo
+        VB: OneDevApp.EmailSharingData.emailTo
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: emailTo
+        path: ''
+        startLine: 1347
+      syntax:
+        content:
+          CSharp: public string[] emailTo
+          VB: Public emailTo As String()
+        return:
+          type: System.String[]
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.emailCc
+      commentId: F:OneDevApp.EmailSharingData.emailCc
+      language: CSharp
+      name:
+        CSharp: emailCc
+        VB: emailCc
+      nameWithType:
+        CSharp: EmailSharingData.emailCc
+        VB: EmailSharingData.emailCc
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.emailCc
+        VB: OneDevApp.EmailSharingData.emailCc
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: emailCc
+        path: ''
+        startLine: 1348
+      syntax:
+        content:
+          CSharp: public string[] emailCc
+          VB: Public emailCc As String()
+        return:
+          type: System.String[]
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.emailBcc
+      commentId: F:OneDevApp.EmailSharingData.emailBcc
+      language: CSharp
+      name:
+        CSharp: emailBcc
+        VB: emailBcc
+      nameWithType:
+        CSharp: EmailSharingData.emailBcc
+        VB: EmailSharingData.emailBcc
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.emailBcc
+        VB: OneDevApp.EmailSharingData.emailBcc
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: emailBcc
+        path: ''
+        startLine: 1349
+      syntax:
+        content:
+          CSharp: public string[] emailBcc
+          VB: Public emailBcc As String()
+        return:
+          type: System.String[]
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.fileData
+      commentId: F:OneDevApp.EmailSharingData.fileData
+      language: CSharp
+      name:
+        CSharp: fileData
+        VB: fileData
+      nameWithType:
+        CSharp: EmailSharingData.fileData
+        VB: EmailSharingData.fileData
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.fileData
+        VB: OneDevApp.EmailSharingData.fileData
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: fileData
+        path: ''
+        startLine: 1350
+      syntax:
+        content:
+          CSharp: public MultipleFilesData fileData
+          VB: Public fileData As MultipleFilesData
+        return:
+          type: OneDevApp.MultipleFilesData
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.EmailSharingData.#ctor
+      commentId: M:OneDevApp.EmailSharingData.#ctor
+      language: CSharp
+      name:
+        CSharp: EmailSharingData()
+        VB: EmailSharingData()
+      nameWithType:
+        CSharp: EmailSharingData.EmailSharingData()
+        VB: EmailSharingData.EmailSharingData()
+      qualifiedName:
+        CSharp: OneDevApp.EmailSharingData.EmailSharingData()
+        VB: OneDevApp.EmailSharingData.EmailSharingData()
+      type: Constructor
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: .ctor
+        path: ''
+        startLine: 1352
+      syntax:
+        content:
+          CSharp: public EmailSharingData()
+          VB: Public Sub New
+      overload: OneDevApp.EmailSharingData.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+  - id: OneDevApp.MultipleFilesData
+    commentId: T:OneDevApp.MultipleFilesData
+    language: CSharp
+    name:
+      CSharp: MultipleFilesData
+      VB: MultipleFilesData
+    nameWithType:
+      CSharp: MultipleFilesData
+      VB: MultipleFilesData
+    qualifiedName:
+      CSharp: OneDevApp.MultipleFilesData
+      VB: OneDevApp.MultipleFilesData
+    type: Class
+    assemblies:
+    - cs.temp.dll
+    namespace: OneDevApp
+    source:
+      id: MultipleFilesData
+      path: ''
+      startLine: 1363
+    summary: "\nMultipleFilesData class model to share multiple image files\n"
+    example: []
+    syntax:
+      content:
+        CSharp: >-
+          [Serializable]
+
+          public class MultipleFilesData
+        VB: >-
+          <Serializable>
+
+          Public Class MultipleFilesData
+    inheritance:
+    - System.Object
+    attributes:
+    - type: System.SerializableAttribute
+      ctor: System.SerializableAttribute.#ctor
+      arguments: []
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: OneDevApp.MultipleFilesData.fileUri
+      commentId: F:OneDevApp.MultipleFilesData.fileUri
+      language: CSharp
+      name:
+        CSharp: fileUri
+        VB: fileUri
+      nameWithType:
+        CSharp: MultipleFilesData.fileUri
+        VB: MultipleFilesData.fileUri
+      qualifiedName:
+        CSharp: OneDevApp.MultipleFilesData.fileUri
+        VB: OneDevApp.MultipleFilesData.fileUri
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: fileUri
+        path: ''
+        startLine: 1366
+      syntax:
+        content:
+          CSharp: public string[] fileUri
+          VB: Public fileUri As String()
+        return:
+          type: System.String[]
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MultipleFilesData.filePath
+      commentId: F:OneDevApp.MultipleFilesData.filePath
+      language: CSharp
+      name:
+        CSharp: filePath
+        VB: filePath
+      nameWithType:
+        CSharp: MultipleFilesData.filePath
+        VB: MultipleFilesData.filePath
+      qualifiedName:
+        CSharp: OneDevApp.MultipleFilesData.filePath
+        VB: OneDevApp.MultipleFilesData.filePath
+      type: Field
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: filePath
+        path: ''
+        startLine: 1367
+      syntax:
+        content:
+          CSharp: public string[] filePath
+          VB: Public filePath As String()
+        return:
+          type: System.String[]
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: OneDevApp.MultipleFilesData.#ctor
+      commentId: M:OneDevApp.MultipleFilesData.#ctor
+      language: CSharp
+      name:
+        CSharp: MultipleFilesData()
+        VB: MultipleFilesData()
+      nameWithType:
+        CSharp: MultipleFilesData.MultipleFilesData()
+        VB: MultipleFilesData.MultipleFilesData()
+      qualifiedName:
+        CSharp: OneDevApp.MultipleFilesData.MultipleFilesData()
+        VB: OneDevApp.MultipleFilesData.MultipleFilesData()
+      type: Constructor
+      assemblies:
+      - cs.temp.dll
+      namespace: OneDevApp
+      source:
+        id: .ctor
+        path: ''
+        startLine: 1369
+      syntax:
+        content:
+          CSharp: public MultipleFilesData()
+          VB: Public Sub New
+      overload: OneDevApp.MultipleFilesData.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+references:
+  System.Action`1:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - name: T
+        nameWithType: T
+        qualifiedName: T
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - name: T
+        nameWithType: T
+        qualifiedName: T
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    commentId: T:System.Action`1
+  System:
+    name:
+      CSharp:
+      - name: System
+        nameWithType: System
+        qualifiedName: System
+        isExternal: true
+      VB:
+      - name: System
+        nameWithType: System
+        qualifiedName: System
+    isDefinition: true
+    commentId: N:System
+  System.Action{System.Boolean}:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`1
+    parent: System
+    commentId: T:System.Action{System.Boolean}
+  System.Action{System.Int32}:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.Int32
+        name: Int32
+        nameWithType: Int32
+        qualifiedName: System.Int32
+        isExternal: true
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.Int32
+        name: Int32
+        nameWithType: Int32
+        qualifiedName: System.Int32
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`1
+    parent: System
+    commentId: T:System.Action{System.Int32}
+  System.Action{OneDevApp.InstallStatus}:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: OneDevApp.InstallStatus
+        name: InstallStatus
+        nameWithType: InstallStatus
+        qualifiedName: OneDevApp.InstallStatus
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: OneDevApp.InstallStatus
+        name: InstallStatus
+        nameWithType: InstallStatus
+        qualifiedName: OneDevApp.InstallStatus
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`1
+    parent: System
+    commentId: T:System.Action{OneDevApp.InstallStatus}
+  System.Action`2:
+    name:
+      CSharp:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - name: T1
+        nameWithType: T1
+        qualifiedName: T1
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - name: T2
+        nameWithType: T2
+        qualifiedName: T2
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - name: T1
+        nameWithType: T1
+        qualifiedName: T1
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - name: T2
+        nameWithType: T2
+        qualifiedName: T2
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    commentId: T:System.Action`2
+  System.Action{System.Int64,System.Int64}:
+    name:
+      CSharp:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.Int64
+        name: Int64
+        nameWithType: Int64
+        qualifiedName: System.Int64
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Int64
+        name: Int64
+        nameWithType: Int64
+        qualifiedName: System.Int64
+        isExternal: true
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.Int64
+        name: Int64
+        nameWithType: Int64
+        qualifiedName: System.Int64
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Int64
+        name: Int64
+        nameWithType: Int64
+        qualifiedName: System.Int64
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`2
+    parent: System
+    commentId: T:System.Action{System.Int64,System.Int64}
+  System.Action{System.Int32,System.String}:
+    name:
+      CSharp:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.Int32
+        name: Int32
+        nameWithType: Int32
+        qualifiedName: System.Int32
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.Int32
+        name: Int32
+        nameWithType: Int32
+        qualifiedName: System.Int32
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`2
+    parent: System
+    commentId: T:System.Action{System.Int32,System.String}
+  System.Action{System.String[],System.Boolean}:
+    name:
+      CSharp:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: '[]'
+        nameWithType: '[]'
+        qualifiedName: '[]'
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`2
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: ()
+        nameWithType: ()
+        qualifiedName: ()
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`2
+    parent: System
+    commentId: T:System.Action{System.String[],System.Boolean}
+  System.Action{System.String[]}:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: '[]'
+        nameWithType: '[]'
+        qualifiedName: '[]'
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: ()
+        nameWithType: ()
+        qualifiedName: ()
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`1
+    parent: System
+    commentId: T:System.Action{System.String[]}
+  System.Action{System.String}:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`1
+    parent: System
+    commentId: T:System.Action{System.String}
+  System.Action{OneDevApp.ImageData}:
+    name:
+      CSharp:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: <
+        nameWithType: <
+        qualifiedName: <
+      - id: OneDevApp.ImageData
+        name: ImageData
+        nameWithType: ImageData
+        qualifiedName: OneDevApp.ImageData
+      - name: '>'
+        nameWithType: '>'
+        qualifiedName: '>'
+      VB:
+      - id: System.Action`1
+        name: Action
+        nameWithType: Action
+        qualifiedName: System.Action
+        isExternal: true
+      - name: '(Of '
+        nameWithType: '(Of '
+        qualifiedName: '(Of '
+      - id: OneDevApp.ImageData
+        name: ImageData
+        nameWithType: ImageData
+        qualifiedName: OneDevApp.ImageData
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: false
+    definition: System.Action`1
+    parent: System
+    commentId: T:System.Action{OneDevApp.ImageData}
+  OneDevApp:
+    name:
+      CSharp:
+      - name: OneDevApp
+        nameWithType: OneDevApp
+        qualifiedName: OneDevApp
+      VB:
+      - name: OneDevApp
+        nameWithType: OneDevApp
+        qualifiedName: OneDevApp
+    isDefinition: true
+    commentId: N:OneDevApp
+  OneDevApp.MobileNativeManager:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager
+        name: MobileNativeManager
+        nameWithType: MobileNativeManager
+        qualifiedName: OneDevApp.MobileNativeManager
+      VB:
+      - id: OneDevApp.MobileNativeManager
+        name: MobileNativeManager
+        nameWithType: MobileNativeManager
+        qualifiedName: OneDevApp.MobileNativeManager
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.MobileNativeManager
+  OneDevApp.MobileNativeManager.Instance*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.Instance*
+        name: Instance
+        nameWithType: MobileNativeManager.Instance
+        qualifiedName: OneDevApp.MobileNativeManager.Instance
+      VB:
+      - id: OneDevApp.MobileNativeManager.Instance*
+        name: Instance
+        nameWithType: MobileNativeManager.Instance
+        qualifiedName: OneDevApp.MobileNativeManager.Instance
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.Instance
+  OneDevApp.UpdateMode:
+    name:
+      CSharp:
+      - id: OneDevApp.UpdateMode
+        name: UpdateMode
+        nameWithType: UpdateMode
+        qualifiedName: OneDevApp.UpdateMode
+      VB:
+      - id: OneDevApp.UpdateMode
+        name: UpdateMode
+        nameWithType: UpdateMode
+        qualifiedName: OneDevApp.UpdateMode
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.UpdateMode
+  OneDevApp.UpdateType:
+    name:
+      CSharp:
+      - id: OneDevApp.UpdateType
+        name: UpdateType
+        nameWithType: UpdateType
+        qualifiedName: OneDevApp.UpdateType
+      VB:
+      - id: OneDevApp.UpdateType
+        name: UpdateType
+        nameWithType: UpdateType
+        qualifiedName: OneDevApp.UpdateType
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.UpdateType
+  System.String:
+    name:
+      CSharp:
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      VB:
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.String
+  OneDevApp.MobileNativeManager.CheckForUpdate*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.CheckForUpdate*
+        name: CheckForUpdate
+        nameWithType: MobileNativeManager.CheckForUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.CheckForUpdate
+      VB:
+      - id: OneDevApp.MobileNativeManager.CheckForUpdate*
+        name: CheckForUpdate
+        nameWithType: MobileNativeManager.CheckForUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.CheckForUpdate
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.CheckForUpdate
+  OneDevApp.MobileNativeManager.StartUpdate*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.StartUpdate*
+        name: StartUpdate
+        nameWithType: MobileNativeManager.StartUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.StartUpdate
+      VB:
+      - id: OneDevApp.MobileNativeManager.StartUpdate*
+        name: StartUpdate
+        nameWithType: MobileNativeManager.StartUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.StartUpdate
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.StartUpdate
+  OneDevApp.MobileNativeManager.CompleteUpdate*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.CompleteUpdate*
+        name: CompleteUpdate
+        nameWithType: MobileNativeManager.CompleteUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.CompleteUpdate
+      VB:
+      - id: OneDevApp.MobileNativeManager.CompleteUpdate*
+        name: CompleteUpdate
+        nameWithType: MobileNativeManager.CompleteUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.CompleteUpdate
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.CompleteUpdate
+  OneDevApp.MobileNativeManager.ContinueUpdate*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ContinueUpdate*
+        name: ContinueUpdate
+        nameWithType: MobileNativeManager.ContinueUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.ContinueUpdate
+      VB:
+      - id: OneDevApp.MobileNativeManager.ContinueUpdate*
+        name: ContinueUpdate
+        nameWithType: MobileNativeManager.ContinueUpdate
+        qualifiedName: OneDevApp.MobileNativeManager.ContinueUpdate
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ContinueUpdate
+  System.String[]:
+    name:
+      CSharp:
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: '[]'
+        nameWithType: '[]'
+        qualifiedName: '[]'
+      VB:
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      - name: ()
+        nameWithType: ()
+        qualifiedName: ()
+    isDefinition: false
+  OneDevApp.MobileNativeManager.RequestPermission*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.RequestPermission*
+        name: RequestPermission
+        nameWithType: MobileNativeManager.RequestPermission
+        qualifiedName: OneDevApp.MobileNativeManager.RequestPermission
+      VB:
+      - id: OneDevApp.MobileNativeManager.RequestPermission*
+        name: RequestPermission
+        nameWithType: MobileNativeManager.RequestPermission
+        qualifiedName: OneDevApp.MobileNativeManager.RequestPermission
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.RequestPermission
+  System.Boolean:
+    name:
+      CSharp:
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+      VB:
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.Boolean
+  OneDevApp.MobileNativeManager.CheckPermission*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.CheckPermission*
+        name: CheckPermission
+        nameWithType: MobileNativeManager.CheckPermission
+        qualifiedName: OneDevApp.MobileNativeManager.CheckPermission
+      VB:
+      - id: OneDevApp.MobileNativeManager.CheckPermission*
+        name: CheckPermission
+        nameWithType: MobileNativeManager.CheckPermission
+        qualifiedName: OneDevApp.MobileNativeManager.CheckPermission
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.CheckPermission
+  OneDevApp.MobileNativeManager.CheckPermissionRationale*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.CheckPermissionRationale*
+        name: CheckPermissionRationale
+        nameWithType: MobileNativeManager.CheckPermissionRationale
+        qualifiedName: OneDevApp.MobileNativeManager.CheckPermissionRationale
+      VB:
+      - id: OneDevApp.MobileNativeManager.CheckPermissionRationale*
+        name: CheckPermissionRationale
+        nameWithType: MobileNativeManager.CheckPermissionRationale
+        qualifiedName: OneDevApp.MobileNativeManager.CheckPermissionRationale
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.CheckPermissionRationale
+  OneDevApp.ImagePickerType:
+    name:
+      CSharp:
+      - id: OneDevApp.ImagePickerType
+        name: ImagePickerType
+        nameWithType: ImagePickerType
+        qualifiedName: OneDevApp.ImagePickerType
+      VB:
+      - id: OneDevApp.ImagePickerType
+        name: ImagePickerType
+        nameWithType: ImagePickerType
+        qualifiedName: OneDevApp.ImagePickerType
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.ImagePickerType
+  System.Int32:
+    name:
+      CSharp:
+      - id: System.Int32
+        name: Int32
+        nameWithType: Int32
+        qualifiedName: System.Int32
+        isExternal: true
+      VB:
+      - id: System.Int32
+        name: Int32
+        nameWithType: Int32
+        qualifiedName: System.Int32
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.Int32
+  OneDevApp.MobileNativeManager.GetImageFromDevice*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.GetImageFromDevice*
+        name: GetImageFromDevice
+        nameWithType: MobileNativeManager.GetImageFromDevice
+        qualifiedName: OneDevApp.MobileNativeManager.GetImageFromDevice
+      VB:
+      - id: OneDevApp.MobileNativeManager.GetImageFromDevice*
+        name: GetImageFromDevice
+        nameWithType: MobileNativeManager.GetImageFromDevice
+        qualifiedName: OneDevApp.MobileNativeManager.GetImageFromDevice
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.GetImageFromDevice
+  OneDevApp.MobileNativeManager.ShareOnWhatsApp*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShareOnWhatsApp*
+        name: ShareOnWhatsApp
+        nameWithType: MobileNativeManager.ShareOnWhatsApp
+        qualifiedName: OneDevApp.MobileNativeManager.ShareOnWhatsApp
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShareOnWhatsApp*
+        name: ShareOnWhatsApp
+        nameWithType: MobileNativeManager.ShareOnWhatsApp
+        qualifiedName: OneDevApp.MobileNativeManager.ShareOnWhatsApp
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShareOnWhatsApp
+  OneDevApp.MobileNativeManager.ShareTextContent*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShareTextContent*
+        name: ShareTextContent
+        nameWithType: MobileNativeManager.ShareTextContent
+        qualifiedName: OneDevApp.MobileNativeManager.ShareTextContent
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShareTextContent*
+        name: ShareTextContent
+        nameWithType: MobileNativeManager.ShareTextContent
+        qualifiedName: OneDevApp.MobileNativeManager.ShareTextContent
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShareTextContent
+  OneDevApp.MobileNativeManager.ShareFileContent*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShareFileContent*
+        name: ShareFileContent
+        nameWithType: MobileNativeManager.ShareFileContent
+        qualifiedName: OneDevApp.MobileNativeManager.ShareFileContent
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShareFileContent*
+        name: ShareFileContent
+        nameWithType: MobileNativeManager.ShareFileContent
+        qualifiedName: OneDevApp.MobileNativeManager.ShareFileContent
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShareFileContent
+  OneDevApp.MultipleFilesData:
+    name:
+      CSharp:
+      - id: OneDevApp.MultipleFilesData
+        name: MultipleFilesData
+        nameWithType: MultipleFilesData
+        qualifiedName: OneDevApp.MultipleFilesData
+      VB:
+      - id: OneDevApp.MultipleFilesData
+        name: MultipleFilesData
+        nameWithType: MultipleFilesData
+        qualifiedName: OneDevApp.MultipleFilesData
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.MultipleFilesData
+  OneDevApp.MobileNativeManager.ShareMultipleFileContent*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShareMultipleFileContent*
+        name: ShareMultipleFileContent
+        nameWithType: MobileNativeManager.ShareMultipleFileContent
+        qualifiedName: OneDevApp.MobileNativeManager.ShareMultipleFileContent
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShareMultipleFileContent*
+        name: ShareMultipleFileContent
+        nameWithType: MobileNativeManager.ShareMultipleFileContent
+        qualifiedName: OneDevApp.MobileNativeManager.ShareMultipleFileContent
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShareMultipleFileContent
+  OneDevApp.EmailSharingData:
+    name:
+      CSharp:
+      - id: OneDevApp.EmailSharingData
+        name: EmailSharingData
+        nameWithType: EmailSharingData
+        qualifiedName: OneDevApp.EmailSharingData
+      VB:
+      - id: OneDevApp.EmailSharingData
+        name: EmailSharingData
+        nameWithType: EmailSharingData
+        qualifiedName: OneDevApp.EmailSharingData
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.EmailSharingData
+  OneDevApp.MobileNativeManager.ShareOnMail*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShareOnMail*
+        name: ShareOnMail
+        nameWithType: MobileNativeManager.ShareOnMail
+        qualifiedName: OneDevApp.MobileNativeManager.ShareOnMail
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShareOnMail*
+        name: ShareOnMail
+        nameWithType: MobileNativeManager.ShareOnMail
+        qualifiedName: OneDevApp.MobileNativeManager.ShareOnMail
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShareOnMail
+  OneDevApp.MobileNativeManager.EnableLocation*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.EnableLocation*
+        name: EnableLocation
+        nameWithType: MobileNativeManager.EnableLocation
+        qualifiedName: OneDevApp.MobileNativeManager.EnableLocation
+      VB:
+      - id: OneDevApp.MobileNativeManager.EnableLocation*
+        name: EnableLocation
+        nameWithType: MobileNativeManager.EnableLocation
+        qualifiedName: OneDevApp.MobileNativeManager.EnableLocation
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.EnableLocation
+  OneDevApp.MobileNativeManager.ShowToast*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShowToast*
+        name: ShowToast
+        nameWithType: MobileNativeManager.ShowToast
+        qualifiedName: OneDevApp.MobileNativeManager.ShowToast
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShowToast*
+        name: ShowToast
+        nameWithType: MobileNativeManager.ShowToast
+        qualifiedName: OneDevApp.MobileNativeManager.ShowToast
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShowToast
+  OneDevApp.MobileNativeManager.ShowAlertMessage*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShowAlertMessage*
+        name: ShowAlertMessage
+        nameWithType: MobileNativeManager.ShowAlertMessage
+        qualifiedName: OneDevApp.MobileNativeManager.ShowAlertMessage
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShowAlertMessage*
+        name: ShowAlertMessage
+        nameWithType: MobileNativeManager.ShowAlertMessage
+        qualifiedName: OneDevApp.MobileNativeManager.ShowAlertMessage
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShowAlertMessage
+  OneDevApp.MobileNativeManager.ShowConfirmationMessage*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShowConfirmationMessage*
+        name: ShowConfirmationMessage
+        nameWithType: MobileNativeManager.ShowConfirmationMessage
+        qualifiedName: OneDevApp.MobileNativeManager.ShowConfirmationMessage
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShowConfirmationMessage*
+        name: ShowConfirmationMessage
+        nameWithType: MobileNativeManager.ShowConfirmationMessage
+        qualifiedName: OneDevApp.MobileNativeManager.ShowConfirmationMessage
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShowConfirmationMessage
+  OneDevApp.MobileNativeManager.ShowProgressBar*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShowProgressBar*
+        name: ShowProgressBar
+        nameWithType: MobileNativeManager.ShowProgressBar
+        qualifiedName: OneDevApp.MobileNativeManager.ShowProgressBar
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShowProgressBar*
+        name: ShowProgressBar
+        nameWithType: MobileNativeManager.ShowProgressBar
+        qualifiedName: OneDevApp.MobileNativeManager.ShowProgressBar
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShowProgressBar
+  OneDevApp.MobileNativeManager.DismissProgressBar*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.DismissProgressBar*
+        name: DismissProgressBar
+        nameWithType: MobileNativeManager.DismissProgressBar
+        qualifiedName: OneDevApp.MobileNativeManager.DismissProgressBar
+      VB:
+      - id: OneDevApp.MobileNativeManager.DismissProgressBar*
+        name: DismissProgressBar
+        nameWithType: MobileNativeManager.DismissProgressBar
+        qualifiedName: OneDevApp.MobileNativeManager.DismissProgressBar
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.DismissProgressBar
+  OneDevApp.MobileNativeManager.ShowTimePicker*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShowTimePicker*
+        name: ShowTimePicker
+        nameWithType: MobileNativeManager.ShowTimePicker
+        qualifiedName: OneDevApp.MobileNativeManager.ShowTimePicker
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShowTimePicker*
+        name: ShowTimePicker
+        nameWithType: MobileNativeManager.ShowTimePicker
+        qualifiedName: OneDevApp.MobileNativeManager.ShowTimePicker
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShowTimePicker
+  OneDevApp.MobileNativeManager.ShowDatePicker*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.ShowDatePicker*
+        name: ShowDatePicker
+        nameWithType: MobileNativeManager.ShowDatePicker
+        qualifiedName: OneDevApp.MobileNativeManager.ShowDatePicker
+      VB:
+      - id: OneDevApp.MobileNativeManager.ShowDatePicker*
+        name: ShowDatePicker
+        nameWithType: MobileNativeManager.ShowDatePicker
+        qualifiedName: OneDevApp.MobileNativeManager.ShowDatePicker
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.ShowDatePicker
+  OneDevApp.MobileNativeManager.IsDeviceRooted*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.IsDeviceRooted*
+        name: IsDeviceRooted
+        nameWithType: MobileNativeManager.IsDeviceRooted
+        qualifiedName: OneDevApp.MobileNativeManager.IsDeviceRooted
+      VB:
+      - id: OneDevApp.MobileNativeManager.IsDeviceRooted*
+        name: IsDeviceRooted
+        nameWithType: MobileNativeManager.IsDeviceRooted
+        qualifiedName: OneDevApp.MobileNativeManager.IsDeviceRooted
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.IsDeviceRooted
+  OneDevApp.MobileNativeManager.OpenSettingScreen*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.OpenSettingScreen*
+        name: OpenSettingScreen
+        nameWithType: MobileNativeManager.OpenSettingScreen
+        qualifiedName: OneDevApp.MobileNativeManager.OpenSettingScreen
+      VB:
+      - id: OneDevApp.MobileNativeManager.OpenSettingScreen*
+        name: OpenSettingScreen
+        nameWithType: MobileNativeManager.OpenSettingScreen
+        qualifiedName: OneDevApp.MobileNativeManager.OpenSettingScreen
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.OpenSettingScreen
+  OneDevApp.MobileNativeManager.PluginDebug*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.PluginDebug*
+        name: PluginDebug
+        nameWithType: MobileNativeManager.PluginDebug
+        qualifiedName: OneDevApp.MobileNativeManager.PluginDebug
+      VB:
+      - id: OneDevApp.MobileNativeManager.PluginDebug*
+        name: PluginDebug
+        nameWithType: MobileNativeManager.PluginDebug
+        qualifiedName: OneDevApp.MobileNativeManager.PluginDebug
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.PluginDebug
+  OneDevApp.MobileNativeManager.OnImagePickedResult*:
+    name:
+      CSharp:
+      - id: OneDevApp.MobileNativeManager.OnImagePickedResult*
+        name: OnImagePickedResult
+        nameWithType: MobileNativeManager.OnImagePickedResult
+        qualifiedName: OneDevApp.MobileNativeManager.OnImagePickedResult
+      VB:
+      - id: OneDevApp.MobileNativeManager.OnImagePickedResult*
+        name: OnImagePickedResult
+        nameWithType: MobileNativeManager.OnImagePickedResult
+        qualifiedName: OneDevApp.MobileNativeManager.OnImagePickedResult
+    isDefinition: true
+    commentId: Overload:OneDevApp.MobileNativeManager.OnImagePickedResult
+  OneDevApp.ImagePickerErrorCode:
+    name:
+      CSharp:
+      - id: OneDevApp.ImagePickerErrorCode
+        name: ImagePickerErrorCode
+        nameWithType: ImagePickerErrorCode
+        qualifiedName: OneDevApp.ImagePickerErrorCode
+      VB:
+      - id: OneDevApp.ImagePickerErrorCode
+        name: ImagePickerErrorCode
+        nameWithType: ImagePickerErrorCode
+        qualifiedName: OneDevApp.ImagePickerErrorCode
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.ImagePickerErrorCode
+  OneDevApp.InstallStatus:
+    name:
+      CSharp:
+      - id: OneDevApp.InstallStatus
+        name: InstallStatus
+        nameWithType: InstallStatus
+        qualifiedName: OneDevApp.InstallStatus
+      VB:
+      - id: OneDevApp.InstallStatus
+        name: InstallStatus
+        nameWithType: InstallStatus
+        qualifiedName: OneDevApp.InstallStatus
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.InstallStatus
+  OneDevApp.InstallErrorCode:
+    name:
+      CSharp:
+      - id: OneDevApp.InstallErrorCode
+        name: InstallErrorCode
+        nameWithType: InstallErrorCode
+        qualifiedName: OneDevApp.InstallErrorCode
+      VB:
+      - id: OneDevApp.InstallErrorCode
+        name: InstallErrorCode
+        nameWithType: InstallErrorCode
+        qualifiedName: OneDevApp.InstallErrorCode
+    isDefinition: true
+    parent: OneDevApp
+    commentId: T:OneDevApp.InstallErrorCode
+  System.Object:
+    name:
+      CSharp:
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      VB:
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.Object
+  OneDevApp.ImageData:
+    name:
+      CSharp:
+      - id: OneDevApp.ImageData
+        name: ImageData
+        nameWithType: ImageData
+        qualifiedName: OneDevApp.ImageData
+      VB:
+      - id: OneDevApp.ImageData
+        name: ImageData
+        nameWithType: ImageData
+        qualifiedName: OneDevApp.ImageData
+    isDefinition: true
+    commentId: T:OneDevApp.ImageData
+  System.SerializableAttribute:
+    name:
+      CSharp:
+      - id: System.SerializableAttribute
+        name: SerializableAttribute
+        nameWithType: SerializableAttribute
+        qualifiedName: System.SerializableAttribute
+        isExternal: true
+      VB:
+      - id: System.SerializableAttribute
+        name: SerializableAttribute
+        nameWithType: SerializableAttribute
+        qualifiedName: System.SerializableAttribute
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.SerializableAttribute
+  System.SerializableAttribute.#ctor:
+    name:
+      CSharp:
+      - id: System.SerializableAttribute.#ctor
+        name: SerializableAttribute
+        nameWithType: SerializableAttribute.SerializableAttribute
+        qualifiedName: System.SerializableAttribute.SerializableAttribute
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.SerializableAttribute.#ctor
+        name: SerializableAttribute
+        nameWithType: SerializableAttribute.SerializableAttribute
+        qualifiedName: System.SerializableAttribute.SerializableAttribute
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.SerializableAttribute
+    commentId: M:System.SerializableAttribute.#ctor
+  OneDevApp.EmailSharingData.#ctor*:
+    name:
+      CSharp:
+      - id: OneDevApp.EmailSharingData.#ctor*
+        name: EmailSharingData
+        nameWithType: EmailSharingData.EmailSharingData
+        qualifiedName: OneDevApp.EmailSharingData.EmailSharingData
+      VB:
+      - id: OneDevApp.EmailSharingData.#ctor*
+        name: EmailSharingData
+        nameWithType: EmailSharingData.EmailSharingData
+        qualifiedName: OneDevApp.EmailSharingData.EmailSharingData
+    isDefinition: true
+    commentId: Overload:OneDevApp.EmailSharingData.#ctor
+  OneDevApp.MultipleFilesData.#ctor*:
+    name:
+      CSharp:
+      - id: OneDevApp.MultipleFilesData.#ctor*
+        name: MultipleFilesData
+        nameWithType: MultipleFilesData.MultipleFilesData
+        qualifiedName: OneDevApp.MultipleFilesData.MultipleFilesData
+      VB:
+      - id: OneDevApp.MultipleFilesData.#ctor*
+        name: MultipleFilesData
+        nameWithType: MultipleFilesData.MultipleFilesData
+        qualifiedName: OneDevApp.MultipleFilesData.MultipleFilesData
+    isDefinition: true
+    commentId: Overload:OneDevApp.MultipleFilesData.#ctor

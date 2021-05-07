@@ -6,14 +6,96 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/enable_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enable Location"
+    <ImageView
+        android:id="@+id/imageViewProfilePic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="45dp"
+        android:src="@android:drawable/ic_menu_gallery"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <Button
+        android:id="@+id/enable_location"
+        android:layout_width="136dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:text="Enable Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/share_text"
+        android:layout_width="136dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="6dp"
+        android:text="Share text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/share_text_file"
+        app:layout_constraintStart_toEndOf="@+id/enable_location"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/share_text_file"
+        android:layout_width="136dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="40dp"
+        android:text="Share text and file"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/enable_location"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/share_files"
+        android:layout_width="136dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:text="Share multiple files"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Button
+        android:id="@+id/share_on_whatsapp"
+        android:layout_width="136dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:text="Share on whatsapp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/share_on_mail"
+        app:layout_constraintStart_toEndOf="@+id/share_files"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Button
+        android:id="@+id/share_on_mail"
+        android:layout_width="136dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:text="Share on mail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic"
+        app:layout_constraintVertical_bias="0.393" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

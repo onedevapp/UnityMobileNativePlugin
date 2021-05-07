@@ -19,9 +19,20 @@ import com.onedevapp.nativeplugin.Constants;
 
 import java.util.ArrayList;
 
-import static com.onedevapp.nativeplugin.Constants.*;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_PERMISSIONS;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_RATIONALE_MESSAGE;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_RATIONALE_NEGATIVE;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_RATIONALE_POSITIVE;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_SETTINGS_MESSAGE;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_SETTINGS_NEGATIVE;
+import static com.onedevapp.nativeplugin.Constants.EXTRA_SETTINGS_POSITIVE;
+import static com.onedevapp.nativeplugin.Constants.REQUEST_CODE_OPEN_SETTINGS;
+import static com.onedevapp.nativeplugin.Constants.REQUEST_CODE_PERMISSION;
+import static com.onedevapp.nativeplugin.Constants.WriteLog;
 
-
+/**
+ * Hidden Fragment to workaround permission
+ */
 public class PermissionFragment extends Fragment {
 
     // region Declarations
@@ -41,15 +52,6 @@ public class PermissionFragment extends Fragment {
     private String mSettingDialogNegativeText;
 
     //endregion
-
-    /**
-     * Default constructor
-     */
-    public PermissionFragment()
-    {
-        mOnPermissionListener = null;
-    }
-
     public static PermissionFragment newInstance() {
         return new PermissionFragment();
     }
@@ -58,7 +60,7 @@ public class PermissionFragment extends Fragment {
      * Fragment builder
      *
      * @param mOnPermissionListener handler for callback
-     * @param bundle arguments for the fragments
+     * @param bundle                arguments for the fragments
      * @return InvisibleFragment instance
      */
     public static PermissionFragment build(OnPermissionListener mOnPermissionListener, Bundle bundle) {
@@ -82,7 +84,7 @@ public class PermissionFragment extends Fragment {
      *
      * @param activity current context
      */
-    public void requestNow(Activity activity){
+    public void requestNow(Activity activity) {
         if (activity != null) {
             if (Looper.getMainLooper() != Looper.myLooper()) {
                 throw new RuntimeException("you must request permission in main thread!!");
@@ -119,7 +121,7 @@ public class PermissionFragment extends Fragment {
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
 
-        if(savedInstanceState!=null) {
+        if (savedInstanceState != null) {
             // Retrieve the user email value from bundle.
             this.mPermissionsArray = savedInstanceState.getStringArray(EXTRA_PERMISSIONS);
             this.mRationalMessage = savedInstanceState.getString(EXTRA_RATIONALE_MESSAGE);
@@ -137,12 +139,9 @@ public class PermissionFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (mOnPermissionListener == null)
-        {
+        if (mOnPermissionListener == null) {
             getFragmentManager().beginTransaction().remove(this).commit();
-        }
-        else
-        {
+        } else {
             this.mPermissionsArray = getArguments().getStringArray(EXTRA_PERMISSIONS);
             this.mRationalMessage = getArguments().getString(EXTRA_RATIONALE_MESSAGE);
             this.mRationalDialogPositiveText = getArguments().getString(EXTRA_RATIONALE_POSITIVE);
@@ -162,8 +161,7 @@ public class PermissionFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_OPEN_SETTINGS && mOnPermissionListener != null) {
             checkPermissionAfterResult();
-        }
-        else{
+        } else {
             Constants.WriteLog("mOnPermissionListener is null on result");
             mOnPermissionListener.onPermissionError("mOnPermissionListener is null on result");
         }
@@ -174,13 +172,12 @@ public class PermissionFragment extends Fragment {
     /**
      * Callback for the result from requesting permissions. This method is invoked for every call on requestPermissions
      *
-     * @param requestCode   The request code passed in requestPermissions
-     * @param permissions   The requested permissions
-     * @param grantResults  The grant results for the corresponding permissions
+     * @param requestCode  The request code passed in requestPermissions
+     * @param permissions  The requested permissions
+     * @param grantResults The grant results for the corresponding permissions
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull  String[] permissions, @NonNull int[] grantResults)
-    {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CODE_PERMISSION) {
 
             // We can never holds granted permissions for safety, because user may turn some permissions off in settings.
@@ -191,7 +188,7 @@ public class PermissionFragment extends Fragment {
             for (int i = 0; i < grantResults.length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                     mGrantedPermissionsList.add(permissions[i]);
-                }else {
+                } else {
                     mDeniedPermissionsList.add(permissions[i]);
                 }
             }
@@ -225,10 +222,10 @@ public class PermissionFragment extends Fragment {
             if (PermissionUtils.isOverMarshmallow()) {
                 if (PermissionUtils.checkPermission(getContext(), permission)) {
                     mGrantedPermissionsList.add(permission);
-                }else{
+                } else {
                     mDeniedPermissionsList.add(permission);
                 }
-            }else{
+            } else {
                 mGrantedPermissionsList.add(permission);
             }
         }
@@ -263,16 +260,16 @@ public class PermissionFragment extends Fragment {
                     mDeniedPermissionsList.add(permission);
                     if (shouldShowRequestPermissionRationale(permission)) {
                         anyRationalePermission = true;
-                    }else{
+                    } else {
                         //Permission is not requested for first time
                         if (PermissionUtils.isFirstTimeAskingPermission(getContext(), permission)) {
                             PermissionUtils.firstTimeAskingPermission(getContext(), permission);
-                        }else{  //Permission denied on first time requested
+                        } else {  //Permission denied on first time requested
                             anyBlockedPermission = true;
                         }
                     }
                 }
-            }else{
+            } else {
                 mGrantedPermissionsList.add(permission);
             }
         }
@@ -281,14 +278,14 @@ public class PermissionFragment extends Fragment {
         if (anyBlockedPermission) {
             WriteLog("Showing settings dialog");
             showSettingDialog();
-        }else if (anyRationalePermission) {  //If any permission is requested but not granted, we'll show rationale dialog
+        } else if (anyRationalePermission) {  //If any permission is requested but not granted, we'll show rationale dialog
             WriteLog("Showing rationale dialog");
             showRationaleDialog();
         } else {    //we'll request all permissions to grant
             WriteLog("No rationale permission found.");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(mPermissionsArray, REQUEST_CODE_PERMISSION);
-            }else{
+            } else {
                 mOnPermissionListener.onPermissionGranted(mGrantedPermissionsList.toArray(new String[0]), true);
             }
         }
@@ -300,25 +297,25 @@ public class PermissionFragment extends Fragment {
     void showSettingDialog() {
         PermissionUtils.showDialogMessage(getActivity(), mSettingDialogMessage,
                 mSettingDialogPositiveText,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         // Go to your app's Settings page to let user turn on the necessary permissions.
-                        try{
+                        try {
                             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                             Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                             intent.setData(uri);
                             startActivityForResult(intent, REQUEST_CODE_OPEN_SETTINGS);
-                        }catch (NullPointerException e){
-                            Constants.WriteLog("Exception (resume) : "+ e.toString());
+                        } catch (NullPointerException e) {
+                            Constants.WriteLog("Exception (resume) : " + e.toString());
                             mOnPermissionListener.onPermissionError(e.toString());
                         }
                     }
                 },
                 mSettingDialogNegativeText,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -334,7 +331,7 @@ public class PermissionFragment extends Fragment {
     void showRationaleDialog() {
         PermissionUtils.showDialogMessage(getActivity(), mRationalMessage,
                 mRationalDialogPositiveText,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -345,7 +342,7 @@ public class PermissionFragment extends Fragment {
                     }
                 },
                 mRationalDialogNegativeText,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -360,14 +357,11 @@ public class PermissionFragment extends Fragment {
         //Remove this fragment when work is done
         getFragmentManager().beginTransaction().remove(this).commit();
 
-        try
-        {
+        try {
             Intent resumeUnityActivity = new Intent(getActivity(), getActivity().getClass());
             resumeUnityActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             getActivity().startActivityIfNeeded(resumeUnityActivity, 0);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             mOnPermissionListener.onPermissionError(e.toString());
         }
     }

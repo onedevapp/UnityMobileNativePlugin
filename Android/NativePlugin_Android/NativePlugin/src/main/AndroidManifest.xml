@@ -11,9 +11,10 @@
 
         <provider
             android:name=".CustomFileProvider"
-            android:authorities="${applicationId}.apk_install-file-provider"
+            android:authorities="${applicationId}.native_plugin-file-provider"
             android:exported="false"
             android:grantUriPermissions="true"
+            android:multiprocess="true"
             tools:replace="android:authorities">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"

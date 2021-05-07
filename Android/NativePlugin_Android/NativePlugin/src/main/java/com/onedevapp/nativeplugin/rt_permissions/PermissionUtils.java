@@ -20,6 +20,9 @@ import java.util.Set;
 import static android.content.Context.MODE_PRIVATE;
 import static com.onedevapp.nativeplugin.Constants.PERMISSION_PREFERENCES;
 
+/**
+ * Some helper functions
+ */
 public final class PermissionUtils {
 
     /**
@@ -40,8 +43,8 @@ public final class PermissionUtils {
     /**
      * This method returns all the permissions in the manifest.
      *
-     * @param context      This is context of the current activity
-     * @return  List<String>     Returns List of permissions from the manifest.
+     * @param context This is context of the current activity
+     * @return List<String>     Returns List of permissions from the manifest.
      */
     static List<String> getManifestPermissions(Context context) {
         try {
@@ -55,11 +58,11 @@ public final class PermissionUtils {
     /**
      * This method checks whether the given permission is already granted or not.
      *
-     * @param context      This is context of the current activity
-     * @param permission    This is the permission we need to check
-     * @return  boolean     Returns True if already permission granted for this permission else false.
+     * @param context    This is context of the current activity
+     * @param permission This is the permission we need to check
+     * @return boolean     Returns True if already permission granted for this permission else false.
      */
-    public static boolean checkPermission(Context context,  String permission) {
+    public static boolean checkPermission(Context context, String permission) {
         if (!isOverMarshmallow()) {
             return false;
         }
@@ -70,9 +73,9 @@ public final class PermissionUtils {
     /**
      * This method checks whether the given permission can show rationale dialog.
      *
-     * @param activity      This is context of the current activity
-     * @param permission    This is the permission we need to check
-     * @return  boolean     Returns True if permission is requested but not granted and can show rationale dialog else false.
+     * @param activity   This is context of the current activity
+     * @param permission This is the permission we need to check
+     * @return boolean     Returns True if permission is requested but not granted and can show rationale dialog else false.
      */
     public static boolean checkPermissionRationale(Activity activity, String permission) {
         if (!isOverMarshmallow()) {
@@ -85,7 +88,7 @@ public final class PermissionUtils {
     /**
      * Checks all permissions whether registered in the manifest
      *
-     * @param context context of the current activity
+     * @param context            context of the current activity
      * @param requestPermissions set of permissions requested
      * @return true if all requested permissions are registered in the manifest
      */
@@ -94,12 +97,12 @@ public final class PermissionUtils {
         if (manifestPermissions != null && !manifestPermissions.isEmpty()) {
             for (String permission : requestPermissions) {
                 if (!manifestPermissions.contains(permission)) {
-                    Constants.WriteLog( permission + ": Permissions are not registered in the manifest file");
+                    Constants.WriteLog(permission + ": Permissions are not registered in the manifest file");
                     return false;
                 }
             }
         } else {
-            Constants.WriteLog( "No permissions are registered in the manifest file");
+            Constants.WriteLog("No permissions are registered in the manifest file");
             return false;
         }
         return true;
@@ -108,7 +111,7 @@ public final class PermissionUtils {
     /**
      * Gets list of all permissions got denied from the requested permissions
      *
-     * @param context context of the current activity
+     * @param context     context of the current activity
      * @param permissions set of permissions requested
      * @return list of permission denied
      */
@@ -135,14 +138,14 @@ public final class PermissionUtils {
     /**
      * This method is used to display a Dialog Message to the user before prompting permission dialog.
      *
-     * @param context   context of the current activity
-     * @param message   the message we are displaying in the dialog to the user.
-     * @param positiveLabel   positive text we are displaying in the dialog to the user.
-     * @param negativeLabel   negative text we are displaying in the dialog to the user.
-     * @param positiveListener    dialog OnClickListener for positive button to request for permission.
-     * @param negativeListener    dialog OnClickListener for negative button to request for permission.
+     * @param context          context of the current activity
+     * @param message          the message we are displaying in the dialog to the user.
+     * @param positiveLabel    positive text we are displaying in the dialog to the user.
+     * @param negativeLabel    negative text we are displaying in the dialog to the user.
+     * @param positiveListener dialog OnClickListener for positive button to request for permission.
+     * @param negativeListener dialog OnClickListener for negative button to request for permission.
      */
-    static void showDialogMessage(Context context, String message,String positiveLabel, DialogInterface.OnClickListener positiveListener,String negativeLabel, DialogInterface.OnClickListener negativeListener) {
+    static void showDialogMessage(Context context, String message, String positiveLabel, DialogInterface.OnClickListener positiveListener, String negativeLabel, DialogInterface.OnClickListener negativeListener) {
         new AlertDialog.Builder(context)
                 .setMessage(message)
                 .setCancelable(false)
@@ -155,10 +158,10 @@ public final class PermissionUtils {
     /**
      * Saves the requested permission as first time requested to false
      *
-     * @param context context of the current activity
+     * @param context    context of the current activity
      * @param permission requested permission
      */
-    static void firstTimeAskingPermission(Context context, String permission){
+    static void firstTimeAskingPermission(Context context, String permission) {
         SharedPreferences sharedPreference = context.getSharedPreferences(PERMISSION_PREFERENCES, MODE_PRIVATE);
         sharedPreference.edit().putBoolean(permission, false).apply();
     }
@@ -166,11 +169,11 @@ public final class PermissionUtils {
     /**
      * Get permission status as been requested for first time or not
      *
-     * @param context context of the current activity
+     * @param context    context of the current activity
      * @param permission requested permission
      * @return true if not requested for first time else false
      */
-    static boolean isFirstTimeAskingPermission(Context context, String permission){
+    static boolean isFirstTimeAskingPermission(Context context, String permission) {
         return context.getSharedPreferences(PERMISSION_PREFERENCES, MODE_PRIVATE).getBoolean(permission, true);
     }
 

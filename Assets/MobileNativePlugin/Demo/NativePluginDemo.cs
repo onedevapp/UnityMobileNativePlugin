@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using OneDevApp;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +26,14 @@ public class NativePluginDemo : MonoBehaviour
     public Button toggleTypeBtn;
     public Button toggleLogBtn;
     public Button enableLocationBtn;
+    public Button filePickerBtn;
+    public Button shareContentBtn;
+    public Button shareFileContentBtn;
+    public Button shareMFilesContentBtn;
+    public Button shareContentOnWPBtn;
+    public Button shareContentOnMailBtn;
+    public Image selectedImage;
+    public GameObject imagePanel;
 
     private UpdateMode updateMode = UpdateMode.PLAY_STORE;
     private UpdateType updateType = UpdateType.FLEXIBLE;
@@ -31,6 +41,8 @@ public class NativePluginDemo : MonoBehaviour
     private string m_thirdPartyLink = "";
     private bool toggleLog = false;
     private string[] permissions = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_CONTACTS", "android.permission.READ_CALENDAR" };
+    private string[] filePaths = new string[2];
+    private string selectedFileUri = string.Empty;
 
     private void OnEnable()
     {
@@ -44,10 +56,15 @@ public class NativePluginDemo : MonoBehaviour
         MobileNativeManager.OnPermissionGranted += OnPermissionGranted;
         MobileNativeManager.OnPermissionDenied += OnPermissionDenied;
         MobileNativeManager.OnPermissionError += OnPermissionError;
+        MobileNativeManager.OnImagePicked += OnImagePicked;
+        MobileNativeManager.OnImagePickedError += OnImagePickedError;
         MobileNativeManager.OnClickAction += OnClickAction;
         MobileNativeManager.OnSelectedAction += OnSelectedAction;
+
+        CacheScreenShot();
     }
-    
+
+
     private void OnDisable()
     {
         // Unsubscribe for events from NativeManager
@@ -60,6 +77,7 @@ public class NativePluginDemo : MonoBehaviour
         MobileNativeManager.OnPermissionGranted -= OnPermissionGranted;
         MobileNativeManager.OnPermissionDenied -= OnPermissionDenied;
         MobileNativeManager.OnPermissionError -= OnPermissionError;
+        MobileNativeManager.OnImagePicked -= OnImagePicked;
         MobileNativeManager.OnClickAction -= OnClickAction;
         MobileNativeManager.OnSelectedAction -= OnSelectedAction;
     }
@@ -69,65 +87,80 @@ public class NativePluginDemo : MonoBehaviour
         startUpdateBtn.interactable = false;
         dismissProgressBarBtn.interactable = false;
 
-        showToastBtn.onClick.AddListener(() => {
+        showToastBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.ShowToast("Simple toast message from Unity", 0);
         });
-        showAlertBtn.onClick.AddListener(() => {
+        showAlertBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.ShowAlertMessage("Mobile Native Plugin", "Simple alert message from Unity");
         });
-        showConfirmBtn.onClick.AddListener(() => {
+        showConfirmBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.ShowConfirmationMessage("Mobile Native Plugin", "Simple confirmation message from Unity");
         });
-        showProgressBarBtn.onClick.AddListener(() => {
+        showProgressBarBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.ShowProgressBar("Mobile Native Plugin", "Simple progressbar from Unity");
             dismissProgressBarBtn.interactable = true;
         });
-        dismissProgressBarBtn.onClick.AddListener(() => {
+        dismissProgressBarBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.DismissProgressBar();
             dismissProgressBarBtn.interactable = false;
         });
-        showTimePickerBtn.onClick.AddListener(() => {
+        showTimePickerBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.ShowTimePicker();
         });
-        showDatePickerBtn.onClick.AddListener(() => {
+        showDatePickerBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.ShowDatePicker();
         });
-        RootStatusBtn.onClick.AddListener(() => {
+        RootStatusBtn.onClick.AddListener(() =>
+        {
             Debug.Log("isDeviceRooted::" + MobileNativeManager.Instance.IsDeviceRooted());
         });
-        openSettingsBtn.onClick.AddListener(() => {
+        openSettingsBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.OpenSettingScreen();
         });
-        checkPermissionBtn.onClick.AddListener(() => {
+        checkPermissionBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.RequestPermission(permissions);
         });
 
-        checkUpdateBtn.onClick.AddListener(() => {
+        checkUpdateBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.CheckForUpdate(updateMode, updateType, m_thirdPartyLink);
         });
-        startUpdateBtn.onClick.AddListener(() => {
+        startUpdateBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.StartUpdate();
 
             startUpdateBtn.interactable = false;
             checkUpdateBtn.interactable = false;
         });
-        toggleUpdateBtn.onClick.AddListener(() => {
-            if(updateMode == UpdateMode.PLAY_STORE)
+        toggleUpdateBtn.onClick.AddListener(() =>
+        {
+            if (updateMode == UpdateMode.PLAY_STORE)
                 updateMode = UpdateMode.THIRD_PARTY;
             else
                 updateMode = UpdateMode.PLAY_STORE;
 
             toggleUpdateBtn.GetComponentInChildren<Text>().text = "Update Mode : " + (updateMode == UpdateMode.PLAY_STORE ? " PLAY STORE" : " THIRD PARTY");
         });
-        toggleTypeBtn.onClick.AddListener(() => {
-            if(updateType == UpdateType.FLEXIBLE)
+        toggleTypeBtn.onClick.AddListener(() =>
+        {
+            if (updateType == UpdateType.FLEXIBLE)
                 updateType = UpdateType.IMMEDIATE;
             else
                 updateType = UpdateType.FLEXIBLE;
 
-            toggleTypeBtn.GetComponentInChildren<Text>().text = "Update Type : "+(updateType == UpdateType.FLEXIBLE ? " Flexiable" : " IMMEDIATE");
+            toggleTypeBtn.GetComponentInChildren<Text>().text = "Update Type : " + (updateType == UpdateType.FLEXIBLE ? " Flexiable" : " IMMEDIATE");
         });
-        toggleLogBtn.onClick.AddListener(() => {
+        toggleLogBtn.onClick.AddListener(() =>
+        {
             toggleLog = !toggleLog;
             MobileNativeManager.Instance.PluginDebug(toggleLog);
             toggleLogBtn.GetComponentInChildren<Text>().text = "Log : " + (toggleLog ? " enabled" : " diabled");
@@ -137,10 +170,81 @@ public class NativePluginDemo : MonoBehaviour
         toggleTypeBtn.onClick.Invoke();
         toggleLogBtn.onClick.Invoke();
 
+        filePickerBtn.onClick.AddListener(() =>
+        {
+            MobileNativeManager.Instance.GetImageFromDevice();
+        });
 
-        enableLocationBtn.onClick.AddListener(() => {
+        enableLocationBtn.onClick.AddListener(() =>
+        {
             MobileNativeManager.Instance.EnableLocation();
         });
+
+        shareContentBtn.onClick.AddListener(() =>
+        {
+            MobileNativeManager.Instance.ShareTextContent("This is test message to share (only Text)");
+        });
+
+        shareFileContentBtn.onClick.AddListener(() =>
+        {
+            MobileNativeManager.Instance.ShareFileContent("This is test message to share with File content", string.IsNullOrEmpty(selectedFileUri) ? filePaths[0] : selectedFileUri, string.IsNullOrEmpty(selectedFileUri) ? false : true, "");
+        });
+        shareMFilesContentBtn.onClick.AddListener(() =>
+        {
+            MultipleFilesData filesData = new MultipleFilesData();
+            filesData.filePath = filePaths;
+            if (!string.IsNullOrEmpty(selectedFileUri))
+                filesData.fileUri = new string[] { selectedFileUri };
+            MobileNativeManager.Instance.ShareMultipleFileContent("This is test message to share multiple files", filesData, "");
+        });
+        shareContentOnWPBtn.onClick.AddListener(() =>
+        {
+            MobileNativeManager.Instance.ShareOnWhatsApp("This is test message to share on whatsapp", "", string.IsNullOrEmpty(selectedFileUri) ? filePaths[0] : selectedFileUri, string.IsNullOrEmpty(selectedFileUri) ? false : true, "");
+        });
+        shareContentOnMailBtn.onClick.AddListener(() =>
+        {
+            EmailSharingData emailData = new EmailSharingData();
+            emailData.emailTo = new string[] { "onedevapp@gmail.com" };
+            emailData.subject = "Reg: Test mail from Native Plugin";
+            emailData.message = "This is test message to share on mail";
+            emailData.isHtmlText = false;
+
+            MultipleFilesData filesData = new MultipleFilesData();
+            filesData.filePath = filePaths;
+            if (!string.IsNullOrEmpty(selectedFileUri))
+                filesData.fileUri = new string[] { selectedFileUri };
+
+            emailData.fileData = filesData;
+            MobileNativeManager.Instance.ShareOnMail(emailData, "");
+        });
+    }
+
+    private async void CacheScreenShot()
+    {
+        await Task.Delay(500);
+        //if(!File.Exists(getFilePath("FirstFile.png")))
+        ScreenCapture.CaptureScreenshot("FirstFile.png");
+        //if (!File.Exists(getFilePath("SecondFile.png")))
+
+        await Task.Delay(500);
+        ScreenCapture.CaptureScreenshot("SecondFile.png");
+
+        filePaths[0] = getFilePath("FirstFile.png");
+        filePaths[1] = getFilePath("SecondFile.png");
+
+        Debug.Log("0::" + filePaths[0]);
+        Debug.Log("1::" + filePaths[1]);
+    }
+
+
+    // Get path for given file
+    private string getFilePath(string path)
+    {
+#if UNITY_EDITOR
+        return Application.dataPath + Path.DirectorySeparatorChar + path;
+#elif UNITY_ANDROID
+            return Application.persistentDataPath + Path.DirectorySeparatorChar + path;
+#endif
     }
 
     private void OnUpdateError(int code, string error)
@@ -199,7 +303,7 @@ public class NativePluginDemo : MonoBehaviour
         if (all)
         {
             Debug.Log("OnPermissionGranted : All permissions are granted. You good to go.");
-            if(grantedPermissions[0] == "android.permission.ACCESS_FINE_LOCATION")
+            if (grantedPermissions[0] == "android.permission.ACCESS_FINE_LOCATION")
             {
                 MobileNativeManager.Instance.EnableLocation();
             }
@@ -216,11 +320,37 @@ public class NativePluginDemo : MonoBehaviour
     }
 
 
+    private void OnImagePickedError(int errorCode, string message)
+    {
+
+        if (errorCode != -1)
+        {
+            Debug.Log("OnImagePicked::failed::" + message);
+        }
+    }
+    private void OnImagePicked(ImageData imageData)
+    {
+        Debug.Log("OnImagePicked::success");
+        byte[] bArray = Convert.FromBase64String(imageData.imageBase64);
+
+        int w = imageData.width;
+        int h = imageData.height;
+
+        Texture2D texture2D = new Texture2D(w, h, TextureFormat.BGRA32, false);
+        texture2D.LoadImage(bArray);
+
+        Sprite newSprite = Sprite.Create(texture2D as Texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), Vector2.zero);
+        selectedImage.sprite = newSprite;
+        imagePanel.SetActive(true);
+
+        selectedFileUri = imageData.uri;
+    }
+
     private void OnClickAction(bool action)
     {
         Debug.Log("OnClickAction clicked:: " + action);
     }
-    
+
     private void OnSelectedAction(string value)
     {
         Debug.Log("OnSelectedAction selected:: " + value);

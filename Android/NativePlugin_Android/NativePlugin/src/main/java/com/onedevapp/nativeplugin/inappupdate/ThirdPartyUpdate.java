@@ -13,6 +13,10 @@ import com.google.android.play.core.install.model.InstallStatus;
 import com.onedevapp.nativeplugin.AndroidBridge;
 import com.onedevapp.nativeplugin.Constants;
 
+/**
+ * ThirdPartyUpdate is responsible for updating app from any third party URL provided
+ * Note: This doesn't validate whether downloading and installing apk is actually belong to same package. Its actually downloads and install any apk URL.
+ */
 public class ThirdPartyUpdate extends BaseUpdateClass {
 
     // region Declarations
@@ -23,6 +27,11 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
     //endregion
 
     //region Constructor
+
+    /**
+     * Constructor
+     * @param updateManager UpdateManger itself
+     */
     public ThirdPartyUpdate(UpdateManager updateManager) {
         super(updateManager);
     }
@@ -30,6 +39,7 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
     //endregion
 
     // region Public functions
+
     /**
      * Check update only checks for required permissions
      */
@@ -40,19 +50,19 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
         String errorMsg = "";
         int errorCode = -1;
 
-        if(!AndroidBridge.IsNetworkAvailable(context)){
+        if (!AndroidBridge.IsNetworkAvailable(context)) {
             isPermissionAvailable = false;
             errorMsg = "checkUpdate() : IsNetworkAvailable : false";
             errorCode = -102;
-        }else if(!AndroidBridge.CheckPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+        } else if (!AndroidBridge.CheckPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             isPermissionAvailable = false;
             errorMsg = "checkUpdate() : IsStoragePermissionGranted : false";
             errorCode = -101;
         }
 
-        if (mOnUpdateListener != null){
+        if (mOnUpdateListener != null) {
             mOnUpdateListener.onUpdateAvailable(isPermissionAvailable, true);
-            if(!isPermissionAvailable)
+            if (!isPermissionAvailable)
                 mUpdateManager.reportUpdateError(errorCode, errorMsg);
         }
     }
@@ -63,12 +73,12 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
     @Override
     public void startUpdate() {
 
-        try{
+        try {
 
             final Context context = mUpdateManager.getActivity();
             final String appName = context.getApplicationInfo().loadLabel(context.getPackageManager()).toString();
 
-            Constants.WriteLog("Downloading request on url :"+mUpdateLink);
+            Constants.WriteLog("Downloading request on url :" + mUpdateLink);
 
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(mUpdateLink));
             request.setVisibleInDownloadsUi(false);
@@ -92,24 +102,22 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
                 @Override
                 public void run() {
                     boolean downloading = true;
-                    while(downloading) {
+                    while (downloading) {
                         DownloadManager.Query q = new DownloadManager.Query();
                         q.setFilterById(downloadId);
                         Cursor cursor = manager.query(q);
 
-                        if(cursor.moveToFirst()){
+                        if (cursor.moveToFirst()) {
                             int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
 
                             if (status == DownloadManager.STATUS_FAILED) {
                                 if (mOnUpdateListener != null)
                                     mUpdateManager.reportUpdateError(InstallStatus.FAILED, "Download failed, Try again later.");
-                            }
-                            else if (status == DownloadManager.STATUS_SUCCESSFUL) {
+                            } else if (status == DownloadManager.STATUS_SUCCESSFUL) {
                                 apk_file_uri = manager.getUriForDownloadedFile(downloadId);
                                 if (mOnUpdateListener != null)
                                     mOnUpdateListener.onUpdateInstallState(InstallStatus.DOWNLOADED);
-                            }
-                            else if (status == DownloadManager.STATUS_RUNNING) {
+                            } else if (status == DownloadManager.STATUS_RUNNING) {
                                 final int bytes_downloaded = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
                                 if (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
                                     downloading = false;
@@ -128,8 +136,8 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
                 }
             }).start();
 
-        }catch (Exception e){
-            mUpdateManager.reportUpdateError(-1, "startUpdate() : "+e.toString());
+        } catch (Exception e) {
+            mUpdateManager.reportUpdateError(-1, "startUpdate() : " + e.toString());
         }
     }
 
@@ -149,7 +157,7 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
 
         Context context = mUpdateManager.getActivity();
 
-        if (apk_file_uri != null && mOnUpdateListener != null){
+        if (apk_file_uri != null && mOnUpdateListener != null) {
             mOnUpdateListener.onUpdateInstallState(InstallStatus.DOWNLOADED);
 
             installApk(context);
@@ -159,7 +167,7 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
     /**
      * Intent to install apk
      */
-    private void installApk(Context context){
+    private void installApk(Context context) {
 
         //if (apk_file_path.exists()) {
         if (apk_file_uri != null) {
@@ -183,7 +191,7 @@ public class ThirdPartyUpdate extends BaseUpdateClass {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
             context.startActivity(intent);
-        }else{
+        } else {
             if (mOnUpdateListener != null)
                 mUpdateManager.reportUpdateError(-1, "installApk() : Downloaded file not exist");
         }

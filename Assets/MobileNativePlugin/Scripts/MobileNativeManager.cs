@@ -3,34 +3,88 @@ using UnityEngine;
 
 namespace OneDevApp
 {
+    /// <summary>
+    /// MobileNativeManager is a single intance class which calls Native Android APIs
+    /// </summary>
     public class MobileNativeManager : MonoBehaviour
     {
-        #region Events
+#region Events
+        
+#pragma warning disable 0067
+        /// <summary>
+        /// Event triggered when the update is available or not
+        /// </summary>
+        public static event Action<bool> OnUpdateAvailable;
+        /// <summary>
+        /// Event triggered with version code available
+        /// </summary>
+        public static event Action<int> OnUpdateVersionCode;
+        /// <summary>
+        /// Event triggered with staleness days available to download
+        /// </summary>
+        public static event Action<int> OnUpdateStalenessDays;
+        /// <summary>
+        /// Event triggered with install state during update
+        /// </summary>
+        public static event Action<InstallStatus> OnUpdateInstallState;
+        /// <summary>
+        /// Event triggered with downloading value
+        /// </summary>
+        public static event Action<long, long> OnUpdateDownloading;
+        /// <summary>
+        /// Event triggered with error during update
+        /// </summary>
+        public static event Action<int, string> OnUpdateError;
+        /// <summary>
+        /// Event triggered with permissions granted
+        /// </summary>
+        public static event Action<string[], bool> OnPermissionGranted;
+        /// <summary>
+        /// Event triggered with permissions denied
+        /// </summary>
+        public static event Action<string[]> OnPermissionDenied;
+        /// <summary>
+        /// Event triggered with error when during permissions
+        /// </summary>
+        public static event Action<string> OnPermissionError;
+        /// <summary>
+        /// Event triggered with image picked
+        /// </summary>
+        public static event Action<ImageData> OnImagePicked;
+        /// <summary>
+        /// Event triggered with image picked
+        /// </summary>
+        public static event Action<int, string> OnImagePickedError;
+        /// <summary>
+        /// Event triggered when dialog buttons are clicked
+        /// </summary>
+        public static event Action<bool> OnClickAction;
+        /// <summary>
+        /// Event triggered with value when selected
+        /// </summary>
+        public static event Action<string> OnSelectedAction;
 
-        public static event Action<bool> OnUpdateAvailable;         // Event triggered when the update is available or not
-        public static event Action<int> OnUpdateVersionCode;        // Event triggered with version code available
-        public static event Action<int> OnUpdateStalenessDays;      // Event triggered with staleness days available to download
-        public static event Action<InstallStatus> OnUpdateInstallState;       // Event triggered with install state during update
-        public static event Action<long, long> OnUpdateDownloading; // Event triggered with downloading value
-        public static event Action<int, string> OnUpdateError;      // Event triggered with error during update
-        public static event Action<string[], bool> OnPermissionGranted;      // Event triggered with permissions granted
-        public static event Action<string[]> OnPermissionDenied;      // Event triggered with permissions denied
-        public static event Action<string> OnPermissionError;      // Event triggered with error when during permissions
-        public static event Action<bool> OnClickAction;      // Event triggered when dialog buttons are clicked
-        public static event Action<string> OnSelectedAction;      // Event triggered with value when selected
-
-        #endregion
+ #pragma warning restore 0067
+#endregion
 
         public static MobileNativeManager Instance { get; private set; }
 
+#pragma warning disable 0414
+        /// <summary>
+        /// UnityMainActivity current activity name or main activity name
+        /// Modify only if this UnityPlayer.java class is extends or used any other default class
+        /// </summary>
         [Tooltip("Android Launcher Activity")]
         [SerializeField]
         private string m_unityMainActivity = "com.unity3d.player.UnityPlayer";
+
+#pragma warning restore 0414
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         private AndroidJavaObject mContext = null;
         private AndroidJavaObject mUpdateManager = null;
         private AndroidJavaObject mPermissionManager = null;
+        private AndroidJavaObject mImagePickerManager = null;
         private AndroidJavaClass mAndroidBridge = null;
 
         class OnUpdateListener : AndroidJavaProxy
@@ -206,12 +260,12 @@ namespace OneDevApp
 
         #region App Update
         /// <summary>
-		/// Check for update and returns OnUpdateListener.onUpdateAvailable true or false
-		/// </summary>
+        /// Check for update and returns OnUpdateListener.onUpdateAvailable true or false
+        /// </summary>
         /// <param name="updateMode">update mode</param>
         /// <param name="updatetype">update type</param>
         /// <param name="apkLink">new apk link</param>
-        public void CheckForUpdate(UpdateMode updateMode= UpdateMode.PLAY_STORE, UpdateType updateType = UpdateType.FLEXIBLE, string thirdPartyLink  = "")
+        public void CheckForUpdate(UpdateMode updateMode = UpdateMode.PLAY_STORE, UpdateType updateType = UpdateType.FLEXIBLE, string thirdPartyLink = "")
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Update Manager
@@ -342,6 +396,206 @@ namespace OneDevApp
             return mAndroidBridge.CallStatic<bool>("CheckPermissionRationale", mContext, permission);
 #elif UNITY_EDITOR
             return true;
+#endif
+        }
+        #endregion
+
+        #region ImagePicker
+
+        /// <summary>
+        /// Get image from device via Camera or Gallery
+        /// </summary>
+        /// <param name="pickerType">ImagePickerType of Choice or Camera or Gallery</param>
+        /// <param name="maxWidth">image max width to compress</param>
+        /// <param name="maxHeight">image max height to compress</param>
+        /// <param name="quality">image quality from 1 to 100</param>
+        public void GetImageFromDevice(ImagePickerType pickerType = ImagePickerType.CHOICE, int maxWidth = 612, int maxHeight = 816, int quality = 80)
+        {
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Initialize ImagePicker Manager
+            var mImagePickerManagerJavaClass = new AndroidJavaClass("com.onedevapp.nativeplugin.imagepicker.ImagePickerManager");
+
+            mImagePickerManager = mImagePickerManagerJavaClass.CallStatic<AndroidJavaObject>("Builder", mContext);
+            mImagePickerManager
+                .Call<AndroidJavaObject>("setPickerType", (int) pickerType)
+                .Call<AndroidJavaObject>("setMaxWidth", maxWidth)
+                .Call<AndroidJavaObject>("setMaxHeight", maxHeight)
+                .Call<AndroidJavaObject>("setQuality", quality)
+                .Call("openImagePicker");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
+#endif
+        }
+
+        #endregion
+
+        #region Share
+        /// <summary>
+        /// Share on whatsapp
+        /// </summary>
+        /// <param name="message">message to be shared</param>
+        /// <param name="mobileNo">to share on specific phone no</param>
+        /// <param name="filePath">file path/ file Uri to be shared</param>
+        /// <param name="isFileUri">bool which represent filepath is path or uri, if true then filePath takes as Uri</param>
+        /// <param name="header">share chooser header text</param>
+        public void ShareOnWhatsApp(string message, string mobileNo = "", string filePath = "", bool isFileUri = false, string header = "")
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Initialize Share Manager
+            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+
+            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+
+            if (!string.IsNullOrEmpty(filePath))
+                mShareManager.Call<AndroidJavaObject>(isFileUri ? "addFileUri" : "addFilePath", filePath);
+            if (!string.IsNullOrEmpty(mobileNo))
+                mShareManager.Call<AndroidJavaObject>("setWhatsAppMobileNo", mobileNo);
+            if (!string.IsNullOrEmpty(header))
+                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+            mShareManager.Call("shareOnWhatsApp");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
+#endif
+        }
+        /// <summary>
+        /// Share Text
+        /// </summary>
+        /// <param name="message">message to be shared</param>
+        /// <param name="header">share chooser header text</param>
+        public void ShareTextContent(string message, string header = "")
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Initialize Share Manager
+            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+
+            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+
+            if (!string.IsNullOrEmpty(header))
+                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+            mShareManager.Call("shareTextContent");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
+#endif
+        }
+
+        /// <summary>
+        /// Share Single File
+        /// </summary>
+        /// <param name="message">message to be shared</param>
+        /// <param name="filePath">file path/ file Uri to be shared</param>
+        /// <param name="isFileUri">bool which represent filepath is path or uri, if true then filePath takes as Uri</param>
+        /// <param name="header">share chooser header text</param>
+        public void ShareFileContent(string message, string filePath = "", bool isFileUri = false, string header = "")
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Initialize Share Manager
+            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+
+            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+
+            if (!string.IsNullOrEmpty(filePath))
+                mShareManager.Call<AndroidJavaObject>(isFileUri ? "addFileUri" : "addFilePath", filePath);
+            if (!string.IsNullOrEmpty(header))
+                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+            mShareManager.Call("shareFileContent");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
+#endif
+        }
+
+        /// <summary>
+        /// Share Multiple Files
+        /// </summary>
+        /// <param name="message">message to be shared</param>
+        /// <param name="fileData">MultipleFilesData which holds array of file path and file Uri</param>
+        /// <param name="header">share chooser header text</param>
+        public void ShareMultipleFileContent(string message, MultipleFilesData fileData, string header = "")
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Initialize Share Manager
+            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+
+            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+
+            if (fileData.filePath != null || fileData.filePath.Length > 0)
+            {
+                mShareManager.Call<AndroidJavaObject>("addMultipleFilePaths", javaArrayFromCS(fileData.filePath));
+            } 
+            
+            if (fileData.fileUri != null || fileData.fileUri.Length > 0)
+            {
+                foreach(string fileUri in fileData.fileUri)
+                    mShareManager.Call<AndroidJavaObject>("addFileUri", fileUri);
+            }
+
+            if (!string.IsNullOrEmpty(header))
+                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+            mShareManager.Call("shareMultipleFileContent");
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
+#endif
+        }
+
+        /// <summary>
+        /// Share via Mail
+        /// </summary>
+        /// <param name="emailData">EmailSharingData which holds array of to, cc and bcc mail ids along with MultipleFilesData</param>
+        /// <param name="header">share chooser header text</param>
+        public void ShareOnMail(EmailSharingData emailData, string header = "")
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Initialize Share Manager
+            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+
+            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+            mShareManager.Call<AndroidJavaObject>("setMessage", emailData.message);
+
+            if (emailData.emailTo.Length > 0)
+            {
+                mShareManager.Call<AndroidJavaObject>("addMultipleEmailAddress", javaArrayFromCS(emailData.emailTo));
+            }
+
+            if (emailData.emailCc.Length > 0)
+            {
+                mShareManager.Call<AndroidJavaObject>("addMultipleEmailCcAddress", javaArrayFromCS(emailData.emailCc));
+            }
+
+            if (emailData.emailBcc.Length > 0)
+            {
+                mShareManager.Call<AndroidJavaObject>("addMultipleEmailBccAddress", javaArrayFromCS(emailData.emailBcc));
+            }
+
+            if (emailData.fileData.filePath.Length > 0)
+            {
+                mShareManager.Call<AndroidJavaObject>("addMultipleFilePaths", javaArrayFromCS(emailData.fileData.filePath));
+            }
+
+            if (emailData.fileData.fileUri.Length > 0)
+            {
+                foreach (string fileUri in emailData.fileData.fileUri)
+                    mShareManager.Call<AndroidJavaObject>("addFileUri", fileUri);
+            }
+
+            if (!string.IsNullOrEmpty(header))
+                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+            mShareManager.Call("shareOnEmail", new object[] { emailData.subject, emailData.isHtmlText } );
+#elif UNITY_EDITOR
+            Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -499,15 +753,6 @@ namespace OneDevApp
         #endregion
 
         #region Options
-        /*public string GetPackageName()
-        {
-#if UNITY_ANDROID
-            return mContext.Call<string>("getPackageName");
-#else
-            return "";
-#endif
-        }*/
-
         /// <summary>
         /// Check whether device is rooted or not
         /// </summary>
@@ -569,7 +814,31 @@ namespace OneDevApp
 
             return arrayObject;
         }
+        
 #endif
+
+
+        public void OnImagePickedResult(string param)
+        {
+            //Debug.Log(param);
+            ImageData imageData = JsonUtility.FromJson<ImageData>(param);
+
+            bool success = imageData.status;
+            int errorCode = imageData.errorCode;
+            string message = imageData.message;
+
+            if (success)
+            {
+#if UNITY_ANDROID && !UNITY_EDITOR
+
+                OnImagePicked.Invoke(imageData);
+#endif
+            }
+            else
+            {
+                OnImagePickedError.Invoke(errorCode, message);
+            }
+        }
     }
 
 }

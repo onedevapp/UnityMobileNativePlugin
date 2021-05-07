@@ -5,7 +5,7 @@
 ## INSTALLATION
 There are 2 ways to install this plugin:
 
-1. import MobileNativePlugin_v1.0.unitypackage via Assets-Import Package
+1. import MobileNativePlugin.unitypackage via Assets-Import Package
 2. clone/download this repository and move the Plugins folder to your Unity project's Assets folder
    
 <br><br>
@@ -13,8 +13,7 @@ There are 2 ways to install this plugin:
 ## Android Native Functions
 
 ### Requirements
-* Work with Unity 5 or later.
-* You project should build against Android 4.0 (API level 14) SDK at least.
+* You project should build against Android 5.0 (API level 21) SDK at least.
 * Runtime Permission works only with devices running Android 6.0 (API level 23) or higher.
 * In-app updates works only with devices running Android 5.0 (API level 21) or higher.
 * This plugin uses a custom tool for dependency management called the [Play Services Resolver](https://github.com/googlesamples/unity-jar-resolver)
@@ -234,6 +233,82 @@ To disable this dialog, add the following line inside the  `<application>...</ap
 		</tr>
 	</table>
 <br><br>
+
+### Sharing Content
+
+Share text content
+```C#	
+	MobileNativeManager.Instance.ShareTextContent(string message, string header = "");
+```
+
+Share text with one file content
+```C#	
+	//filePath can be any image file path in android or can also be file URI 
+	MobileNativeManager.Instance.ShareFileContent(string message, string filePath = "", bool isFileUri = false, string header = "");
+```
+
+Share multiple files
+```C#	
+	//fileData which accepts array of file paths and file URI
+	MobileNativeManager.Instance.ShareMultipleFileContent(string message, MultipleFilesData fileData, string header = "");
+```
+
+Share content on Emails
+```C#	
+	//emailData which accepts array of emailTo, emailCc, emailBcc along with MultipleFilesData 
+	MobileNativeManager.Instance.ShareOnMail(EmailSharingData emailData, string header = "");
+```
+
+Share content on WhatsApp
+```C#	
+	//WhatsApp share is similar to single file content share except its open WhatsApp directly and can also open specific WhatsApp provided
+	MobileNativeManager.Instance.ShareOnWhatsApp(string message, string mobileNo = "", string filePath = "", bool isFileUri = false, string header = "")
+```
+
+	<table>
+		<tr>
+			<td>Share</td>
+		</tr>
+		<tr>
+			<td><img src="Images/share_on_mail.png" width=270 height=540></td>
+		</tr>
+	</table>
+
+### Image Picker Camera / Gallery
+
+To get image from device via Camera or Gallery
+
+```C#	
+  	//Call all default values
+	//pickerType = ImagePickerType.CHOICE
+	//maxWidth = 612
+	//maxHeight = 816
+	//quality = 80
+	MobileNativeManager.Instance.GetImageFromDevice();
+```
+or 
+```C#	
+  	//Calling required types
+	//CHOICE = 0, CAMERA = 1, GALLERY = 2
+	MobileNativeManager.Instance.GetImageFromDevice(ImagePickerType pickerType = ImagePickerType.CHOICE, int maxWidth = 612, int maxHeight = 816, int quality = 80);
+```
+-	Callbacks
+```C#
+	//Register for action	
+	MobileNativeManager.OnImagePicked += OnImagePicked;
+	MobileNativeManager.OnImagePickedError += OnImagePickedError;
+```
+
+	<table>
+		<tr>
+			<td>Image picker choice</td>
+			<td>Selected image from gallery</td>
+		</tr>
+		<tr>
+			<td><img src="Images/Image_picker_choice.png" width=270 height=540></td>
+			<td><img src="Images/Image_picker_gallery.png" width=270 height=540></td>
+		</tr>
+	</table>
 
 ### In App Update
 

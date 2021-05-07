@@ -13,6 +13,9 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 
+/**
+ * PlayStoreUpdate is responsible for updating app playstore.
+ */
 public class PlayStoreUpdate extends BaseUpdateClass {
 
     // region Declarations
@@ -24,12 +27,12 @@ public class PlayStoreUpdate extends BaseUpdateClass {
         public void onStateUpdate(InstallState installState) {
 
             // Show module progress, log state, or install the update.
-            if(installState.installStatus() == InstallStatus.DOWNLOADED){
+            if (installState.installStatus() == InstallStatus.DOWNLOADED) {
 
                 if (mOnUpdateListener != null)
                     mOnUpdateListener.onUpdateInstallState(installState.installStatus());
 
-            }else if(installState.installStatus() == InstallStatus.DOWNLOADING) {
+            } else if (installState.installStatus() == InstallStatus.DOWNLOADING) {
 
                 long bytesDownloaded = installState.bytesDownloaded();
                 long totalBytesToDownload = installState.totalBytesToDownload();
@@ -37,19 +40,19 @@ public class PlayStoreUpdate extends BaseUpdateClass {
                 if (mOnUpdateListener != null)
                     mOnUpdateListener.onUpdateDownloading(bytesDownloaded, totalBytesToDownload);
 
-            }else if(installState.installStatus() == InstallStatus.FAILED) {
+            } else if (installState.installStatus() == InstallStatus.FAILED) {
 
                 if (mOnUpdateListener != null) {
                     mOnUpdateListener.onUpdateInstallState(installState.installStatus());
                     mUpdateManager.reportUpdateError(installState.installErrorCode(), "");
                 }
 
-            }else if(installState.installStatus() == InstallStatus.INSTALLED) {
+            } else if (installState.installStatus() == InstallStatus.INSTALLED) {
                 if (mOnUpdateListener != null)
                     mOnUpdateListener.onUpdateInstallState(installState.installStatus());
 
                 unRegisterListener();
-            }else{
+            } else {
 
                 if (mOnUpdateListener != null)
                     mOnUpdateListener.onUpdateInstallState(installState.installStatus());
@@ -60,6 +63,10 @@ public class PlayStoreUpdate extends BaseUpdateClass {
 
     //region Constructor
 
+    /**
+     * Constructor
+     * @param updateManager UpdateManger itself
+     */
     public PlayStoreUpdate(UpdateManager updateManager) {
         super(updateManager);
     }
@@ -67,6 +74,7 @@ public class PlayStoreUpdate extends BaseUpdateClass {
     //endregion
 
     // region Public functions
+
     /**
      * Check update
      */
@@ -78,8 +86,7 @@ public class PlayStoreUpdate extends BaseUpdateClass {
 
         registerListener();
 
-        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>()
-        {
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
             public void onSuccess(AppUpdateInfo appUpdateInfo) {
 
@@ -94,12 +101,12 @@ public class PlayStoreUpdate extends BaseUpdateClass {
                     if (mOnUpdateListener != null) {
                         int availableVersionCode = appUpdateInfo.availableVersionCode();
                         mOnUpdateListener.onUpdateVersionCode(availableVersionCode);
-                        try{
+                        try {
                             int stalenessDays = appUpdateInfo.clientVersionStalenessDays() == null ? -1 : appUpdateInfo
                                     .clientVersionStalenessDays();
                             mOnUpdateListener.onUpdateStalenessDays(stalenessDays);
                         } catch (Exception e) {
-                            mUpdateManager.reportUpdateError(-1, "checkUpdate:"+e.getMessage());
+                            mUpdateManager.reportUpdateError(-1, "checkUpdate:" + e.getMessage());
                         }
                     }
                 }
@@ -130,7 +137,7 @@ public class PlayStoreUpdate extends BaseUpdateClass {
     }
 
     /**
-     *Continue update should be called from onresume to check unfinished updates
+     * Continue update should be called from onresume to check unfinished updates
      */
     @Override
     public void continueUpdate() {
@@ -168,19 +175,21 @@ public class PlayStoreUpdate extends BaseUpdateClass {
     //endregion
 
     // region private functions
+
     /**
      * Register listener for install status
      */
-    private void registerListener(){
-        if(mUpdateType == AppUpdateType.FLEXIBLE)
-           mAppUpdateManager.registerListener(this.listener);
+    private void registerListener() {
+        if (mUpdateType == AppUpdateType.FLEXIBLE)
+            mAppUpdateManager.registerListener(this.listener);
     }
+
     /**
      * unregister listener from install status
      */
-    private void unRegisterListener(){
-        if(mUpdateType == AppUpdateType.FLEXIBLE)
-           mAppUpdateManager.unregisterListener(this.listener);
+    private void unRegisterListener() {
+        if (mUpdateType == AppUpdateType.FLEXIBLE)
+            mAppUpdateManager.unregisterListener(this.listener);
     }
     //endregion
 }

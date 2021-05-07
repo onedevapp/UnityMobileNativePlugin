@@ -14,7 +14,6 @@ import android.content.IntentSender;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -22,8 +21,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -38,8 +35,13 @@ import com.onedevapp.nativeplugin.rt_permissions.PermissionUtils;
 import java.lang.ref.WeakReference;
 import java.util.Calendar;
 
-import static com.onedevapp.nativeplugin.Utils.*;
+import static com.onedevapp.nativeplugin.Utils.checkRootMethod1;
+import static com.onedevapp.nativeplugin.Utils.checkRootMethod2;
+import static com.onedevapp.nativeplugin.Utils.checkRootMethod3;
 
+/**
+ * AndroidBridge can invoke Android APIs in the unity.
+ */
 public class AndroidBridge {
 
     // region Declarations
@@ -51,11 +53,10 @@ public class AndroidBridge {
      * Shows toast message
      *
      * @param activity current context
-     * @param message message to be shown
-     * @param length toast length, 1 means long else short
+     * @param message  message to be shown
+     * @param length   toast length, 1 means long else short
      */
-    public static void ShowToast(final Activity activity, final String message, final int length)
-    {
+    public static void ShowToast(final Activity activity, final String message, final int length) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -68,14 +69,13 @@ public class AndroidBridge {
     /**
      * Shows alert dialog
      *
-     * @param activity current context
-     * @param title alert dialog title
-     * @param message alert message
-     * @param positiveLabel positive button text
+     * @param activity         current context
+     * @param title            alert dialog title
+     * @param message          alert message
+     * @param positiveLabel    positive button text
      * @param positiveListener button onclick listener
      */
-    public static void ShowAlertMessage(final Activity activity, final String title, final String message, final String positiveLabel, final OnClickListener positiveListener)
-    {
+    public static void ShowAlertMessage(final Activity activity, final String title, final String message, final String positiveLabel, final OnClickListener positiveListener) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -83,8 +83,7 @@ public class AndroidBridge {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 builder.setTitle(title);
                 builder.setMessage(message);
-                builder.setPositiveButton(positiveLabel, new DialogInterface.OnClickListener()
-                {
+                builder.setPositiveButton(positiveLabel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         positiveListener.onClick();
                     }
@@ -99,16 +98,15 @@ public class AndroidBridge {
     /**
      * Shows alert dialog with two  options
      *
-     * @param activity current context
-     * @param title alert dialog title
-     * @param message alert message
-     * @param positiveLabel positive button text
+     * @param activity         current context
+     * @param title            alert dialog title
+     * @param message          alert message
+     * @param positiveLabel    positive button text
      * @param positiveListener positive button onclick listener
-     * @param negativeLabel negative button text
+     * @param negativeLabel    negative button text
      * @param negativeListener negative button onclick listener
      */
-    public static void ShowConfirmationMessage(final Activity activity, final String title, final String message, final String positiveLabel, final OnClickListener positiveListener, final String negativeLabel, final OnClickListener negativeListener)
-    {
+    public static void ShowConfirmationMessage(final Activity activity, final String title, final String message, final String positiveLabel, final OnClickListener positiveListener, final String negativeLabel, final OnClickListener negativeListener) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -116,17 +114,13 @@ public class AndroidBridge {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 builder.setTitle(title);
                 builder.setMessage(message);
-                builder.setPositiveButton(positiveLabel, new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
+                builder.setPositiveButton(positiveLabel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
                         positiveListener.onClick();
                     }
                 });
-                builder.setNegativeButton(negativeLabel, new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
+                builder.setNegativeButton(negativeLabel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
                         negativeListener.onClick();
                     }
                 });
@@ -139,22 +133,21 @@ public class AndroidBridge {
 
     /**
      * Shows progressbar dialog
-     * @param activity  current context
-     * @param title  progress dialog title
-     * @param message  progress dialog message
+     *
+     * @param activity   current context
+     * @param title      progress dialog title
+     * @param message    progress dialog message
      * @param cancelable can cancel dialog
      */
-    public static void ShowProgressBar(final Activity activity, final String title, final String message, final boolean cancelable)
-    {
+    public static void ShowProgressBar(final Activity activity, final String title, final String message, final boolean cancelable) {
         mActivityWeakReference = new WeakReference<>(activity);
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
-                if (title.isEmpty() && message.isEmpty()){
+                if (title.isEmpty() && message.isEmpty()) {
                     mProgressDialog = new ProgressDialog(activity, R.style.TransparentProgressDialog);
-                }
-                else{
+                } else {
                     mProgressDialog = new ProgressDialog(activity);
                     mProgressDialog.setMessage(message);
                     mProgressDialog.setTitle(title);
@@ -171,21 +164,18 @@ public class AndroidBridge {
     /**
      * Dismiss current progressbar dialog
      */
-    public static void DismissProgressBar()
-    {
-        try
-        {
+    public static void DismissProgressBar() {
+        try {
             mActivityWeakReference.get().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if(mProgressDialog != null)
+                    if (mProgressDialog != null)
                         mProgressDialog.dismiss();
                 }
             });
-        }
-        catch (Exception localException) {
+        } catch (Exception localException) {
             Constants.WriteLog(localException.toString());
-        }finally {
+        } finally {
             mActivityWeakReference = null;
         }
     }
@@ -193,10 +183,10 @@ public class AndroidBridge {
     /**
      * Show time picker dialog
      *
-     * @param activity  current context
+     * @param activity          current context
      * @param mOnSelectListener callback handler
      */
-    public static void ShowTimePicker(final Activity activity, final OnSelectListener mOnSelectListener){
+    public static void ShowTimePicker(final Activity activity, final OnSelectListener mOnSelectListener) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -213,7 +203,7 @@ public class AndroidBridge {
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
 
-                                mOnSelectListener.onSelected(hourOfDay + ":" + String.format("%02d", minute) +":00");
+                                mOnSelectListener.onSelected(hourOfDay + ":" + String.format("%02d", minute) + ":00");
                             }
                         }, mHour, mMinute, false);
                 timePickerDialog.show();
@@ -223,13 +213,14 @@ public class AndroidBridge {
 
     /**
      * Show time picker dialog
-     * @param activity  current context
-     * @param mHour required hour
-     * @param mMinute required minutes
-     * @param is24Hours to show 24 hrs or 12 hrs format
+     *
+     * @param activity          current context
+     * @param mHour             required hour
+     * @param mMinute           required minutes
+     * @param is24Hours         to show 24 hrs or 12 hrs format
      * @param mOnSelectListener callback handler
      */
-    public static void ShowTimePicker(final Activity activity, final int mHour, final int mMinute, final boolean is24Hours, final OnSelectListener mOnSelectListener){
+    public static void ShowTimePicker(final Activity activity, final int mHour, final int mMinute, final boolean is24Hours, final OnSelectListener mOnSelectListener) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -241,7 +232,7 @@ public class AndroidBridge {
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
 
-                                mOnSelectListener.onSelected(hourOfDay + ":" + String.format("%02d", minute) +":00");
+                                mOnSelectListener.onSelected(hourOfDay + ":" + String.format("%02d", minute) + ":00");
                             }
                         }, mHour, mMinute, is24Hours);
                 timePickerDialog.show();
@@ -252,10 +243,10 @@ public class AndroidBridge {
     /**
      * Show date picker dialog
      *
-     * @param activity  current context
+     * @param activity          current context
      * @param mOnSelectListener callback handler
      */
-    public static void ShowDatePicker(final Activity activity, final OnSelectListener mOnSelectListener){
+    public static void ShowDatePicker(final Activity activity, final OnSelectListener mOnSelectListener) {
 
         // Get Current Date
         final Calendar c = Calendar.getInstance();
@@ -287,13 +278,13 @@ public class AndroidBridge {
     /**
      * Show date picker dialog
      *
-     * @param activity current context
-     * @param mYear required year
-     * @param mMonth required month
-     * @param mDay required day
+     * @param activity          current context
+     * @param mYear             required year
+     * @param mMonth            required month
+     * @param mDay              required day
      * @param mOnSelectListener callback handler
      */
-    public static void ShowDatePicker(final Activity activity, final int mYear, final int mMonth, final int mDay, final OnSelectListener mOnSelectListener){
+    public static void ShowDatePicker(final Activity activity, final int mYear, final int mMonth, final int mDay, final OnSelectListener mOnSelectListener) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -317,22 +308,22 @@ public class AndroidBridge {
 
     /**
      * Opens application settings page
+     *
      * @param activity current context
      */
-    public static void OpenSettings(final Activity activity)
-    {
+    public static void OpenSettings(final Activity activity) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
                 // Go to your app's Settings page to let user turn on the necessary permissions.
-                try{
+                try {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
                     intent.setData(uri);
                     activity.startActivity(intent);
-                }catch (NullPointerException e){
-                    Constants.WriteLog("Exception (resume) : "+ e.toString());
+                } catch (NullPointerException e) {
+                    Constants.WriteLog("Exception (resume) : " + e.toString());
                 }
             }
         });
@@ -344,20 +335,19 @@ public class AndroidBridge {
      *
      * @param activity current context
      */
-    public static void OpenSettingsForResult(final Activity activity)
-    {
+    public static void OpenSettingsForResult(final Activity activity) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
                 // Go to your app's Settings page to let user turn on the necessary permissions.
-                try{
+                try {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
                     intent.setData(uri);
                     activity.startActivityForResult(intent, Constants.REQUEST_CODE_OPEN_SETTINGS);
-                }catch (NullPointerException e){
-                    Constants.WriteLog("Exception (resume) : "+ e.toString());
+                } catch (NullPointerException e) {
+                    Constants.WriteLog("Exception (resume) : " + e.toString());
                 }
             }
         });
@@ -365,6 +355,7 @@ public class AndroidBridge {
 
     /**
      * Enable location service
+     *
      * @param activity current context
      */
     public static void EnableLocation(final Activity activity) {
@@ -410,7 +401,7 @@ public class AndroidBridge {
                     }
                 }
             });
-        }else{
+        } else {
             Constants.WriteLog("ACCESS_FINE_LOCATION permission not granted");
         }
     }
@@ -444,23 +435,24 @@ public class AndroidBridge {
                 // connected to the mobile provider's data plan
                 Constants.WriteLog("Active network is mobile");
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             Constants.WriteLog("No active network found");
             return false;
         }
     }
 
+
     /**
      * This method checks whether the given permission is already granted or not.
      *
-     * @param activity      This is context of the current activity
-     * @param permission    This is the permission we need to check
-     * @return  boolean     Returns True if already permission granted for this permission else false.
+     * @param activity   This is context of the current activity
+     * @param permission This is the permission we need to check
+     * @return boolean     Returns True if already permission granted for this permission else false.
      */
-    public static boolean CheckPermission(Activity activity,  String permission) {
+    public static boolean CheckPermission(Activity activity, String permission) {
 
         return PermissionUtils.checkPermission(activity, permission);
     }
@@ -468,11 +460,11 @@ public class AndroidBridge {
     /**
      * This method checks whether the given permission can show rationale dialog.
      *
-     * @param activity      This is context of the current activity
-     * @param permission    This is the permission we need to check
-     * @return  boolean     Returns True if permission is requested but not granted and can show rationale dialog else false.
+     * @param activity   This is context of the current activity
+     * @param permission This is the permission we need to check
+     * @return boolean     Returns True if permission is requested but not granted and can show rationale dialog else false.
      */
-    public static boolean CheckPermissionRationale(Activity activity,  String permission) {
+    public static boolean CheckPermissionRationale(Activity activity, String permission) {
 
         return PermissionUtils.checkPermissionRationale(activity, permission);
     }

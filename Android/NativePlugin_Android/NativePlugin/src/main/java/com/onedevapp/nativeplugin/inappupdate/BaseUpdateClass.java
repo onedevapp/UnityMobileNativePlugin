@@ -1,7 +1,9 @@
 package com.onedevapp.nativeplugin.inappupdate;
 
-public abstract class BaseUpdateClass
-{
+/**
+ * BaseUpdateClass a parent class for PlayStoreUpdate and ThirdPartyUpdate
+ */
+public abstract class BaseUpdateClass {
     // region Declarations
     public int mUpdateType; //update type wither flexible or immediate
     public String mUpdateLink;  //link to download apk for third party
@@ -11,18 +13,20 @@ public abstract class BaseUpdateClass
     //endregion
 
     //region Constructor
+
     /**
      * Constructor
      *
      * @param updateManager the updateManager instance
      */
-    public BaseUpdateClass (UpdateManager updateManager){
+    public BaseUpdateClass(UpdateManager updateManager) {
         this.mUpdateManager = updateManager;
     }
 
     //endregion
 
     // region Setters
+
     /**
      * Set the update link for download
      *
@@ -54,8 +58,11 @@ public abstract class BaseUpdateClass
 
     // region abstract Public functions
     public abstract void checkUpdate() throws Exception;
+
     public abstract void startUpdate() throws Exception;
+
     public abstract void completeUpdate() throws Exception;
+
     public abstract void continueUpdate() throws Exception;
 
     //endregion
