@@ -1,7 +1,8 @@
 {
   "name": "com.onedevapp.unitymobilenative",
   "displayName": "Unity Mobile Native Plugin",
-  "version": "1.0",
+  "version": "1.0.0",
   "unity": "2019.4.4f1",
-  "description": "This plugin contains helpful native function."
+  "description": "This plugin contains helpful native function. Note: Plugin currently supports for Android",
+  "documentationUrl": "https://onedevapp.github.io/UnityMobileNativePlugin/",
 }
