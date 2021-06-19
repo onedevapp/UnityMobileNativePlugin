@@ -3,81 +3,51 @@
     "m_SelectedPackage": {
         "deviceId": "2fb9391c",
         "name": "com.onedevapp.unitymobilenative",
-        "processId": 32515,
+        "processId": 1810,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "2fb9391c",
-            "name": "com.whatsapp",
-            "processId": 25428,
+            "name": "net.oneplus.launcher",
+            "processId": 32726,
             "exited": false
         },
         {
             "deviceId": "2fb9391c",
             "name": "com.onedevapp.unitymobilenative",
-            "processId": 29248,
+            "processId": 16096,
+            "exited": true
+        },
+        {
+            "deviceId": "2fb9391c",
+            "name": "com.oneplus.camera",
+            "processId": 26251,
             "exited": true
         },
         {
             "deviceId": "2fb9391c",
             "name": "com.onedevapp.unitymobilenative",
-            "processId": 32437,
+            "processId": 26254,
             "exited": true
         },
         {
             "deviceId": "2fb9391c",
             "name": "com.onedevapp.unitymobilenative",
-            "processId": 32438,
+            "processId": 26252,
             "exited": true
         },
         {
             "deviceId": "2fb9391c",
             "name": "com.onedevapp.unitymobilenative",
-            "processId": 32440,
+            "processId": 17522,
             "exited": true
         },
         {
             "deviceId": "2fb9391c",
             "name": "com.onedevapp.unitymobilenative",
-            "processId": 32441,
-            "exited": true
-        },
-        {
-            "deviceId": "2fb9391c",
-            "name": "com.onedevapp.unitymobilenative",
-            "processId": 6089,
-            "exited": false
-        },
-        {
-            "deviceId": "2fb9391c",
-            "name": "com.onedevapp.unitymobilenative",
-            "processId": 6090,
-            "exited": false
-        },
-        {
-            "deviceId": "2fb9391c",
-            "name": "com.onedevapp.unitymobilenative",
-            "processId": 6092,
-            "exited": false
-        },
-        {
-            "deviceId": "2fb9391c",
-            "name": "com.onedevapp.unitymobilenative",
-            "processId": 6091,
-            "exited": false
-        },
-        {
-            "deviceId": "2fb9391c",
-            "name": "com.onedevapp.unitymobilenative",
-            "processId": 6093,
-            "exited": false
-        },
-        {
-            "deviceId": "2fb9391c",
-            "name": "com.onedevapp.unitymobilenative",
-            "processId": 32515,
+            "processId": 1810,
             "exited": false
         },
         {

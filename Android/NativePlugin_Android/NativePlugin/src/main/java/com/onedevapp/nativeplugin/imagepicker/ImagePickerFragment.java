@@ -8,50 +8,40 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.MediaStore;
-import android.util.Base64;
 
 import androidx.annotation.Nullable;
 
 import com.onedevapp.nativeplugin.AndroidBridge;
 import com.onedevapp.nativeplugin.Constants;
-import com.onedevapp.nativeplugin.Utils;
 import com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener;
 import com.onedevapp.nativeplugin.rt_permissions.PermissionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * Hidden Fragment to workaround image capture or to pick from gallery
- */
 public class ImagePickerFragment extends Fragment {
 
     // region Declarations
     File mPhotoFile;
     boolean createTempFile = true;
     ImageCompressor mCompressor;
+    OnImageSelectedListener selectedListener;
 
     /**
-     * Fragment builder
-     *
-     * @param bundle arguments for the fragments
-     * @return InvisibleFragment instance
+     * Set the Listener
      */
-    public static ImagePickerFragment build(ImageCompressor mCompressor, Bundle bundle) {
-        ImagePickerFragment fragment = new ImagePickerFragment();
-        fragment.setCompressor(mCompressor);
-        fragment.setArguments(bundle);
-        return fragment;
+    private void setListener(OnImageSelectedListener selectedListener) {
+        this.selectedListener = selectedListener;
     }
 
     /**
@@ -62,6 +52,20 @@ public class ImagePickerFragment extends Fragment {
             this.mCompressor = new ImageCompressor(getActivity());
         else
             this.mCompressor = mCompressor;
+    }
+
+    /**
+     * Fragment builder
+     *
+     * @param bundle arguments for the fragments
+     * @return InvisibleFragment instance
+     */
+    public static ImagePickerFragment build(OnImageSelectedListener selectedListener, ImageCompressor mCompressor, Bundle bundle) {
+        ImagePickerFragment fragment = new ImagePickerFragment();
+        fragment.setListener(selectedListener);
+        fragment.setCompressor(mCompressor);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     /**
@@ -76,6 +80,7 @@ public class ImagePickerFragment extends Fragment {
             }
 
             activity.getFragmentManager().beginTransaction().add(this, activity.getClass().getName()).commit();
+
         } else {
             throw new RuntimeException("activity is null!!");
         }
@@ -97,6 +102,7 @@ public class ImagePickerFragment extends Fragment {
         } else
             selectImage();
     }
+
 
     /**
      * Alert dialog for capture or select from galley
@@ -132,7 +138,7 @@ public class ImagePickerFragment extends Fragment {
             // Create the File where the photo should go
             File photoFile = null;
             try {
-                photoFile = Utils.createImageFile(getActivity(), createTempFile);
+                photoFile = ImageUtil.createImageFile(getActivity(), createTempFile);
             } catch (IOException ex) {
                 // Error occurred while creating the File
                 reportUpdateError(Constants.EC_IMAGE_PICKER_FILE_CANT_CREATE, ex.toString());
@@ -140,7 +146,7 @@ public class ImagePickerFragment extends Fragment {
             }
             if (photoFile != null) {
 
-                Uri photoURI = Utils.getUriFromFile(getActivity(), photoFile);
+                Uri photoURI = ImageUtil.getUriFromFile(getActivity(), photoFile);
 
                 //Uri photoURI = FileProvider.getUriForFile(getActivity(),
                 //        getActivity().getApplicationContext().getPackageName() + ".native_plugin-file-provider",
@@ -214,41 +220,47 @@ public class ImagePickerFragment extends Fragment {
 
         if (resultCode == RESULT_OK) {
             Bitmap mPhotoBitmap = null;
+
             Uri selectedImage = null;
             try {
                 if (requestCode == Constants.REQUEST_TAKE_PHOTO) {
                     mPhotoBitmap = mCompressor.compressToBitmap(mPhotoFile);
-                    selectedImage = Utils.getUriFromFile(getActivity(), mPhotoFile);
+                    selectedImage = ImageUtil.getUriFromFile(getActivity(), mPhotoFile);
                 } else if (requestCode == Constants.REQUEST_GALLERY_PHOTO) {
                     assert data != null;
                     selectedImage = data.getData();
                     //mPhotoBitmap = mCompressor.compressToBitmap(new File(Utils.getRealPathFromUri(getActivity(), selectedImage)));
-                    mPhotoBitmap = mCompressor.compressToBitmap(Utils.loadFromUri(getActivity(), selectedImage));
+                    mPhotoBitmap = mCompressor.compressToBitmap(ImageUtil.loadFromUri(getActivity(), selectedImage));
                 }
 
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
                 assert mPhotoBitmap != null;
                 mPhotoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
-                String temp = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                String temp = Base64.encodeToString(byteArray, Base64.DEFAULT);*/
 
                 JSONObject jso = new JSONObject();
                 try {
-                    jso.put("width", mPhotoBitmap.getWidth());
-                    jso.put("height", mPhotoBitmap.getHeight());
+                    File cacheFile = ImageUtil.saveImgToCache(getActivity(), mPhotoBitmap);
+                    BitmapFactory.Options imageMetaData = ImageUtil.GetImageMetadata(cacheFile);
+                    int orientation = ImageUtil.GetImageOrientation(cacheFile);
+
+                    assert mPhotoBitmap != null;
+                    jso.put("width", imageMetaData.outWidth);
+                    jso.put("height", imageMetaData.outHeight);
+                    jso.put("mimeType", imageMetaData.outMimeType);
+                    jso.put("orientation", orientation);
                     assert selectedImage != null;
                     jso.put("uri", selectedImage.toString());
                     jso.put("path", (mPhotoFile != null) ? mPhotoFile.getAbsolutePath() : "");
-                    jso.put("status", true);
-                    jso.put("message", "");
-                    jso.put("errorCode", "");
-                    jso.put("imageBase64", temp);
+                    jso.put("cacheFilePath", cacheFile.getAbsolutePath());
+                    //jso.put("imageBase64", temp);
+                    selectedListener.onImageSelected(true, jso.toString(), 0);
 
-                    Constants.sendMessageToUnityObject(Constants.UNITY_IMAGE_PICKER_RESULT, jso.toString());
                 } catch (JSONException e) {
 
-                    reportUpdateError(4, e.toString());
+                    reportUpdateError(Constants.EC_IMAGE_PICKER_INTERNAL_ERROR, e.toString());
                 }
             } catch (Exception e) {
 
@@ -267,7 +279,8 @@ public class ImagePickerFragment extends Fragment {
             resumeUnityActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             getActivity().startActivityIfNeeded(resumeUnityActivity, 0);
         } catch (Exception e) {
-            reportUpdateError(Constants.EC_IMAGE_PICKER_INTERNAL_ERROR, e.toString());
+            Constants.WriteLog("errorCode::" + e.toString() + "::error::" + Constants.EC_IMAGE_PICKER_INTERNAL_ERROR);
+            //reportUpdateError(Constants.EC_IMAGE_PICKER_INTERNAL_ERROR, e.toString());
         }
     }
 
@@ -275,19 +288,10 @@ public class ImagePickerFragment extends Fragment {
      * Common functions to report error to users
      *
      * @param errorCode error code
-     * @param error error message
+     * @param error     error message
      */
     protected void reportUpdateError(int errorCode, String error) {
         Constants.WriteLog("errorCode::" + errorCode + "::error::" + error);
-        JSONObject jso = new JSONObject();
-        try {
-            jso.put("status", false);
-            jso.put("message", error);
-            jso.put("errorCode", errorCode);
-
-        } catch (JSONException e) {
-
-        }
-        Constants.sendMessageToUnityObject(Constants.UNITY_IMAGE_PICKER_RESULT, jso.toString());
+        selectedListener.onImageSelected(false, error, errorCode);
     }
 }

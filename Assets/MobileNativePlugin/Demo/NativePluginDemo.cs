@@ -57,7 +57,6 @@ public class NativePluginDemo : MonoBehaviour
         MobileNativeManager.OnPermissionDenied += OnPermissionDenied;
         MobileNativeManager.OnPermissionError += OnPermissionError;
         MobileNativeManager.OnImagePicked += OnImagePicked;
-        MobileNativeManager.OnImagePickedError += OnImagePickedError;
         MobileNativeManager.OnClickAction += OnClickAction;
         MobileNativeManager.OnSelectedAction += OnSelectedAction;
 
@@ -319,31 +318,51 @@ public class NativePluginDemo : MonoBehaviour
         Debug.Log("Error : " + error);
     }
 
-
-    private void OnImagePickedError(int errorCode, string message)
+    private void OnImagePicked(ImageData imageData, string errorMessage, ImagePickerErrorCode errorCode)
     {
-
-        if (errorCode != -1)
+        if (errorCode == ImagePickerErrorCode.NONE)
         {
-            Debug.Log("OnImagePicked::failed::" + message);
+            Debug.Log("OnImagePicked::success");
+
+            try
+            {
+
+                string extension = Path.GetExtension(imageData.cacheFilePath).ToLowerInvariant();
+                TextureFormat format = (extension == ".jpg" || extension == ".jpeg") ? TextureFormat.RGB24 : TextureFormat.RGBA32;
+
+                int w = imageData.width;
+                int h = imageData.height;
+
+                Texture2D result = new Texture2D(w, h, format, true, false);
+
+                if (result.LoadImage(File.ReadAllBytes(imageData.cacheFilePath), true))
+                {
+                    Sprite newSprite = Sprite.Create(result as Texture2D, new Rect(0f, 0f, result.width, result.height), Vector2.zero);
+                    selectedImage.sprite = newSprite;
+                    imagePanel.SetActive(true);
+
+                    selectedFileUri = imageData.uri;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+
+            }
+            finally
+            {
+
+                try
+                {
+                    File.Delete(imageData.cacheFilePath);
+                }
+                catch { }
+            }
         }
-    }
-    private void OnImagePicked(ImageData imageData)
-    {
-        Debug.Log("OnImagePicked::success");
-        byte[] bArray = Convert.FromBase64String(imageData.imageBase64);
-
-        int w = imageData.width;
-        int h = imageData.height;
-
-        Texture2D texture2D = new Texture2D(w, h, TextureFormat.BGRA32, false);
-        texture2D.LoadImage(bArray);
-
-        Sprite newSprite = Sprite.Create(texture2D as Texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), Vector2.zero);
-        selectedImage.sprite = newSprite;
-        imagePanel.SetActive(true);
-
-        selectedFileUri = imageData.uri;
+        else
+        {
+            Debug.Log("OnImagePicked::failed::" + errorMessage);
+        }
     }
 
     private void OnClickAction(bool action)

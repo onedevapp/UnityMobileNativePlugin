@@ -3,12 +3,15 @@ package com.onedevapp.nativeplugin.share;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 
 import androidx.core.app.ShareCompat;
 
 import com.onedevapp.nativeplugin.Utils;
+import com.onedevapp.nativeplugin.imagepicker.ImageUtil;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -112,7 +115,7 @@ public class ShareManager {
      * @return ShareManager itself.
      */
     public ShareManager addFilePath(String filePath) {
-        Uri fileUri = Utils.getUriFromFile(getActivity(), new File(filePath));
+        Uri fileUri = ImageUtil.getUriFromFile(getActivity(), new File(filePath));
         mFilesUriList.add(fileUri);
         return this;
     }
@@ -147,7 +150,7 @@ public class ShareManager {
      */
     public ShareManager addMultipleFilePaths(String[] filePaths) {
         for (String filePath : filePaths) {
-            Uri fileUri = Utils.getUriFromFile(getActivity(), new File(filePath));
+            Uri fileUri = ImageUtil.getUriFromFile(getActivity(), new File(filePath));
             mFilesUriList.add(fileUri);
         }
         return this;
@@ -265,7 +268,8 @@ public class ShareManager {
                 .getIntent()
                 .setAction(Intent.ACTION_SEND) //Change if needed
                 .setDataAndType(mFilesUriList.get(0), "*/*")
-                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                .addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
     }
 
     /**
@@ -286,7 +290,8 @@ public class ShareManager {
                 .getIntent()
                 .setAction(Intent.ACTION_SEND_MULTIPLE) //Change if needed
                 .setDataAndType(mFilesUriList.get(0), "*/*")
-                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                .addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
     }
 
     /**
@@ -323,6 +328,13 @@ public class ShareManager {
         Intent sendIntent = getGenericMultipleFileIntent();
         Intent shareIntent = Intent.createChooser(sendIntent, mShareHeader);
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        /*List<ResolveInfo> resInfoList = getActivity().getPackageManager().queryIntentActivities(shareIntent, PackageManager.MATCH_DEFAULT_ONLY);
+
+        for (ResolveInfo resolveInfo : resInfoList) {
+            String packageName = resolveInfo.activityInfo.packageName;
+            getActivity().grantUriPermission(packageName, ImageUtil.getUriFromFile(getActivity(), ), Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }*/
         getActivity().startActivity(shareIntent);
         clearData();
     }
@@ -340,6 +352,7 @@ public class ShareManager {
 
         try {
             sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            sendIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             Objects.requireNonNull(getActivity()).startActivity(sendIntent);
             clearData();
         } catch (android.content.ActivityNotFoundException ex) {
@@ -381,7 +394,8 @@ public class ShareManager {
         if (!mFilesUriList.isEmpty())
             sendIntent
                     .setType("*/*")
-                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    .addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
         getActivity().startActivity(sendIntent);
         clearData();

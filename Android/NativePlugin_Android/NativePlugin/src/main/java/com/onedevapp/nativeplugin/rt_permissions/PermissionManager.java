@@ -213,7 +213,7 @@ public class PermissionManager {
 
                 if (failPermissions == null || failPermissions.isEmpty()) {
                     mOnPermissionListener.onPermissionGranted(null, true);
-                    mOnPermissionListener.onPermissionError("The requested permission has no denied permissions");
+                    //mOnPermissionListener.onPermissionError("The requested permission has no denied permissions");
                     Constants.WriteLog("The requested permission has no denied permissions");
                     return;
                 }

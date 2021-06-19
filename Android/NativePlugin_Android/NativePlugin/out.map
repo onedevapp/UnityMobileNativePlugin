@@ -1,6 +1,6 @@
 # compiler: R8
 # compiler_version: 2.0.74
-# pg_map_id: 5aecc72
+# pg_map_id: 403647a
 # common_typos_disable
 com.onedevapp.nativeplugin.AndroidBridge -> com.onedevapp.nativeplugin.AndroidBridge:
     android.app.ProgressDialog mProgressDialog -> a
@@ -163,16 +163,10 @@ com.onedevapp.nativeplugin.Constants -> com.onedevapp.nativeplugin.Constants:
 com.onedevapp.nativeplugin.CustomFileProvider -> com.onedevapp.nativeplugin.CustomFileProvider:
     1:1:void <init>():9:9 -> <init>
 com.onedevapp.nativeplugin.Utils -> com.onedevapp.nativeplugin.Utils:
-    boolean $assertionsDisabled -> a
-    1:1:void <clinit>():25:25 -> <clinit>
     1:1:void <init>():25:25 -> <init>
     1:2:boolean checkRootMethod1():33:34 -> checkRootMethod1
     1:4:boolean checkRootMethod2():42:45 -> checkRootMethod2
     1:7:boolean checkRootMethod3():57:63 -> checkRootMethod3
-    1:8:java.io.File createImageFile(android.content.Context,boolean):76:83 -> createImageFile
-    1:11:java.lang.String getRealPathFromUri(android.content.Context,android.net.Uri):96:106 -> getRealPathFromUri
-    1:10:android.net.Uri getUriFromFile(android.content.Context,java.io.File):114:123 -> getUriFromFile
-    1:10:android.graphics.Bitmap loadFromUri(android.content.Context,android.net.Uri):139:148 -> loadFromUri
 com.onedevapp.nativeplugin.imagepicker.ImageCompressor -> com.onedevapp.nativeplugin.imagepicker.ImageCompressor:
     android.graphics.Bitmap$CompressFormat compressFormat -> c
     int quality -> d
@@ -183,14 +177,8 @@ com.onedevapp.nativeplugin.imagepicker.ImageCompressor -> com.onedevapp.nativepl
     2:13:void <init>(android.content.Context):18:29 -> <init>
     1:1:android.graphics.Bitmap compressToBitmap(java.io.File):111:111 -> compressToBitmap
     2:2:android.graphics.Bitmap compressToBitmap(android.graphics.Bitmap):120:120 -> compressToBitmap
-    3:9:android.graphics.Bitmap com.onedevapp.nativeplugin.imagepicker.ImageUtil.decodeSampledBitmapFromBitmap(android.graphics.Bitmap,int,int):102:108 -> compressToBitmap
-    3:9:android.graphics.Bitmap compressToBitmap(android.graphics.Bitmap):120 -> compressToBitmap
     1:1:java.io.File compressToFile(java.io.File):89:89 -> compressToFile
     2:2:java.io.File compressToFile(java.io.File,java.lang.String):100:100 -> compressToFile
-    3:18:java.io.File com.onedevapp.nativeplugin.imagepicker.ImageUtil.compressImage(java.io.File,int,int,android.graphics.Bitmap$CompressFormat,int,java.lang.String):38:53 -> compressToFile
-    3:18:java.io.File compressToFile(java.io.File,java.lang.String):100 -> compressToFile
-    19:22:java.io.File com.onedevapp.nativeplugin.imagepicker.ImageUtil.compressImage(java.io.File,int,int,android.graphics.Bitmap$CompressFormat,int,java.lang.String):48:51 -> compressToFile
-    19:22:java.io.File compressToFile(java.io.File,java.lang.String):100 -> compressToFile
     1:1:com.onedevapp.nativeplugin.imagepicker.ImageCompressor setCompressFormat(android.graphics.Bitmap$CompressFormat):58:58 -> setCompressFormat
     1:1:com.onedevapp.nativeplugin.imagepicker.ImageCompressor setDestinationDirectoryPath(java.lang.String):78:78 -> setDestinationDirectoryPath
     1:1:com.onedevapp.nativeplugin.imagepicker.ImageCompressor setMaxHeight(int):48:48 -> setMaxHeight
@@ -199,78 +187,97 @@ com.onedevapp.nativeplugin.imagepicker.ImageCompressor -> com.onedevapp.nativepl
 com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment -> com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment:
     java.io.File mPhotoFile -> a
     com.onedevapp.nativeplugin.imagepicker.ImageCompressor mCompressor -> c
+    com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener selectedListener -> d
+    boolean $assertionsDisabled -> e
     boolean createTempFile -> b
-    boolean $assertionsDisabled -> d
-    1:1:void <clinit>():37:37 -> <clinit>
-    1:5:void <init>():37:41 -> <init>
-    1:1:void access$000(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment,boolean):37:37 -> a
-    2:19:void selectImage():105:122 -> a
-    20:40:void dispatchTakePictureIntent():130:150 -> a
-    20:40:void access$100(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):37 -> a
-    41:41:void dispatchTakePictureIntent():130:130 -> a
-    41:41:void access$100(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):37 -> a
-    42:69:void requestStoragePermission(boolean):174:201 -> a
-    1:4:void dispatchGalleryIntent():161:164 -> b
-    1:4:void access$200(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):37 -> b
-    5:5:void dispatchGalleryIntent():161:161 -> b
-    5:5:void access$200(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):37 -> b
-    1:1:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):51:51 -> build
-    2:4:void setCompressor(com.onedevapp.nativeplugin.imagepicker.ImageCompressor):62:64 -> build
-    2:4:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):52 -> build
-    5:5:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):53:53 -> build
-    1:10:void onActivityCreated(android.os.Bundle):89:98 -> onActivityCreated
-    1:43:void onActivityResult(int,int,android.content.Intent):213:255 -> onActivityResult
-    1:8:void removeFragment():263:270 -> removeFragment
-    1:11:void reportUpdateError(int,java.lang.String):281:291 -> reportUpdateError
-    1:5:void requestNow(android.app.Activity):74:78 -> requestNow
-    6:11:void requestNow(android.app.Activity):75:80 -> requestNow
+    1:1:void <clinit>():32:32 -> <clinit>
+    1:5:void <init>():32:36 -> <init>
+    1:1:void access$000(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment,boolean):32:32 -> a
+    2:19:void selectImage():111:128 -> a
+    20:40:void dispatchTakePictureIntent():136:156 -> a
+    20:40:void access$100(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):32 -> a
+    41:41:void dispatchTakePictureIntent():136:136 -> a
+    41:41:void access$100(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):32 -> a
+    42:69:void requestStoragePermission(boolean):180:207 -> a
+    1:4:void dispatchGalleryIntent():167:170 -> b
+    1:4:void access$200(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):32 -> b
+    5:5:void dispatchGalleryIntent():167:167 -> b
+    5:5:void access$200(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment):32 -> b
+    1:1:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener,com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):64:64 -> build
+    2:2:void setListener(com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener):44:44 -> build
+    2:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener,com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):65 -> build
+    3:5:void setCompressor(com.onedevapp.nativeplugin.imagepicker.ImageCompressor):52:54 -> build
+    3:5:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener,com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):66 -> build
+    6:6:com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment build(com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener,com.onedevapp.nativeplugin.imagepicker.ImageCompressor,android.os.Bundle):67:67 -> build
+    1:10:void onActivityCreated(android.os.Bundle):94:103 -> onActivityCreated
+    1:49:void onActivityResult(int,int,android.content.Intent):219:267 -> onActivityResult
+    1:8:void removeFragment():275:282 -> removeFragment
+    1:2:void reportUpdateError(int,java.lang.String):294:295 -> reportUpdateError
+    1:5:void requestNow(android.app.Activity):78:82 -> requestNow
+    6:12:void requestNow(android.app.Activity):79:85 -> requestNow
 com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment$1 -> com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment$a:
     com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment this$0 -> b
     java.lang.CharSequence[] val$items -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment,java.lang.CharSequence[]):108:108 -> <init>
-    1:7:void onClick(android.content.DialogInterface,int):111:117 -> onClick
+    1:1:void <init>(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment,java.lang.CharSequence[]):114:114 -> <init>
+    1:7:void onClick(android.content.DialogInterface,int):117:123 -> onClick
 com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment$2 -> com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment$b:
     boolean val$isCamera -> a
     com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment this$0 -> b
-    1:1:void <init>(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment,boolean):175:175 -> <init>
-    1:1:void onPermissionDenied(java.lang.String[]):190:190 -> onPermissionDenied
-    1:1:void onPermissionError(java.lang.String):195:195 -> onPermissionError
-    1:4:void onPermissionGranted(java.lang.String[],boolean):180:183 -> onPermissionGranted
+    1:1:void <init>(com.onedevapp.nativeplugin.imagepicker.ImagePickerFragment,boolean):181:181 -> <init>
+    1:1:void onPermissionDenied(java.lang.String[]):196:196 -> onPermissionDenied
+    1:1:void onPermissionError(java.lang.String):201:201 -> onPermissionError
+    1:4:void onPermissionGranted(java.lang.String[],boolean):186:189 -> onPermissionGranted
 com.onedevapp.nativeplugin.imagepicker.ImagePickerManager -> com.onedevapp.nativeplugin.imagepicker.ImagePickerManager:
-    com.onedevapp.nativeplugin.imagepicker.ImagePickerManager instance -> e
-    com.onedevapp.nativeplugin.imagepicker.ImageCompressor mCompressor -> d
+    com.onedevapp.nativeplugin.imagepicker.ImageCompressor mCompressor -> e
+    com.onedevapp.nativeplugin.imagepicker.ImagePickerManager instance -> f
+    com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener mOnImageSelectedListener -> b
     java.lang.ref.WeakReference mActivityWeakReference -> a
-    int mPickerType -> b
-    boolean mTempFile -> c
-    1:1:void <init>(android.app.Activity):39:39 -> <init>
-    2:25:void <init>(android.app.Activity):18:41 -> <init>
-    1:4:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager Builder(android.app.Activity):32:35 -> Builder
-    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager createImageAsTemp(boolean):101:102 -> createImageAsTemp
-    1:1:android.app.Activity getActivity():111:111 -> getActivity
-    1:1:void openImagePicker():115:115 -> openImagePicker
-    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setMaxHeight(int):78:79 -> setMaxHeight
-    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setMaxWidth(int):67:68 -> setMaxWidth
-    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setPickerType(int):56:57 -> setPickerType
-    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setQuality(int):90:91 -> setQuality
+    int mPickerType -> c
+    boolean mTempFile -> d
+    1:1:void <init>(android.app.Activity):40:40 -> <init>
+    2:25:void <init>(android.app.Activity):19:42 -> <init>
+    1:4:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager Builder(android.app.Activity):33:36 -> Builder
+    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager createImageAsTemp(boolean):102:103 -> createImageAsTemp
+    1:1:android.app.Activity getActivity():123:123 -> getActivity
+    1:1:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager handler(com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener):113:113 -> handler
+    1:1:void openImagePicker():127:127 -> openImagePicker
+    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setMaxHeight(int):79:80 -> setMaxHeight
+    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setMaxWidth(int):68:69 -> setMaxWidth
+    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setPickerType(int):57:58 -> setPickerType
+    1:2:com.onedevapp.nativeplugin.imagepicker.ImagePickerManager setQuality(int):91:92 -> setQuality
 com.onedevapp.nativeplugin.imagepicker.ImagePickerManager$1 -> com.onedevapp.nativeplugin.imagepicker.ImagePickerManager$a:
     com.onedevapp.nativeplugin.imagepicker.ImagePickerManager this$0 -> a
-    1:1:void <init>(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):115:115 -> <init>
-    1:2:void run():118:119 -> run
+    1:1:void <init>(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):127:127 -> <init>
+    1:2:void run():130:131 -> run
     3:3:int com.onedevapp.nativeplugin.imagepicker.ImagePickerManager.access$000(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):11:11 -> run
-    3:3:void run():119 -> run
-    4:5:void run():119:120 -> run
+    3:3:void run():131 -> run
+    4:5:void run():131:132 -> run
     6:6:boolean com.onedevapp.nativeplugin.imagepicker.ImagePickerManager.access$100(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):11:11 -> run
-    6:6:void run():120 -> run
-    7:8:void run():120:121 -> run
-    9:9:com.onedevapp.nativeplugin.imagepicker.ImageCompressor com.onedevapp.nativeplugin.imagepicker.ImagePickerManager.access$200(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):11:11 -> run
-    9:9:void run():121 -> run
-    10:10:void run():121:121 -> run
+    6:6:void run():132 -> run
+    7:8:void run():132:133 -> run
+    9:9:com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener com.onedevapp.nativeplugin.imagepicker.ImagePickerManager.access$200(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):11:11 -> run
+    9:9:void run():133 -> run
+    10:10:com.onedevapp.nativeplugin.imagepicker.ImageCompressor com.onedevapp.nativeplugin.imagepicker.ImagePickerManager.access$300(com.onedevapp.nativeplugin.imagepicker.ImagePickerManager):11:11 -> run
+    10:10:void run():133 -> run
+    11:11:void run():133:133 -> run
 com.onedevapp.nativeplugin.imagepicker.ImageUtil -> com.onedevapp.nativeplugin.imagepicker.ImageUtil:
-    1:1:void <init>():21:21 -> <init>
-    1:3:android.graphics.Bitmap decodeSampledBitmapFromFile(java.io.File,int,int):66:68 -> a
-    4:15:int calculateInSampleSize(android.graphics.BitmapFactory$Options,int,int):120:131 -> a
-    4:15:android.graphics.Bitmap decodeSampledBitmapFromFile(java.io.File,int,int):71 -> a
-    16:35:android.graphics.Bitmap decodeSampledBitmapFromFile(java.io.File,int,int):71:90 -> a
+    boolean $assertionsDisabled -> a
+    1:1:void <clinit>():35:35 -> <clinit>
+    1:1:void <init>():45:45 -> <init>
+    1:3:android.graphics.BitmapFactory$Options GetImageMetadata(java.io.File):214:216 -> GetImageMetadata
+    1:2:int GetImageOrientation(java.io.File):202:203 -> GetImageOrientation
+    1:16:java.io.File compressImage(java.io.File,int,int,android.graphics.Bitmap$CompressFormat,int,java.lang.String):63:78 -> a
+    17:20:java.io.File compressImage(java.io.File,int,int,android.graphics.Bitmap$CompressFormat,int,java.lang.String):73:76 -> a
+    21:21:android.graphics.Bitmap decodeSampledBitmapFromFile(java.io.File,int,int):231:231 -> a
+    22:33:int calculateInSampleSize(android.graphics.BitmapFactory$Options,int,int):285:296 -> a
+    22:33:android.graphics.Bitmap decodeSampledBitmapFromFile(java.io.File,int,int):234 -> a
+    34:52:android.graphics.Bitmap decodeSampledBitmapFromFile(java.io.File,int,int):234:252 -> a
+    53:59:android.graphics.Bitmap decodeSampledBitmapFromBitmap(android.graphics.Bitmap,int,int):266:272 -> a
+    1:8:java.io.File createImageFile(android.content.Context,boolean):91:98 -> createImageFile
+    1:11:java.lang.String getRealPathFromUri(android.content.Context,android.net.Uri):136:146 -> getRealPathFromUri
+    1:10:android.net.Uri getUriFromFile(android.content.Context,java.io.File):154:163 -> getUriFromFile
+    1:10:android.graphics.Bitmap loadFromUri(android.content.Context,android.net.Uri):179:188 -> loadFromUri
+    1:15:java.io.File saveImgToCache(android.content.Context,android.graphics.Bitmap):109:123 -> saveImgToCache
 com.onedevapp.nativeplugin.inappupdate.BaseUpdateClass -> com.onedevapp.nativeplugin.inappupdate.BaseUpdateClass:
     1:2:void <init>(com.onedevapp.nativeplugin.inappupdate.UpdateManager):22:23 -> <init>
     1:1:void setHandler(com.onedevapp.nativeplugin.inappupdate.OnUpdateListener):54:54 -> setHandler
@@ -550,10 +557,7 @@ com.onedevapp.nativeplugin.rt_permissions.PermissionManager$1 -> com.onedevapp.n
     96:96:void run():215:215 -> run
     97:97:com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener com.onedevapp.nativeplugin.rt_permissions.PermissionManager.access$000(com.onedevapp.nativeplugin.rt_permissions.PermissionManager):19:19 -> run
     97:97:void run():215 -> run
-    98:99:void run():215:216 -> run
-    100:100:com.onedevapp.nativeplugin.rt_permissions.OnPermissionListener com.onedevapp.nativeplugin.rt_permissions.PermissionManager.access$000(com.onedevapp.nativeplugin.rt_permissions.PermissionManager):19:19 -> run
-    100:100:void run():216 -> run
-    101:102:void run():216:217 -> run
+    98:100:void run():215:217 -> run
 com.onedevapp.nativeplugin.rt_permissions.PermissionUtils -> com.onedevapp.nativeplugin.rt_permissions.PermissionUtils:
     1:1:void <init>():31:31 -> <init>
     1:5:boolean checkPermission(android.content.Context,java.lang.String):66:70 -> checkPermission
@@ -569,34 +573,34 @@ com.onedevapp.nativeplugin.share.ShareManager -> com.onedevapp.nativeplugin.shar
     java.util.List mEmailIdBccList -> d
     java.util.List mEmailIdCcList -> c
     java.lang.String mMessage -> e
-    1:1:void <init>(android.app.Activity):68:68 -> <init>
-    2:37:void <init>(android.app.Activity):35:70 -> <init>
-    38:38:void <init>(android.app.Fragment):74:74 -> <init>
-    39:80:void <init>(android.app.Fragment):35:76 -> <init>
-    1:4:com.onedevapp.nativeplugin.share.ShareManager Builder(android.app.Activity):48:51 -> Builder
-    5:8:com.onedevapp.nativeplugin.share.ShareManager Builder(android.app.Fragment):61:64 -> Builder
-    1:7:void clearData():88:94 -> a
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addEmailAddress(java.lang.String):196:196 -> addEmailAddress
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addEmailBccAddress(java.lang.String):240:240 -> addEmailBccAddress
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addEmailCcAddress(java.lang.String):218:218 -> addEmailCcAddress
-    1:2:com.onedevapp.nativeplugin.share.ShareManager addFilePath(java.lang.String):115:116 -> addFilePath
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addFileUri(android.net.Uri):127:127 -> addFileUri
-    2:2:com.onedevapp.nativeplugin.share.ShareManager addFileUri(java.lang.String):138:138 -> addFileUri
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleEmailAddress(java.lang.String[]):207:207 -> addMultipleEmailAddress
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleEmailBccAddress(java.lang.String[]):251:251 -> addMultipleEmailBccAddress
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleEmailCcAddress(java.lang.String[]):229:229 -> addMultipleEmailCcAddress
-    1:3:com.onedevapp.nativeplugin.share.ShareManager addMultipleFilePaths(java.lang.String[]):149:151 -> addMultipleFilePaths
-    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleFileUris(android.net.Uri[]):163:163 -> addMultipleFileUris
-    1:8:android.content.Intent getGenericFileIntent():261:268 -> b
-    1:1:android.app.Activity getActivity():83:83 -> getActivity
-    1:1:com.onedevapp.nativeplugin.share.ShareManager setHeader(java.lang.String):104:104 -> setHeader
-    1:1:com.onedevapp.nativeplugin.share.ShareManager setMessage(java.lang.String):174:174 -> setMessage
-    1:1:com.onedevapp.nativeplugin.share.ShareManager setWhatsAppMobileNo(java.lang.String):185:185 -> setWhatsAppMobileNo
-    1:7:void shareFileContent():308:314 -> shareFileContent
-    1:1:void shareMultipleFileContent():321:321 -> shareMultipleFileContent
-    2:14:android.content.Intent getGenericMultipleFileIntent():277:289 -> shareMultipleFileContent
-    2:14:void shareMultipleFileContent():323 -> shareMultipleFileContent
-    15:18:void shareMultipleFileContent():324:327 -> shareMultipleFileContent
-    1:31:void shareOnEmail(java.lang.String,boolean):357:387 -> shareOnEmail
-    1:13:void shareOnWhatsApp():334:346 -> shareOnWhatsApp
-    1:6:void shareTextContent():296:301 -> shareTextContent
+    1:1:void <init>(android.app.Activity):71:71 -> <init>
+    2:37:void <init>(android.app.Activity):38:73 -> <init>
+    38:38:void <init>(android.app.Fragment):77:77 -> <init>
+    39:80:void <init>(android.app.Fragment):38:79 -> <init>
+    1:4:com.onedevapp.nativeplugin.share.ShareManager Builder(android.app.Activity):51:54 -> Builder
+    5:8:com.onedevapp.nativeplugin.share.ShareManager Builder(android.app.Fragment):64:67 -> Builder
+    1:7:void clearData():91:97 -> a
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addEmailAddress(java.lang.String):199:199 -> addEmailAddress
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addEmailBccAddress(java.lang.String):243:243 -> addEmailBccAddress
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addEmailCcAddress(java.lang.String):221:221 -> addEmailCcAddress
+    1:2:com.onedevapp.nativeplugin.share.ShareManager addFilePath(java.lang.String):118:119 -> addFilePath
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addFileUri(android.net.Uri):130:130 -> addFileUri
+    2:2:com.onedevapp.nativeplugin.share.ShareManager addFileUri(java.lang.String):141:141 -> addFileUri
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleEmailAddress(java.lang.String[]):210:210 -> addMultipleEmailAddress
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleEmailBccAddress(java.lang.String[]):254:254 -> addMultipleEmailBccAddress
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleEmailCcAddress(java.lang.String[]):232:232 -> addMultipleEmailCcAddress
+    1:3:com.onedevapp.nativeplugin.share.ShareManager addMultipleFilePaths(java.lang.String[]):152:154 -> addMultipleFilePaths
+    1:1:com.onedevapp.nativeplugin.share.ShareManager addMultipleFileUris(android.net.Uri[]):166:166 -> addMultipleFileUris
+    1:9:android.content.Intent getGenericFileIntent():264:272 -> b
+    1:1:android.app.Activity getActivity():86:86 -> getActivity
+    1:1:com.onedevapp.nativeplugin.share.ShareManager setHeader(java.lang.String):107:107 -> setHeader
+    1:1:com.onedevapp.nativeplugin.share.ShareManager setMessage(java.lang.String):177:177 -> setMessage
+    1:1:com.onedevapp.nativeplugin.share.ShareManager setWhatsAppMobileNo(java.lang.String):188:188 -> setWhatsAppMobileNo
+    1:7:void shareFileContent():313:319 -> shareFileContent
+    1:1:void shareMultipleFileContent():326:326 -> shareMultipleFileContent
+    2:15:android.content.Intent getGenericMultipleFileIntent():281:294 -> shareMultipleFileContent
+    2:15:void shareMultipleFileContent():328 -> shareMultipleFileContent
+    16:26:void shareMultipleFileContent():329:339 -> shareMultipleFileContent
+    1:32:void shareOnEmail(java.lang.String,boolean):370:401 -> shareOnEmail
+    1:14:void shareOnWhatsApp():346:359 -> shareOnWhatsApp
+    1:6:void shareTextContent():301:306 -> shareTextContent

@@ -51,12 +51,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.exifinterface:exifinterface:1.3.0-alpha01'
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "androidx.core:core:1.3.2"
 
     compileOnly 'com.google.android.play:core:1.8.3'
     compileOnly "com.google.android.gms:play-services-location:17.1.0"
+    compileOnly 'androidx.exifinterface:exifinterface:1.3.2'
 }
 
 //apply from: 'release-aar.gradle'

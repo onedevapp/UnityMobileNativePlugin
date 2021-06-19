@@ -14,9 +14,11 @@ public class ImageData
     public int errorCode;
     public int width;
     public int height;
+    public int mimeType;
+    public int orientation;
     public string uri;
     public string path;
-    public string imageBase64;
+    public string cacheFilePath;
 }
 /// <summary>
 /// EmailSharingData class model for sharing email content details

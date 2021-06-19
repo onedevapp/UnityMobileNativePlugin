@@ -15,6 +15,7 @@ public class ImagePickerManager {
     private final WeakReference<Activity> mActivityWeakReference; //Activity references
 
     //The result returned from this plugin
+    private OnImageSelectedListener mOnImageSelectedListener; //Callback listener
     private int mPickerType = 0;
     private boolean mTempFile = true;
     private ImageCompressor mCompressor = null;
@@ -102,6 +103,17 @@ public class ImagePickerManager {
         return instance;
     }
 
+    /**
+     * Set the callback handler
+     *
+     * @param mOnImageSelectedListener the handler
+     * @return the update manager instance
+     */
+    public ImagePickerManager handler(OnImageSelectedListener mOnImageSelectedListener) {
+        this.mOnImageSelectedListener = mOnImageSelectedListener;
+        return this;
+    }
+
     // region helper functions
 
     /**
@@ -118,7 +130,7 @@ public class ImagePickerManager {
                 Bundle bundle = new Bundle();
                 bundle.putInt("pickerType", mPickerType);
                 bundle.putBoolean("createTempFile", mTempFile);
-                ImagePickerFragment.build(mCompressor, bundle).requestNow(getActivity());
+                ImagePickerFragment.build(mOnImageSelectedListener, mCompressor, bundle).requestNow(getActivity());
             }
         });
     }

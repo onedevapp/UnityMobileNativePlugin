@@ -50,11 +50,7 @@ namespace OneDevApp
         /// <summary>
         /// Event triggered with image picked
         /// </summary>
-        public static event Action<ImageData> OnImagePicked;
-        /// <summary>
-        /// Event triggered with image picked
-        /// </summary>
-        public static event Action<int, string> OnImagePickedError;
+        public static event Action<ImageData, string, ImagePickerErrorCode> OnImagePicked;
         /// <summary>
         /// Event triggered when dialog buttons are clicked
         /// </summary>
@@ -78,14 +74,39 @@ namespace OneDevApp
         [SerializeField]
         private string m_unityMainActivity = "com.unity3d.player.UnityPlayer";
 
+        const string m_bridgePackageName = "com.onedevapp.nativeplugin.AndroidBridge";
+        bool writeLog = false;
+
 #pragma warning restore 0414
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         private AndroidJavaObject mContext = null;
         private AndroidJavaObject mUpdateManager = null;
-        private AndroidJavaObject mPermissionManager = null;
-        private AndroidJavaObject mImagePickerManager = null;
-        private AndroidJavaClass mAndroidBridge = null;
+
+        class OnImageSelectedListener : AndroidJavaProxy
+        {
+            public OnImageSelectedListener() : base("com.onedevapp.nativeplugin.imagepicker.OnImageSelectedListener") { }
+
+            public void onImageSelected(bool status, string message, int errorCode)
+            {
+                if(OnImagePicked != null)
+                {	
+                
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+
+                        ImageData imageData = null;
+                        if (status)
+                        {
+                            Debug.Log("OnImagePicked::message::" + message);
+                            imageData = JsonUtility.FromJson<ImageData>(message);
+                            message = string.Empty;
+                        }
+
+                        OnImagePicked.Invoke(imageData, message, (ImagePickerErrorCode) errorCode);
+                    });
+                }
+            }
+        }
 
         class OnUpdateListener : AndroidJavaProxy
         {
@@ -96,17 +117,23 @@ namespace OneDevApp
             {
                 if (isUpdateAvailable && isUpdateTypeAllowed)
                 {
-                    if (OnUpdateAvailable != null)
-                    {
-                        OnUpdateAvailable.Invoke(true);
-                    }
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+
+                        if (OnUpdateAvailable != null)
+                        {
+                            OnUpdateAvailable.Invoke(true);
+                        }
+                    });
                 }
                 else
                 {
-                    if (OnUpdateAvailable != null)
-                    {
-                        OnUpdateAvailable.Invoke(false);
-                    }
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+
+                        if (OnUpdateAvailable != null)
+                        {
+                            OnUpdateAvailable.Invoke(false);
+                        }
+                    });
                 }
             }
 
@@ -115,7 +142,10 @@ namespace OneDevApp
             {
                 if (OnUpdateVersionCode != null)
                 {
-                    OnUpdateVersionCode.Invoke(versionCode);
+
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnUpdateVersionCode.Invoke(versionCode);
+                    });
                 }
             }
 
@@ -124,7 +154,9 @@ namespace OneDevApp
             {
                 if (OnUpdateStalenessDays != null)
                 {
-                    OnUpdateStalenessDays.Invoke(days);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnUpdateStalenessDays.Invoke(days);
+                    });
                 }
             }
 
@@ -133,7 +165,9 @@ namespace OneDevApp
             {
                 if (OnUpdateInstallState != null)
                 {
-                    OnUpdateInstallState.Invoke((InstallStatus)state);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnUpdateInstallState.Invoke((InstallStatus)state);
+                    });
                 }
             }
 
@@ -142,7 +176,9 @@ namespace OneDevApp
             {
                 if (OnUpdateDownloading != null)
                 {
-                    OnUpdateDownloading.Invoke(bytesDownloaded, bytesTotal);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnUpdateDownloading.Invoke(bytesDownloaded, bytesTotal);
+                    });
                 }
             }
 
@@ -151,7 +187,9 @@ namespace OneDevApp
             {
                 if (OnUpdateError != null)
                 {
-                    OnUpdateError.Invoke(code, error);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnUpdateError.Invoke(code, error);
+                    });
                 }
             }
         }
@@ -165,7 +203,9 @@ namespace OneDevApp
             {
                 if (OnPermissionGranted != null)
                 {
-                    OnPermissionGranted.Invoke(grantPermissions, all);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnPermissionGranted.Invoke(grantPermissions, all);
+                    });
                 }
             }
 
@@ -173,7 +213,9 @@ namespace OneDevApp
             {
                 if (OnPermissionDenied != null)
                 {
-                    OnPermissionDenied.Invoke(deniedPermissions);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnPermissionDenied.Invoke(deniedPermissions);
+                    });
                 }
             }
 
@@ -181,7 +223,9 @@ namespace OneDevApp
             {
                 if (OnPermissionError != null)
                 {
-                    OnPermissionError.Invoke(errorMessage);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnPermissionError.Invoke(errorMessage);
+                    });
                 }
             }
         }
@@ -194,7 +238,9 @@ namespace OneDevApp
             {
                 if (OnClickAction != null)
                 {
-                    OnClickAction.Invoke(true);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnClickAction.Invoke(true);
+                    });
                 }
             }
         }
@@ -207,7 +253,9 @@ namespace OneDevApp
             {
                 if (OnClickAction != null)
                 {
-                    OnClickAction.Invoke(false);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnClickAction.Invoke(false);
+                    });
                 }
             }
         }
@@ -220,7 +268,9 @@ namespace OneDevApp
             {
                 if (OnSelectedAction != null)
                 {
-                    OnSelectedAction.Invoke(selectedValue);
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => {
+                        OnSelectedAction.Invoke(selectedValue);
+                    });
                 }
             }
         }
@@ -242,19 +292,11 @@ namespace OneDevApp
             if (Application.platform == RuntimePlatform.Android)
             {
                 mContext = new AndroidJavaClass(m_unityMainActivity).GetStatic<AndroidJavaObject>("currentActivity");
-                mAndroidBridge = new AndroidJavaClass("com.onedevapp.nativeplugin.AndroidBridge");
             }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
-        }
-
-        private void OnDestroy()
-        {
-            if (Instance == this)
-            {
-                Instance = null;
-            }
         }
 
 
@@ -269,9 +311,10 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Update Manager
+
             var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.inappupdate.UpdateManager");
 
-            mUpdateManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+            var mUpdateManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
 
             mUpdateManager.Call<AndroidJavaObject>("updateMode", (int)updateMode)
                 .Call<AndroidJavaObject>("handler", new OnUpdateListener())
@@ -282,7 +325,8 @@ namespace OneDevApp
 
             mUpdateManager.Call("checkUpdate");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)                
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -296,7 +340,8 @@ namespace OneDevApp
             if (mUpdateManager != null)
                 mUpdateManager.Call("startUpdate");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -310,7 +355,8 @@ namespace OneDevApp
             if (mUpdateManager != null)
                 mUpdateManager.Call("completeUpdate");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -323,7 +369,8 @@ namespace OneDevApp
             if (mUpdateManager != null)
                 mUpdateManager.Call("continueUpdate");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -339,15 +386,17 @@ namespace OneDevApp
 
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Permission Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.rt_permissions.PermissionManager");
-
-            mPermissionManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
-            mPermissionManager
-                .Call<AndroidJavaObject>("handler", new OnPermissionListener())
-                .Call<AndroidJavaObject>("addPermissions", javaArrayFromCS(permissions))
-                .Call("requestPermission");
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.rt_permissions.PermissionManager"))
+            {
+                var mPermissionManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
+                mPermissionManager
+                    .Call<AndroidJavaObject>("handler", new OnPermissionListener())
+                    .Call<AndroidJavaObject>("addPermissions", javaArrayFromCS(permissions))
+                    .Call("requestPermission");
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -360,15 +409,17 @@ namespace OneDevApp
 
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Permission Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.rt_permissions.PermissionManager");
-
-            mPermissionManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
-            mPermissionManager
-                .Call<AndroidJavaObject>("handler", new OnPermissionListener())
-                .Call<AndroidJavaObject>("addPermission", permission)
-                .Call("requestPermission");
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.rt_permissions.PermissionManager"))
+            {
+                var mPermissionManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
+                mPermissionManager
+                    .Call<AndroidJavaObject>("handler", new OnPermissionListener())
+                    .Call<AndroidJavaObject>("addPermission", permission)
+                    .Call("requestPermission");
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -380,7 +431,10 @@ namespace OneDevApp
         public bool CheckPermission(string permission)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            return mAndroidBridge.CallStatic<bool>("CheckPermission", mContext, permission);
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                return jc.CallStatic<bool>("CheckPermission", mContext, permission);
+            }
 #elif UNITY_EDITOR
             return true;
 #endif
@@ -393,7 +447,10 @@ namespace OneDevApp
         public bool CheckPermissionRationale(string permission)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            return mAndroidBridge.CallStatic<bool>("CheckPermissionRationale", mContext, permission);
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                return jc.CallStatic<bool>("CheckPermissionRationale", mContext, permission);
+            }
 #elif UNITY_EDITOR
             return true;
 #endif
@@ -414,17 +471,21 @@ namespace OneDevApp
 
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize ImagePicker Manager
-            var mImagePickerManagerJavaClass = new AndroidJavaClass("com.onedevapp.nativeplugin.imagepicker.ImagePickerManager");
 
-            mImagePickerManager = mImagePickerManagerJavaClass.CallStatic<AndroidJavaObject>("Builder", mContext);
-            mImagePickerManager
-                .Call<AndroidJavaObject>("setPickerType", (int) pickerType)
-                .Call<AndroidJavaObject>("setMaxWidth", maxWidth)
-                .Call<AndroidJavaObject>("setMaxHeight", maxHeight)
-                .Call<AndroidJavaObject>("setQuality", quality)
-                .Call("openImagePicker");
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.imagepicker.ImagePickerManager"))
+            {
+                var mImagePickerManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
+                mImagePickerManager
+                    .Call<AndroidJavaObject>("setPickerType", (int)pickerType)
+                    .Call<AndroidJavaObject>("setMaxWidth", maxWidth)
+                    .Call<AndroidJavaObject>("handler", new OnImageSelectedListener())
+                    .Call<AndroidJavaObject>("setMaxHeight", maxHeight)
+                    .Call<AndroidJavaObject>("setQuality", quality)
+                    .Call("openImagePicker");
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -443,22 +504,24 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Share Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager"))
+            {
+                var mShareManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
 
-            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+                mShareManager.Call<AndroidJavaObject>("setMessage", message);
 
-            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+                if (!string.IsNullOrEmpty(filePath))
+                    mShareManager.Call<AndroidJavaObject>(isFileUri ? "addFileUri" : "addFilePath", filePath);
+                if (!string.IsNullOrEmpty(mobileNo))
+                    mShareManager.Call<AndroidJavaObject>("setWhatsAppMobileNo", mobileNo);
+                if (!string.IsNullOrEmpty(header))
+                    mShareManager.Call<AndroidJavaObject>("setHeader", header);
 
-            if (!string.IsNullOrEmpty(filePath))
-                mShareManager.Call<AndroidJavaObject>(isFileUri ? "addFileUri" : "addFilePath", filePath);
-            if (!string.IsNullOrEmpty(mobileNo))
-                mShareManager.Call<AndroidJavaObject>("setWhatsAppMobileNo", mobileNo);
-            if (!string.IsNullOrEmpty(header))
-                mShareManager.Call<AndroidJavaObject>("setHeader", header);
-
-            mShareManager.Call("shareOnWhatsApp");
+                mShareManager.Call("shareOnWhatsApp");
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
         /// <summary>
@@ -470,18 +533,21 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Share Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager"))
+            {
+                var mShareManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
 
-            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+                mShareManager.Call<AndroidJavaObject>("setMessage", message);
 
-            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+                if (!string.IsNullOrEmpty(header))
+                    mShareManager.Call<AndroidJavaObject>("setHeader", header);
 
-            if (!string.IsNullOrEmpty(header))
-                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+                mShareManager.Call("shareTextContent");
+            }
 
-            mShareManager.Call("shareTextContent");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -496,20 +562,23 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Share Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager"))
+            {
+                var mShareManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
 
-            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
+                mShareManager.Call<AndroidJavaObject>("setMessage", message);
 
-            mShareManager.Call<AndroidJavaObject>("setMessage", message);
+                if (!string.IsNullOrEmpty(filePath))
+                    mShareManager.Call<AndroidJavaObject>(isFileUri ? "addFileUri" : "addFilePath", filePath);
+                if (!string.IsNullOrEmpty(header))
+                    mShareManager.Call<AndroidJavaObject>("setHeader", header);
 
-            if (!string.IsNullOrEmpty(filePath))
-                mShareManager.Call<AndroidJavaObject>(isFileUri ? "addFileUri" : "addFilePath", filePath);
-            if (!string.IsNullOrEmpty(header))
-                mShareManager.Call<AndroidJavaObject>("setHeader", header);
+                mShareManager.Call("shareFileContent");
+            }
 
-            mShareManager.Call("shareFileContent");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -523,29 +592,33 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Share Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
-
-            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
-
-            mShareManager.Call<AndroidJavaObject>("setMessage", message);
-
-            if (fileData.filePath != null || fileData.filePath.Length > 0)
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager"))
             {
-                mShareManager.Call<AndroidJavaObject>("addMultipleFilePaths", javaArrayFromCS(fileData.filePath));
-            } 
-            
-            if (fileData.fileUri != null || fileData.fileUri.Length > 0)
-            {
-                foreach(string fileUri in fileData.fileUri)
-                    mShareManager.Call<AndroidJavaObject>("addFileUri", fileUri);
+                var mShareManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+                mShareManager.Call<AndroidJavaObject>("setMessage", message);
+
+                if (fileData.filePath != null || fileData.filePath.Length > 0)
+                {
+                    mShareManager.Call<AndroidJavaObject>("addMultipleFilePaths", javaArrayFromCS(fileData.filePath));
+                }
+
+                if (fileData.fileUri != null || fileData.fileUri.Length > 0)
+                {
+                    foreach (string fileUri in fileData.fileUri)
+                        mShareManager.Call<AndroidJavaObject>("addFileUri", fileUri);
+                }
+
+                if (!string.IsNullOrEmpty(header))
+                    mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+                mShareManager.Call("shareMultipleFileContent");
             }
 
-            if (!string.IsNullOrEmpty(header))
-                mShareManager.Call<AndroidJavaObject>("setHeader", header);
 
-            mShareManager.Call("shareMultipleFileContent");
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -558,44 +631,47 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Initialize Share Manager
-            var manager = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager");
 
-            var mShareManager = manager.CallStatic<AndroidJavaObject>("Builder", mContext);
-
-            mShareManager.Call<AndroidJavaObject>("setMessage", emailData.message);
-
-            if (emailData.emailTo.Length > 0)
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.onedevapp.nativeplugin.share.ShareManager"))
             {
-                mShareManager.Call<AndroidJavaObject>("addMultipleEmailAddress", javaArrayFromCS(emailData.emailTo));
+                var mShareManager = jc.CallStatic<AndroidJavaObject>("Builder", mContext);
+
+                mShareManager.Call<AndroidJavaObject>("setMessage", emailData.message);
+
+                if (emailData.emailTo.Length > 0)
+                {
+                    mShareManager.Call<AndroidJavaObject>("addMultipleEmailAddress", javaArrayFromCS(emailData.emailTo));
+                }
+
+                if (emailData.emailCc.Length > 0)
+                {
+                    mShareManager.Call<AndroidJavaObject>("addMultipleEmailCcAddress", javaArrayFromCS(emailData.emailCc));
+                }
+
+                if (emailData.emailBcc.Length > 0)
+                {
+                    mShareManager.Call<AndroidJavaObject>("addMultipleEmailBccAddress", javaArrayFromCS(emailData.emailBcc));
+                }
+
+                if (emailData.fileData.filePath.Length > 0)
+                {
+                    mShareManager.Call<AndroidJavaObject>("addMultipleFilePaths", javaArrayFromCS(emailData.fileData.filePath));
+                }
+
+                if (emailData.fileData.fileUri.Length > 0)
+                {
+                    foreach (string fileUri in emailData.fileData.fileUri)
+                        mShareManager.Call<AndroidJavaObject>("addFileUri", fileUri);
+                }
+
+                if (!string.IsNullOrEmpty(header))
+                    mShareManager.Call<AndroidJavaObject>("setHeader", header);
+
+                mShareManager.Call("shareOnEmail", new object[] { emailData.subject, emailData.isHtmlText });
             }
-
-            if (emailData.emailCc.Length > 0)
-            {
-                mShareManager.Call<AndroidJavaObject>("addMultipleEmailCcAddress", javaArrayFromCS(emailData.emailCc));
-            }
-
-            if (emailData.emailBcc.Length > 0)
-            {
-                mShareManager.Call<AndroidJavaObject>("addMultipleEmailBccAddress", javaArrayFromCS(emailData.emailBcc));
-            }
-
-            if (emailData.fileData.filePath.Length > 0)
-            {
-                mShareManager.Call<AndroidJavaObject>("addMultipleFilePaths", javaArrayFromCS(emailData.fileData.filePath));
-            }
-
-            if (emailData.fileData.fileUri.Length > 0)
-            {
-                foreach (string fileUri in emailData.fileData.fileUri)
-                    mShareManager.Call<AndroidJavaObject>("addFileUri", fileUri);
-            }
-
-            if (!string.IsNullOrEmpty(header))
-                mShareManager.Call<AndroidJavaObject>("setHeader", header);
-
-            mShareManager.Call("shareOnEmail", new object[] { emailData.subject, emailData.isHtmlText } );
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -607,17 +683,21 @@ namespace OneDevApp
         public void EnableLocation()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            if (mAndroidBridge.CallStatic<bool>("CheckPermission", mContext, "android.permission.ACCESS_FINE_LOCATION"))
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
             {
-                mAndroidBridge.CallStatic("EnableLocation", mContext);
+                if (jc.CallStatic<bool>("CheckPermission", mContext, "android.permission.ACCESS_FINE_LOCATION"))
+                {
+                    jc.CallStatic("EnableLocation", mContext);
+                }
+                else
+                {
+                    Debug.Log("Permisson not granted");
+                }
             }
-            else
-            {
-                Debug.Log("Permisson not granted");
-                RequestPermission("android.permission.ACCESS_FINE_LOCATION");
-            }
+
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -631,9 +711,13 @@ namespace OneDevApp
         public void ShowToast(string message, int Length = 0)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowToast", mContext, message, Length);
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowToast", mContext, message, Length);
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -648,9 +732,13 @@ namespace OneDevApp
         public void ShowAlertMessage(string title, string message, string positiveButtonName = "OK")
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowAlertMessage", mContext, title, message, positiveButtonName, new OnClickPositiveListener());
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowAlertMessage", mContext, title, message, positiveButtonName, new OnClickPositiveListener());
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -664,9 +752,13 @@ namespace OneDevApp
         public void ShowConfirmationMessage(string title, string message, string positiveButtonName = "OK", string negativeButtonName = "Cancel")
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowConfirmationMessage", mContext, title, message, positiveButtonName, new OnClickPositiveListener(), negativeButtonName, new OnClickNegativeListener());
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowConfirmationMessage", mContext, title, message, positiveButtonName, new OnClickPositiveListener(), negativeButtonName, new OnClickNegativeListener());
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -679,9 +771,13 @@ namespace OneDevApp
         public void ShowProgressBar(string title, string message, bool cancelable = true)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowProgressBar", mContext, title, message, cancelable);
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowProgressBar", mContext, title, message, cancelable);
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -691,9 +787,13 @@ namespace OneDevApp
         public void DismissProgressBar()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("DismissProgressBar");
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("DismissProgressBar");
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -703,9 +803,13 @@ namespace OneDevApp
         public void ShowTimePicker()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowTimePicker", mContext, new OnSelectedListener());
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowTimePicker", mContext, new OnSelectedListener());
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -718,9 +822,13 @@ namespace OneDevApp
         public void ShowTimePicker(int hour, int minutes, bool is24HourFormat)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowTimePicker", mContext, hour, minutes, is24HourFormat, new OnSelectedListener());
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowTimePicker", mContext, hour, minutes, is24HourFormat, new OnSelectedListener());
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -730,9 +838,13 @@ namespace OneDevApp
         public void ShowDatePicker()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowDatePicker", mContext, new OnSelectedListener());
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowDatePicker", mContext, new OnSelectedListener());
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
 
@@ -745,9 +857,13 @@ namespace OneDevApp
         public void ShowDatePicker(int year, int month, int day)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("ShowDatePicker", mContext, year, month, day, new OnSelectedListener());
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("ShowDatePicker", mContext, year, month, day, new OnSelectedListener());
+            }
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -759,7 +875,10 @@ namespace OneDevApp
         public bool IsDeviceRooted()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            return mAndroidBridge.CallStatic<bool>("IsDeviceRooted");
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                return jc.CallStatic<bool>("IsDeviceRooted");
+            }
 #elif UNITY_EDITOR
             return false;
 #endif
@@ -771,9 +890,14 @@ namespace OneDevApp
         public void OpenSettingScreen()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            mAndroidBridge.CallStatic("OpenSettings", mContext);
+            using (AndroidJavaClass jc = new AndroidJavaClass(m_bridgePackageName))
+            {
+                jc.CallStatic("OpenSettings", mContext);
+            }
+
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            if(writeLog)
+                Debug.Log("Platform not supported");
 #endif
         }
         #endregion
@@ -787,14 +911,15 @@ namespace OneDevApp
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
 
+            AndroidJNIHelper.debug = showLog;
             var constantClass = new AndroidJavaClass("com.onedevapp.nativeplugin.Constants");
             constantClass.SetStatic("enableLog", showLog);
+
 #elif UNITY_EDITOR
-            Debug.Log("Platform not supported");
+            writeLog = showLog;
 #endif
         }
         #endregion
-
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         /// <summary>
@@ -816,29 +941,6 @@ namespace OneDevApp
         }
         
 #endif
-
-
-        public void OnImagePickedResult(string param)
-        {
-            //Debug.Log(param);
-            ImageData imageData = JsonUtility.FromJson<ImageData>(param);
-
-            bool success = imageData.status;
-            int errorCode = imageData.errorCode;
-            string message = imageData.message;
-
-            if (success)
-            {
-#if UNITY_ANDROID && !UNITY_EDITOR
-
-                OnImagePicked.Invoke(imageData);
-#endif
-            }
-            else
-            {
-                OnImagePickedError.Invoke(errorCode, message);
-            }
-        }
     }
 
 }

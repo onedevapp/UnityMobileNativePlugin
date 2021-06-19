@@ -18,6 +18,7 @@
     /// </summary>
     public enum ImagePickerErrorCode
     {
+        NONE = 0,
         ERROR_PERMISSION_FAILED = 1,
         ERROR_FILE_NOT_READABLE = 2,
         ERROR_INTERNAL_ERROR = 4,
